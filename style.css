@@ -1,0 +1,196 @@
+html {
+	background-color: #eef0f2;
+}
+
+html.risks {
+	background: radial-gradient(transparent 60%, black), #c6c7c4;
+}
+
+h1 {
+	font-family: "Optima", sans-serif;
+	font-variant: small-caps;
+	color: #353b3c;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 0px;
+}
+
+.navigate{
+	color: black;
+	opacity: 0.0;
+	font-size: 360px;
+	line-height: 100px;	
+	position: absolute;
+	bottom: 0px;
+	top: 210px;
+
+	text-decoration: none;
+	z-index: 10;
+}
+
+.left {
+	left: 20px; 
+}
+
+.right {
+	right: 20px; 
+}
+
+.navigate:hover {
+	opacity: 0.1;
+}
+
+h3.every_page  {
+	font-family: Georgia, serif;
+	color: #c6c7c4;
+	font-size: 18px;
+	margin-left: 50px;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	z-index: 20;
+} 
+
+.every_page a {
+	font-weight: bold;
+	color: #a2999e;
+	text-decoration: none;
+}
+
+a:focus, a:hover, a:active { 
+	color: #846a6a; 
+}
+
+
+.column3 {
+  float: left;
+  width: 33.33%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.column5 {
+  float: left;
+  width: 20%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.human {
+	position: relative;
+	height: 480px; 
+    width: auto; 
+    max-width: 620px; 
+    max-height: 600px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+#bubble_chart {
+	margin-left: 150px;
+}
+
+#risk, #xrisk, #hrisk {
+	position: absolute;
+	font-family: Georgia;
+	font-weight: bold;
+	margin-right: 150px;
+	left: 800px;
+}
+
+#risk {
+	top: 200px;
+	font-size: 30px;
+	text-align: center;
+	left: 870px;
+	color: #006d77;
+}
+
+#hrisk {
+	top: 275px;
+	font-size: 15px;
+}
+
+#xrisk {
+	top: 325px;
+	font-size: 15px;
+	color: white;
+}
+
+
+
+#buttons {
+	position: absolute;
+	margin-top: 450px;
+	left: 820px;
+}
+
+select {
+	position: relative;
+  	font-family: Georgia;
+  	text-align: center;
+  	text-align-last: center;
+  	width: 140px;
+  	height: 30px;
+  	background-color: #a2999e;
+  	color: white;
+  	/*-webkit-appearance: none;*/
+}
+
+.adolescence p {
+	color: #a2999e;
+	font-family: "Apple Chancery", cursive;
+	font-size: 15px;
+	position: relative;
+	text-align: center;
+}
+
+#quote1 {
+	top: 300px;
+}
+
+#quote2 {
+	top: 80px;
+}
+
+.blank {
+	opacity: 0.0;
+}
+
+h4 {
+	font-family: "Optima", sans-serif;
+	font-variant: small-caps;
+	color: #006d77;
+	font-size: 20px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+h4:hover {
+	opacity: 0.0;
+}
+
+.grow p {
+	font-family: Georgia, sans-serif;
+	color: #2a3d45;
+	font-size: 12px;
+	text-align: center;
+	justify-content: center;
+	opacity: 0.0;
+	position: absolute;
+}
+
+.grow p:hover {
+	opacity: 1.0;
+}
