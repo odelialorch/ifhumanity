@@ -128,7 +128,7 @@ function riskMatching() {
 		let closest = hrisks[0];
 		console.log("closest1 " + closest);
 		hrisks.forEach(function findClosest(n) { 
-			if (abs(parseFloat(x.value) - parseFloat(n.value)) < abs(parseFloat(x.value) - parseFloat(closest.value))) {
+			if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
 				closest = n;
 				console.log("closest " + closest);
 			};
