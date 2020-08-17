@@ -104,6 +104,7 @@ function riskMatching() {
 	let hrisks = []
 	d3.csv("test.csv").then(function(data) {
   	  data.forEach(function(d) {
+    	console.log(d.country);
     	if (d.country == document.getElementById("country").options[document.getElementById("country").selectedIndex].text) {
     		hrisks.push(d);
     	}
