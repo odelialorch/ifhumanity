@@ -109,6 +109,10 @@ function riskMatching() {
     	}
   	  });
   	});
+
+  	console.table(hrisks);
+  	debugger;
+
   	let finalData = [];
 	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
 	for (let x of xrisks) {
@@ -132,6 +136,9 @@ function riskMatching() {
 		};
 		finalData.push(match);
 	};
+
+	console.table(finalData);
+
 	return finalData;
 }
 
@@ -139,6 +146,8 @@ function riskMatching() {
 
 function bubbleChart() {
 	let data = riskMatching();
+
+	console.table(data);
 
 	d3.select("body").append("p").text(function(data) {
 		for (let d of data) {
