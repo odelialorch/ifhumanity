@@ -101,7 +101,7 @@ let data1 =
 	{}]
 
 function riskMatching() {
-	let hrisks = {};
+	var hrisks = [];
 	d3.csv("test.csv").then(function(data) {
   	  data.forEach(function(d) {
     	console.log(d.country);
