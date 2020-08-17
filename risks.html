@@ -106,7 +106,7 @@ function riskMatching() {
   	  data.forEach(function(d) {
     	console.log(d.country);
     	console.log(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
-    	if (d.country === document.getElementById("country").options[document.getElementById("country").selectedIndex].text) {
+    	if (d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0) {
     		hrisks.push(d);
     	}
   	  });
