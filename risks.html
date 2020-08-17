@@ -115,9 +115,9 @@ function riskMatching() {
 		x.risk *= 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
 		let h = function(x) {
 			let closest = hrisks[0];
-			for (let d of hrisks) {
-				if (abs(parseFloat(xrisk.value) - parseFloat(d.value)) < abs(parseFloat(xrisk.value) - parseFloat(closest.value))) {
-					closest = d;
+			for (let n of hrisks) {
+				if (abs(parseFloat(xrisk.value) - parseFloat(n.value)) < abs(parseFloat(xrisk.value) - parseFloat(closest.value))) {
+					closest = n;
 				};
 			};
 			delete hrisks[hrisks.indexOf(closest)];
@@ -139,6 +139,12 @@ function riskMatching() {
 
 function bubbleChart() {
 	let data = riskMatching();
+
+	d3.select("body").append("p").text(function(data) {
+		for (let d of data) {
+			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
+		}
+	})
 
 	let format = d3.format(",d");
 
