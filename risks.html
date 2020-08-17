@@ -122,25 +122,22 @@ function riskMatching() {
 		console.log("xrisk before math" + x.risk);
 		x.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
 		console.log("xrisk after math" + x.value);
-		let h = function() {
-			let closest = hrisks[0];
-			console.log("closest1 " + closest);
-			for (let n of hrisks) {
-				if (abs(parseFloat(x.value) - parseFloat(n.value)) < abs(parseFloat(x.value) - parseFloat(closest.value))) {
-					closest = n;
-					console.log("closest " + closest);
-				};
+		let closest = hrisks[0];
+		console.log("closest1 " + closest);
+		for (let n of hrisks) {
+			if (abs(parseFloat(x.value) - parseFloat(n.value)) < abs(parseFloat(x.value) - parseFloat(closest.value))) {
+				closest = n;
+				console.log("closest " + closest);
 			};
-			delete hrisks[hrisks.indexOf(closest)];
-			return closest;
 		};
-		console.log(h);
+		delete hrisks[hrisks.indexOf(closest)];
+		console.log(closest);
 		let match = {
 			xrisk: x.risk,
 			ximg: x.img,
-			hrisk: h.risk,
-			himg: h.img,
-			value: (parseFloat(x.value) + parseFloat(h.value)) / 2
+			hrisk: closest.risk,
+			himg: closest.img,
+			value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
 		};
 		console.log("match" + match);
 		finalData.push(match);
