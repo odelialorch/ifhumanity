@@ -1,11 +1,42 @@
-hrisk,himg,xrisk,ximg,value
-Ischemic heart disease,1heart.png,Total existential risk,1x.png,7
-Self-harm,1selfharm.png,Unaligned artificial intelligence,1ai.png,4.2
-Maternal disorders,1pregnancy.png,Naturally' arising pandemics,1naturalpandemic.png,0.0043
-Substance abuse disorders,1drugs.png,Engineered pandemics,1engpandemic.png,1.28
-Chronic liver diseases,1liver.png,Other anthropogenic risks,1anthro.png,0.87
-Intestinal nematode infections,1intestines.png,Stellar explosion,1stellar.png,0.000000001
-Coal workers pneumoconiosis,1lungs.png,Asteroid or comet impact,1asteroid.png,0.00004
-Maternal disorders,1pregnancy.png,Supervolcanic eruption,1supervolcano.png,0.0043
-Other drug use disorders,1drugs.png,Nuclear war,1nuclear.png,0.043
-Other drug use disorders,1drugs.png,Climate change,1climate.png,0.043
+country,risk,value,img
+Denmark,Rheumatic heart disease,0.001655662,1x.png
+Denmark,Ischemic heart disease,0.095962842,1x.png
+Denmark,Stroke,0.056622843,1x.png
+Denmark,Ischemic stroke,0.030407725,1x.png
+Denmark,Intracerebral hemorrhage,0.021372205,1x.png
+Denmark,Subarachnoid hemorrhage,0.004842913,1x.png
+Denmark,Hypertensive heart disease,0.003455812,1x.png
+Denmark,Cardiomyopathy and myocarditis,0.003607998,1x.png
+Denmark,Atrial fibrillation and flutter,0.012652125,1x.png
+Denmark,Aortic aneurysm,0.008372766,1x.png
+Denmark,Peripheral artery disease,0.003453535,1x.png
+Denmark,Endocarditis,0.001590966,1x.png
+Denmark,Non-rheumatic valvular heart disease,0.00838532,1x.png
+Denmark,Other cardiovascular and circulatory diseases,0.005679624,1x.png
+Denmark,Chronic respiratory diseases,0.059905717,1x.png
+Denmark,Chronic obstructive pulmonary disease,0.055759315,1x.png
+Denmark,Pneumoconiosis,0.000207902,1x.png
+Denmark,Silicosis,1.08E-05,1x.png
+Denmark,Asbestosis,0.000158322,1x.png
+Malaysia,All causes,0.405290038,1x.png
+Malaysia,"Communicable, maternal, neonatal, and nutritional diseases",0.077813465,1x.png
+Malaysia,Tuberculosis,0.003144349,1x.png
+Malaysia,HIV/AIDS,0.003875864,1x.png
+Malaysia,HIV/AIDS resulting in other diseases,0.003465833,1x.png
+Malaysia,Diarrheal diseases,0.001649832,1x.png
+Malaysia,Typhoid fever,0.000551081,1x.png
+Malaysia,Paratyphoid fever,5.05E-05,1x.png
+Malaysia,Other intestinal infectious diseases,2.57E-06,1x.png
+Malaysia,Lower respiratory infections,0.058148579,1x.png
+Malaysia,Upper respiratory infections,1.04E-05,1x.png
+Malaysia,Other cardiovascular and circulatory diseases,0.004784108,1x.png
+Malaysia,Chronic respiratory diseases,0.014160894,1x.png
+Malaysia,Chronic obstructive pulmonary disease,0.011784563,1x.png
+Malaysia,Pneumoconiosis,5.69E-06,1x.png
+Malaysia,Silicosis,1.41E-06,1x.png
+Malaysia,Asbestosis,1.16E-06,1x.png
+Malaysia,Coal workers pneumoconiosis,8.71E-07,1x.png
+Malaysia,Other pneumoconiosis,2.26E-06,1x.png
+Malaysia,Asthma,0.001271889,1x.png
+Malaysia,Interstitial lung disease and pulmonary sarcoidosis,0.000642406,1x.png
+Malaysia,Other chronic respiratory diseases,0.000456347,1x.png
