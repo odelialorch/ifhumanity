@@ -109,13 +109,13 @@ function riskMatching() {
     	console.log(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
     	if (d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0) {
     		console.log("length " + hrisks.length);
-    		hrisks[hrisks.length] = d;
+    		hrisks.push(d);
     	}
   	  });
   	});
 
   	console.log(hrisks);
-  	console.log("hrisks[1] " + hrisks[1]);
+  	console.log("hrisks[0] " + hrisks[0]);
   	debugger;
 
   	let finalData = [];
