@@ -101,13 +101,13 @@ let data1 =
 	{}]
 
 function riskMatching() {
-	let hrisks = new Array();
+	let hrisks = [];
 	d3.csv("test.csv").then(function(data) {
   	  data.forEach(function(d) {
     	console.log(d.country);
     	console.log(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
     	if (d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0) {
-    		hrisks.push(d);
+    		hrisks[hrisks.length] = d;
     	}
   	  });
   	});
@@ -115,7 +115,7 @@ function riskMatching() {
   	console.log(hrisks);
   	debugger;
 
-  	let finalData = new Array();
+  	let finalData = [];
 	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
 	console.log(xrisks);
 	for (let x of xrisks) {
@@ -141,7 +141,7 @@ function riskMatching() {
 			value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
 		};
 		console.log("match" + match);
-		finalData.push(match);
+		finalData[finalData.length] = match;
 	};
 
 	console.table(finalData);
