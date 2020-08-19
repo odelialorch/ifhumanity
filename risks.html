@@ -142,6 +142,7 @@ function riskMatching() {
 			console.log(closest);
 
 			hrisks.forEach(function(n) { 
+				console.log(n);
 				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
 					closest = n;
 					console.log("closest " + closest);
