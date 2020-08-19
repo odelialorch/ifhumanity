@@ -145,7 +145,8 @@ function riskMatching() {
 				console.log(n);
 				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
 					console.log(n);
-					closest = n;
+					console.log(n.risk);
+					closest = {"risk": n.risk, "value": +n.value, "img": n.img};
 					console.log("closest " + closest);
 				};
 			});
@@ -153,8 +154,10 @@ function riskMatching() {
 			match.himg = closest.img;
 			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2;
 			//hrisks = hrisks. //delete closest;
+			console.log(match);
 			return match;
 		});
+		console.log(finalData);
 	});
 	// let data = d3.csv("test.csv");
  //  	console.log(data);
