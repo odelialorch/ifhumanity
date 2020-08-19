@@ -137,17 +137,19 @@ function riskMatching() {
 
 			console.log(value);
 
-			var closest = hrisks[0]
+			var closest = hrisks[0];
 
-			hrisks.forEach(function findClosest(n) { 
+			console.log(closest);
+
+			hrisks.forEach(function(n) { 
 				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
 					closest = n;
 					console.log("closest " + closest);
 				};
 			});
 			match.hrisk = closest.risk;
-			match.himg = closest.img,
-			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2
+			match.himg = closest.img;
+			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2;
 			//hrisks = hrisks. //delete closest;
 			return match;
 		});
@@ -217,10 +219,10 @@ function bubbleChart() {
 	console.table(data);
 
 	d3.select("body").append("p").text(function(data) {
-		for (let d of data) {
+		data.forEach( function(d) {
 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
-		}
-	})
+		});
+	});
 
 	let format = d3.format(",d");
 
