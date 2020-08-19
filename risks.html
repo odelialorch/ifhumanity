@@ -103,9 +103,18 @@ let data1 =
 function riskMatching() {
 	var hrisks = [];
 	console.log(hrisks);
+	var data2 = d3.csv("test.csv").then(function(data) {
+ 		data.forEach(function(d) {
+    		d.risk = d.risk;
+    		d.value = +d.value;
+   			d.img = d.img;
+  		});
+  		console.log(data[0]);
+	});
+ 	console.log(data2);
 	let data = d3.csv("test.csv");
   	console.log(data);
-  	hrisks = data.filter(function(d) {
+  	hrisks = data2.filter(function(d) {
   	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
   	});
   	console.log(hrisks);
