@@ -122,10 +122,36 @@ function riskMatching() {
 
   		console.log(hrisks);
 		console.log(hrisks[0]);
-	});
+
+		let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
 	// console.log(data2);
-	console.log(hrisks);
-	console.log(hrisks[0]);
+
+		console.log(xrisks);
+
+		finalData = xrisks.map(function(x) {
+			var match = {}
+			match.xrisk = x.risk;
+			match.ximg = x.img;
+		
+			var value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+
+			console.log(value);
+
+			var closest = hrisks[0]
+
+			hrisks.forEach(function findClosest(n) { 
+				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
+					closest = n;
+					console.log("closest " + closest);
+				};
+			});
+			match.hrisk = closest.risk;
+			match.himg = closest.img,
+			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2
+			//hrisks = hrisks. //delete closest;
+			return match;
+		});
+	});
 	// let data = d3.csv("test.csv");
  //  	console.log(data);
  //  	var hrisks1 = data.filter(function(d) {
@@ -150,32 +176,6 @@ function riskMatching() {
 
   	//let finalData = [];
   	//console.log("finalData" + finalData);
-	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text).map(function(d) {
-		return d.value = parseFloat(d.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value),
-			d.risk = d.risk,
-			d.img = d.img;
-	});
-
-	console.log(xrisks);
-
-	finalData = xrisks.map(function(x) {
-		var match = {}
-		match.xrisk = x.risk;
-		match.ximg = x.img;
-		var closest = hrisks[0]
-
-		hrisks.forEach(function findClosest(n) { 
-			if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
-				closest = n;
-				console.log("closest " + closest);
-			};
-		});
-		match.hrisk = closest.risk;
-		match.himg = closest.img,
-		match.value = (parseFloat(x.value) + parseFloat(closest.value)) / 2
-		//hrisks = hrisks. //delete closest;
-		return match;
-	})
 	
 	// console.log(xrisks);
 	// xrisks.forEach(function match(x) {
