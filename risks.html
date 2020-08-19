@@ -116,10 +116,14 @@ function riskMatching() {
  	console.log(data2);
 	let data = d3.csv("test.csv");
   	console.log(data);
-  	var hrisks1 = hrisks.filter(function(d) {
+  	var hrisks1 = data.filter(function(d) {
+  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
+  	});
+  	var hrisks2 = hrisks.filter(function(d) {
   	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
   	});
   	console.log(hrisks1);
+  	console.log(hrisks);
   	  // data.forEach(function(d) {
     	// console.log(d);
     	// console.log(d.country);
@@ -129,12 +133,15 @@ function riskMatching() {
     	// 	hrisks.push({country: d.country, risk: d.risk, value: d.value, img: d.img});
     	// }
   	  // });
-  	console.log("hrisks[0] " + hrisks1[0]);
+  	console.log("hrisks1[0] " + hrisks1[0]);
+  	console.log("hrisks[0] " + hrisks[0]);
 
   	//let finalData = [];
   	//console.log("finalData" + finalData);
 	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text).map(function(d) {
-		return d.value = parseFloat(d.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+		return d.value = parseFloat(d.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value),
+			d.risk = d.risk,
+			d.img = d.img;
 	});
 
 	console.log(xrisks);
