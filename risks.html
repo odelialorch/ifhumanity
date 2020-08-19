@@ -100,73 +100,73 @@ let data1 =
 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
 	{}]
 
-// function riskMatching() {
-// 	var hrisks = [];
-// 	console.log(hrisks);
-// 	d3.csv("test.csv").then(function(data) {
-//   	  console.log(data);
-//   	  data.forEach(function(d) {
-//     	console.log(d);
-//     	console.log(d.country);
-//     	console.log(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
-//     	if (d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0) {
-//     		console.log("length " + hrisks.length);
-//     		hrisks.push({country: d.country, risk: d.risk, value: d.value, img: d.img});
-//     	}
-//   	  });
-//   	});
+function riskMatching() {
+	var hrisks = [];
+	console.log(hrisks);
+	d3.csv("test.csv").then(function(data) {
+  	  console.log(data);
+  	  data.forEach(function(d) {
+    	console.log(d);
+    	console.log(d.country);
+    	console.log(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
+    	if (d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0) {
+    		console.log("length " + hrisks.length);
+    		hrisks.push({country: d.country, risk: d.risk, value: d.value, img: d.img});
+    	}
+  	  });
+  	});
 
-//   	console.log(hrisks);
-//   	console.log("hrisks[0] " + hrisks[0]);
-//   	debugger;
+  	console.log(hrisks);
+  	console.log("hrisks[0] " + hrisks[0]);
+  	debugger;
 
-//   	let finalData = [];
-//   	console.log("finalData" + finalData);
-// 	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
-// 	console.log(xrisks);
-// 	xrisks.forEach(function match(x) {
-// 		console.log("xrisk before math" + x.value);
-// 		x.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
-// 		console.log("xrisk after math" + x.value);
-// 		console.log("hrisks[0] " + hrisks[0]);
-// 		let closest = hrisks[0];
-// 		console.log("closest1 " + closest);
-// 		hrisks.forEach(function findClosest(n) { 
-// 			if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
-// 				closest = n;
-// 				console.log("closest " + closest);
-// 			};
-// 		});
-// 		delete hrisks[hrisks.indexOf(closest)];
-// 		console.log(closest);
-// 		let match = {
-// 			xrisk: x.risk,
-// 			ximg: x.img,
-// 			hrisk: closest.risk,
-// 			himg: closest.img,
-// 			value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
-// 		};
-// 		console.log("match" + match);
-// 		finalData[finalData.length] = match;
-// 	});
+  	let finalData = [];
+  	console.log("finalData" + finalData);
+	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
+	console.log(xrisks);
+	xrisks.forEach(function match(x) {
+		console.log("xrisk before math" + x.value);
+		x.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+		console.log("xrisk after math" + x.value);
+		console.log("hrisks[0] " + hrisks[0]);
+		let closest = hrisks[0];
+		console.log("closest1 " + closest);
+		hrisks.forEach(function findClosest(n) { 
+			if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
+				closest = n;
+				console.log("closest " + closest);
+			};
+		});
+		delete hrisks[hrisks.indexOf(closest)];
+		console.log(closest);
+		let match = {
+			xrisk: x.risk,
+			ximg: x.img,
+			hrisk: closest.risk,
+			himg: closest.img,
+			value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
+		};
+		console.log("match" + match);
+		finalData[finalData.length] = match;
+	});
 
-// 	console.table(finalData);
+	console.table(finalData);
 
-// 	return finalData;
-// }
+	return finalData;
+}
 
 
 
 function bubbleChart() {
-	// let data = riskMatching();
+	let data = riskMatching();
 
-	// console.table(data);
+	console.table(data);
 
-	// d3.select("body").append("p").text(function(data) {
-	// 	for (let d of data) {
-	// 		return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
-	// 	}
-	// })
+	d3.select("body").append("p").text(function(data) {
+		for (let d of data) {
+			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
+		}
+	})
 
 	let format = d3.format(",d");
 
@@ -178,7 +178,7 @@ function bubbleChart() {
     	.size([width - 2, height - 2])
     	.padding(3);
 
-    const root = d3.hierarchy({children: data1})
+    const root = d3.hierarchy({children: data})
     .sum(function(d) {return d.value; });
 
 	const node = svg.selectAll(".node")
