@@ -107,7 +107,7 @@ function riskMatching() {
 	var finalData = [];
 	var finalfinalData = [];
 
-	var finalfinalfinalData = d3.csv("test.csv").then(function(data) {
+	return d3.csv("test.csv").then(function(data) {
  		data.forEach(function(d) {
     		d.risk = d.risk;
     		d.value = +d.value;
@@ -219,7 +219,7 @@ function riskMatching() {
 	console.log(finalfinalData);
 	console.log(finalfinalfinalData);
 
-	return finalfinalfinalData;
+	//return finalfinalfinalData;
 }
 
 
