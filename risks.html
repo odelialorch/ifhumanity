@@ -159,9 +159,9 @@ function riskMatching() {
 			finalfinalData.push(match);
 			return match;
 		});
-		return finalData;
 		console.log(finalData);
 		console.log(finalfinalData);
+		return finalData;
 	});
 	// let data = d3.csv("test.csv");
  //  	console.log(data);
@@ -229,11 +229,9 @@ function bubbleChart() {
 
 	console.table(data);
 
-	d3.select("body").append("p").text(function(data) {
-		data.forEach( function(d) {
+	d3.select("body").append("p").data(data).text(function(d) {
 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
 		});
-	});
 
 	let format = d3.format(",d");
 
