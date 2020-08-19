@@ -103,12 +103,12 @@ let data1 =
 function riskMatching() {
 	var hrisks = [];
 	console.log(hrisks);
-	d3.csv("test.csv").then(function(data) {
-  	  console.log(data);
-  	  hrisks = data.filter(function(d) {
-  	  	return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
-  	  });
-  	  console.log(hrisks);
+	let data = d3.csv("test.csv");
+  	console.log(data);
+  	hrisks = data.filter(function(d) {
+  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
+  	});
+  	console.log(hrisks);
   	  // data.forEach(function(d) {
     	// console.log(d);
     	// console.log(d.country);
@@ -118,43 +118,63 @@ function riskMatching() {
     	// 	hrisks.push({country: d.country, risk: d.risk, value: d.value, img: d.img});
     	// }
   	  // });
-  	});
-
-  	console.log(hrisks);
   	console.log("hrisks[0] " + hrisks[0]);
-  	debugger;
 
-  	let finalData = [];
-  	console.log("finalData" + finalData);
-	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
+  	//let finalData = [];
+  	//console.log("finalData" + finalData);
+	let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text).map(function(d) {
+		return d.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+	});
+
 	console.log(xrisks);
-	xrisks.forEach(function match(x) {
-		console.log("xrisk before math" + x.value);
-		x.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
-		console.log("xrisk after math" + x.value);
-		console.log("hrisks[0] " + hrisks[0]);
-		let closest = hrisks[0];
-		console.log("closest1 " + closest);
+
+	let finalData = xrisks.map(function(x) {
+		var match = {}
+		match.xrisk = x.risk;
+		match.ximg = x.img;
+		var closest = hrisks[0]
+
 		hrisks.forEach(function findClosest(n) { 
 			if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
 				closest = n;
 				console.log("closest " + closest);
 			};
 		});
-		delete hrisks[hrisks.indexOf(closest)];
-		console.log(closest);
-		let match = {
-			xrisk: x.risk,
-			ximg: x.img,
-			hrisk: closest.risk,
-			himg: closest.img,
-			value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
-		};
-		console.log("match" + match);
-		finalData[finalData.length] = match;
-	});
+		match.hrisk = closest.risk;
+		match.himg = closest.img,
+		match.value = (parseFloat(x.value) + parseFloat(closest.value)) / 2
+		//hrisks = hrisks. //delete closest;
+		return match;
+	})
+	
+	// console.log(xrisks);
+	// xrisks.forEach(function match(x) {
+	// 	//console.log("xrisk before math" + x.value);
+	// 	x.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+	// 	//console.log("xrisk after math" + x.value);
+	// 	//console.log("hrisks[0] " + hrisks[0]);
+	// 	let closest = hrisks[0];
+	// 	//console.log("closest1 " + closest);
+	// 	hrisks.forEach(function findClosest(n) { 
+	// 		if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
+	// 			closest = n;
+	// 			console.log("closest " + closest);
+	// 		};
+	// 	});
+	// 	delete hrisks[hrisks.indexOf(closest)];
+	// 	//console.log(closest);
+	// 	let match = {
+	// 		xrisk: x.risk,
+	// 		ximg: x.img,
+	// 		hrisk: closest.risk,
+	// 		himg: closest.img,
+	// 		value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
+	// 	};
+	// 	console.log("match" + match);
+	// 	finalData[finalData.length] = match;
+	// });
 
-	console.table(finalData);
+	console.log(finalData);
 
 	return finalData;
 }
