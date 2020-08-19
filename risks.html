@@ -220,14 +220,14 @@ function riskMatching() {
 	console.log(finalfinalfinalData);
 
 	//return finalfinalfinalData;
-}
+};
 
 
 
 function bubbleChart() {
 	let data = riskMatching();
 
-	console.table(data);
+	console.log(data);
 
 	d3.select("body").append("p").data(data).text(function(d) {
 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
