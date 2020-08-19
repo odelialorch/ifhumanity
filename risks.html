@@ -109,16 +109,15 @@ function riskMatching() {
     		d.value = +d.value;
    			d.img = d.img;
    			hrisks.push(d);
+   			return d;
   		});
   		console.log(data[0]);
   		console.log(hrisks[0]);
 	});
  	console.log(data2);
 	let data = d3.csv("test.csv");
-	data3 = data.forEach(function(d) { return d; });
   	console.log(data);
-  	console.log(data3);
-  	var hrisks1 = data3.filter(function(d) {
+  	var hrisks1 = data.filter(function(d) {
   	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
   	});
   	var hrisks2 = hrisks.filter(function(d) {
