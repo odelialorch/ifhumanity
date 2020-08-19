@@ -105,6 +105,7 @@ function riskMatching() {
 	console.log(hrisks);
 
 	var finalData = [];
+	var finalfinalData = [];
 
 	d3.csv("test.csv").then(function(data) {
  		data.forEach(function(d) {
@@ -155,9 +156,11 @@ function riskMatching() {
 			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2;
 			//hrisks = hrisks. //delete closest;
 			console.log(match);
+			finalfinalData.push(match);
 			return match;
 		});
 		console.log(finalData);
+		console.log(finalfinalData);
 	});
 	// let data = d3.csv("test.csv");
  //  	console.log(data);
@@ -212,8 +215,9 @@ function riskMatching() {
 	// });
 
 	console.log(finalData);
+	console.log(finalfinalData);
 
-	return finalData;
+	return finalfinalData;
 }
 
 
