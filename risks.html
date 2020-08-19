@@ -103,30 +103,39 @@ let data1 =
 function riskMatching() {
 	var hrisks = [];
 	console.log(hrisks);
-	var data2 = d3.csv("test.csv").then(function(data) {
+
+	var finalData = [];
+
+	d3.csv("test.csv").then(function(data) {
  		data.forEach(function(d) {
     		d.risk = d.risk;
     		d.value = +d.value;
    			d.img = d.img;
    			hrisks.push(d);
-   			return d;
   		});
   		console.log(data[0]);
   		console.log(hrisks[0]);
+
+  		hrisks = data.filter(function(d) {
+  	  		return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
+  		});
+
+  		console.log(hrisks);
+		console.log(hrisks[0]);
 	});
-	console.log(data2);
+	// console.log(data2);
 	console.log(hrisks);
 	console.log(hrisks[0]);
-	let data = d3.csv("test.csv");
-  	console.log(data);
-  	var hrisks1 = data.filter(function(d) {
-  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
-  	});
-  	var hrisks2 = hrisks.filter(function(d) {
-  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
-  	});
-  	console.log(hrisks1);
-  	console.log(hrisks);
+	// let data = d3.csv("test.csv");
+ //  	console.log(data);
+ //  	var hrisks1 = data.filter(function(d) {
+ //  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
+ //  	});
+ //  	var hrisks2 = hrisks.filter(function(d) {
+ //  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
+ //  	});
+ //  	console.log(hrisks1);
+ //  	console.log(hrisks);
   	  // data.forEach(function(d) {
     	// console.log(d);
     	// console.log(d.country);
@@ -136,8 +145,8 @@ function riskMatching() {
     	// 	hrisks.push({country: d.country, risk: d.risk, value: d.value, img: d.img});
     	// }
   	  // });
-  	console.log("hrisks1[0] " + hrisks1[0]);
-  	console.log("hrisks[0] " + hrisks[0]);
+  	// console.log("hrisks1[0] " + hrisks1[0]);
+  	// console.log("hrisks[0] " + hrisks[0]);
 
   	//let finalData = [];
   	//console.log("finalData" + finalData);
@@ -149,7 +158,7 @@ function riskMatching() {
 
 	console.log(xrisks);
 
-	let finalData = xrisks.map(function(x) {
+	finalData = xrisks.map(function(x) {
 		var match = {}
 		match.xrisk = x.risk;
 		match.ximg = x.img;
