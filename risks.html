@@ -62,8 +62,8 @@
 
 <script type="text/javascript">
 
-let probExamples = [{"value": 6, "example": ""}, {"value": 7, "example": ""}, {"value": 8, "example": ""}, {"value": 9, "example": ""}, 
-{"value": 10, "example": ""}, {"value": 15, "example": ""}, {"value": 20, "example": ""}, {"value": 30, "example": ""}]
+let probExamples = [{"value": 6, "example": "n"}, {"value": 7, "example": "n"}, {"value": 8, "example": "n"}, {"value": 9, "example": "n"}, 
+{"value": 10, "example": "n"}, {"value": 15, "example": "n"}, {"value": 20, "example": "n"}, {"value": 30, "example": "n"}]
 
 let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
 {"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
@@ -160,6 +160,8 @@ function makeBubbleChart() {
 				});
 				match.hrisk = closest.risk;
 				match.himg = closest.img;
+				match.hvalue = closest.value;
+				match.xvalue = value;
 				match.value = (parseFloat(value) + parseFloat(closest.value)) / 2;
 				//hrisks = hrisks. //delete closest;
 				console.log(match);
