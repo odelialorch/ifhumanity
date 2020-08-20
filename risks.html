@@ -162,7 +162,7 @@ function makeBubbleChart() {
 				finalfinalData.push(match);
 				console.log("length " + hrisks.length);
 				for( var i = 0; i < hrisks.length; i++){ 
-					if ( JSON.stringify(hrisks[i]) === JSON.stringify(closest)) { 
+					if ( hrisks[i].risk.localeCompare(closest.risk) == 0) { 
 						hrisks.splice(i, 1); 
 					};
 				};
