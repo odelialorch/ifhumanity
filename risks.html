@@ -160,7 +160,7 @@ function makeBubbleChart() {
 				//hrisks = hrisks. //delete closest;
 				console.log(match);
 				finalfinalData.push(match);
-
+				console.log("length " + hrisks.length);
 				for( var i = 0; i < hrisks.length; i++){ 
 					if ( JSON.stringify(hrisks[i]) === JSON.stringify(closest)) { 
 						hrisks.splice(i, 1); 
