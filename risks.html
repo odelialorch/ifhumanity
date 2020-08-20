@@ -141,7 +141,7 @@ function makeBubbleChart() {
 				match.xrisk = x.risk;
 				match.ximg = x.img;
 			
-				var value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+				var value = parseFloat(x.value) * parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value) / 100; // x-risk scaled to life expectancy, multiplied by years of life expectancy / 100 years
 
 				console.log(value);
 
