@@ -99,7 +99,7 @@ a:focus, a:hover, a:active {
 	margin-left: 150px;
 }
 
-#risk, #xrisk, #hrisk {
+#risk, #xrisk, #hrisk, #prob {
 	position: absolute;
 	font-family: Georgia;
 	font-weight: bold;
@@ -124,6 +124,13 @@ a:focus, a:hover, a:active {
 	top: 325px;
 	font-size: 15px;
 	color: white;
+}
+
+#prob {
+	top: 375px;
+	font-size: 10px;
+	color: #006d77;
+	font-style: italic;
 }
 
 

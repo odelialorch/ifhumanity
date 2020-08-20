@@ -35,6 +35,7 @@
 		<span id = "risk"></span>
 		<span id = "hrisk"></span>
 		<span id = "xrisk"></span>
+		<span id = "prob"></span>
 
 		<div id="buttons">
 
@@ -61,6 +62,9 @@
 
 <script type="text/javascript">
 
+let probExamples = [{"value": 6, "example": ""}, {"value": 7, "example": ""}, {"value": 8, "example": ""}, {"value": 9, "example": ""}, 
+{"value": 10, "example": ""}, {"value": 15, "example": ""}, {"value": 20, "example": ""}, {"value": 30, "example": ""}]
+
 let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
 {"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
 {"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png"}, {"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png"},
@@ -73,7 +77,7 @@ let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png
 
 //imgs: add for other enviro damage! add for unforseen anthro! add for total natural! add for total anthro!
 
-pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, {"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},
+let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, {"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},
 {"risk": "synthetic biology", "value": 0.000001, "img": "1x.png"}, {"risk": "nanotechnology", "value": 0.0001, "img": "1x.png"}, 
 {"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png"}, {"risk": "climate change", "value": 0.0001, "img": "1climate.png"}, 
 {"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png"}, {"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png"},
@@ -221,9 +225,10 @@ function makeBubbleChart() {
 	   		.on("mouseover", function(d){    //switches to x-risk image on mouseover
 	    		d3.select(this)
 	    			.attr('xlink:href', function(d) { return d.data.ximg; });
-	    		d3.select("#risk").text("~" + d.value + "% chance");
+	    		d3.select("#risk").text("~1 in " + Math.round(100 / d.value) + " chance");
 	    		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
 	    		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
+	    		d3.select("#prob").text("This is the same as the chance you will " + probExamples.find(function (n) { return n.value === Math.round(100 / d.value); }).example);
 	    	})
 	    	.on("mouseout", function(){     //switches back
 	    		d3.select(this)
@@ -231,6 +236,7 @@ function makeBubbleChart() {
 	    		d3.select("#risk").text("");
 	    		d3.select("#hrisk").text("");
 	    		d3.select("#xrisk").text("");
+	    		d3.select("#prob").text("");
 	    	});
 
 	    	node.append("title")
