@@ -180,9 +180,7 @@ d3.csv("test.csv").then(function(data) {
 		return finalData;
   	}
 
- 	function bubbleChart() {
- 		let data = riskMatching();
-
+ 	function bubbleChart(data) {
  		console.log(data);
 
  		d3.select("body").append("p").data(data).text(function(d) {
@@ -245,11 +243,10 @@ d3.csv("test.csv").then(function(data) {
     	.text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.value)}`);
 	}
 
-	bubbleChart();
+	bubbleChart(riskMatching());
 
 	function update() {
 		let updata = riskMatching();
-
 		console.log(updata);
 
  		d3.select("body").append("p").data(updata).text(function(d) {
@@ -262,54 +259,7 @@ d3.csv("test.csv").then(function(data) {
 
  		svg.selectAll("*").remove();
 
- 		pack = d3.pack()
- 		.size([width - 2, height - 2])
- 		.padding(3);
-
- 		root = d3.hierarchy({children: updata})
- 		.sum(function(d) {return d.value; });
-
- 		node = svg.selectAll(".node")
-    	.data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
-    	.enter().append("g")
-   		.attr("class", "node")
-      	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
-
-      	node.append("circle")
-      	.attr("id", function(d) {return d.id; })
-      	.attr("r", function(d) {return d.r; })       // radius?
-      	.attr("fill-opacity", 0.0);
-
-      	node.append("clipPath")
-      	.attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
-      	.append("use")
-      	.attr("xlink:href", function(d) { return "#" + d.id; });
-
-      	node.append('image')
- //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
- 		.attr('width', function(d) { return d.r*2; })
- 		.attr('height', function(d) { return d.r*2; })
- 		.attr('xlink:href', function(d) { return d.data.himg; })
- 		.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
-   		.on("mouseover", function(d){    //switches to x-risk image on mouseover
-    		d3.select(this)
-    			.attr('xlink:href', function(d) { return d.data.ximg; });
-    		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
-    		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-    		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-    		d3.select("#prob").text("This is the same as the chance you will " + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example);
-    	})
-    	.on("mouseout", function(){     //switches back
-    		d3.select(this)
-    			.attr('xlink:href', function(d) { return d.data.himg; });
-    		d3.select("#risk").text("");
-    		d3.select("#hrisk").text("");
-    		d3.select("#xrisk").text("");
-    		d3.select("#prob").text("");
-    	});
-
-    	node.append("title")
-    	.text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.value)}`);
+ 		bubbleChart(updata);
 
     	d3.select("body").append("p").data(updata).text(function(d) {
  			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
