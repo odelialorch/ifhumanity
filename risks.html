@@ -14,7 +14,7 @@
 
 <!-- parts on every page  -->
 
-<h3 class = "every_page">If <button id = "btnHumanity">humanity</button> were one <button id = "btnHuman">human</button>...</h3>
+<h3 class = "every_page">If <button id="btnHumanity">humanity</button> were one <button id="btnHuman">human</button>...</h3>
 
 <a href="adolescence.html" class="navigate left every_page">&#8249;</a>
 <a href="roomtogrow.html" class="navigate right every_page">&#8250;</a>
@@ -220,11 +220,11 @@ d3.csv("test.csv").then(function(data) {
  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
  		.attr('width', function(d) { return d.r*2; })
  		.attr('height', function(d) { return d.r*2; })
- 		.attr('xlink:href', function(d) { return ((btnValue === 0) ? d.data.himg : d.data.ximg); })
+ 		.attr('xlink:href', function(d) { return ((btnValue == 0) ? d.data.himg : d.data.ximg); })
  		.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
    		.on("mouseover", function(d){    //switches to x-risk image on mouseover
     		d3.select(this)
-    			.attr('xlink:href', function(d) { return ((btnValue === 0) ? d.data.ximg : d.data.himg); });
+    			.attr('xlink:href', function(d) { return ((btnValue == 0) ? d.data.ximg : d.data.himg); });
     		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
     		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
     		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
@@ -232,7 +232,7 @@ d3.csv("test.csv").then(function(data) {
     	})
     	.on("mouseout", function(){     //switches back
     		d3.select(this)
-    			.attr('xlink:href', function(d) { return ((btnValue === 0) ? d.data.himg : d.data.ximg); });
+    			.attr('xlink:href', function(d) { return ((btnValue == 0) ? d.data.himg : d.data.ximg); });
     		d3.select("#risk").text("");
     		d3.select("#hrisk").text("");
     		d3.select("#xrisk").text("");
