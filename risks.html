@@ -262,16 +262,19 @@ d3.csv("test.csv").then(function(data) {
 
  		svg.selectAll("*").remove();
 
- 		node = svg.selectAll(".node")
-    	.data(d3.pack(d3.hierarchy({children: updata})
- 		.sum(function(d) {return d.value; }))
+ 		pack = d3.pack()
  		.size([width - 2, height - 2])
- 		.padding(3).leaves())              //returns array of descendant nodes of "root" that don't have children
+ 		.padding(3);
+
+ 		root = d3.hierarchy({children: updata})
+ 		.sum(function(d) {return d.value; });
+
+ 		node = svg.selectAll(".node")
+    	.data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
     	.enter().append("g")
    		.attr("class", "node")
-      	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
 
-      	node.append("circle")
       	.attr("id", function(d) {return d.id; })
       	.attr("r", function(d) {return d.r; })       // radius?
       	.attr("fill-opacity", 0.0);
