@@ -14,7 +14,7 @@
 
 <!-- parts on every page  -->
 
-<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
+<h3 class = "every_page">If <button id = "btnHumanity">humanity</button> were one <button id = "btnHuman">human</button>...</h3>
 
 <a href="adolescence.html" class="navigate left every_page">&#8249;</a>
 <a href="roomtogrow.html" class="navigate right every_page">&#8250;</a>
@@ -91,18 +91,18 @@ researchers.set("Pamlin & Armstrong", pamlin);
 
 //BUBBLE CHART
 
-let data1 =
-	[{"hrisk": "ischemic heart disease", "himg": "1heart.png", "xrisk": "total existential risk", "ximg": "1x.png", "value": 7},
-	{"hrisk": "self-harm", "himg": "1selfharm.png", "xrisk": "unaligned artificial intelligence", "ximg": "1ai.png", "value": 4},
-	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "'naturally' arising pandemics", "ximg": "1naturalpandemic.png", "value": 0.004},
-	{"hrisk": "substance abuse disorders", "himg": "1drugs.png", "xrisk": "engineered pandemics", "ximg": "1engpandemic.png", "value": 1},
-	{"hrisk": "chronic liver diseases", "himg": "1liver.png", "xrisk": "other anthropogenic risks", "ximg": "1anthro.png", "value": 0.9},
-	{"hrisk": "intestinal nematode infections", "himg": "1intestines.png", "xrisk": "stellar explosion", "ximg": "1stellar.png", "value": 0.000000001},
-	{"hrisk": "coal workers pneumoconiosis", "himg": "1lungs.png", "xrisk": "asteroid or comet impact", "ximg": "1asteroid.png", "value": 0.00004},
-	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "supervolcanic eruption", "ximg": "1supervolcano.png", "value": 0.004},
-	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "nuclear war", "ximg": "1nuclear.png", "value": 0.04},
-	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
-	{}]
+// let data1 =
+// 	[{"hrisk": "ischemic heart disease", "himg": "1heart.png", "xrisk": "total existential risk", "ximg": "1x.png", "value": 7},
+// 	{"hrisk": "self-harm", "himg": "1selfharm.png", "xrisk": "unaligned artificial intelligence", "ximg": "1ai.png", "value": 4},
+// 	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "'naturally' arising pandemics", "ximg": "1naturalpandemic.png", "value": 0.004},
+// 	{"hrisk": "substance abuse disorders", "himg": "1drugs.png", "xrisk": "engineered pandemics", "ximg": "1engpandemic.png", "value": 1},
+// 	{"hrisk": "chronic liver diseases", "himg": "1liver.png", "xrisk": "other anthropogenic risks", "ximg": "1anthro.png", "value": 0.9},
+// 	{"hrisk": "intestinal nematode infections", "himg": "1intestines.png", "xrisk": "stellar explosion", "ximg": "1stellar.png", "value": 0.000000001},
+// 	{"hrisk": "coal workers pneumoconiosis", "himg": "1lungs.png", "xrisk": "asteroid or comet impact", "ximg": "1asteroid.png", "value": 0.00004},
+// 	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "supervolcanic eruption", "ximg": "1supervolcano.png", "value": 0.004},
+// 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "nuclear war", "ximg": "1nuclear.png", "value": 0.04},
+// 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
+// 	{}]
 
 
 
@@ -180,7 +180,7 @@ d3.csv("test.csv").then(function(data) {
 		return finalData;
   	}
 
- 	function bubbleChart(data) {
+ 	function bubbleChart(data, btnValue) {
  		console.log(data);
 
  		d3.select("body").append("p").data(data).text(function(d) {
@@ -220,11 +220,11 @@ d3.csv("test.csv").then(function(data) {
  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
  		.attr('width', function(d) { return d.r*2; })
  		.attr('height', function(d) { return d.r*2; })
- 		.attr('xlink:href', function(d) { return d.data.himg; })
+ 		.attr('xlink:href', function(d) { return ((btnValue === 0) ? d.data.himg : d.data.ximg); })
  		.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
    		.on("mouseover", function(d){    //switches to x-risk image on mouseover
     		d3.select(this)
-    			.attr('xlink:href', function(d) { return d.data.ximg; });
+    			.attr('xlink:href', function(d) { return ((btnValue === 0) ? d.data.ximg : d.data.himg); });
     		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
     		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
     		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
@@ -232,7 +232,7 @@ d3.csv("test.csv").then(function(data) {
     	})
     	.on("mouseout", function(){     //switches back
     		d3.select(this)
-    			.attr('xlink:href', function(d) { return d.data.himg; });
+    			.attr('xlink:href', function(d) { return ((btnValue === 0) ? d.data.himg : d.data.ximg); });
     		d3.select("#risk").text("");
     		d3.select("#hrisk").text("");
     		d3.select("#xrisk").text("");
@@ -243,15 +243,11 @@ d3.csv("test.csv").then(function(data) {
     	.text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.value)}`);
 	}
 
-	bubbleChart(riskMatching());
+	bubbleChart(riskMatching(), 0); // 0 = human, 1 = humanity
 
-	function update() {
+	function update(btnValue) {
 		let updata = riskMatching();
 		console.log(updata);
-
- 		d3.select("body").append("p").data(updata).text(function(d) {
- 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
- 		});
 
  		svg = d3.select("body").select("svg"),
  		width = +svg.attr("width"),
@@ -259,15 +255,17 @@ d3.csv("test.csv").then(function(data) {
 
  		svg.selectAll("*").remove();
 
- 		bubbleChart(updata);
-
-    	d3.select("body").append("p").data(updata).text(function(d) {
- 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
- 		});
+ 		bubbleChart(updata, btnValue);
 	}
 
-	document.getElementById("country").addEventListener("change", update);
-	document.getElementById("researcher").addEventListener("change", update);
+	document.getElementById("country").addEventListener("change", update(0));
+	document.getElementById("researcher").addEventListener("change", update(0));
+
+	document.getElementById("btnHumanity").addEventListener("click", update(1));
+	document.getElementById("btnHumanity").addEventListener("mouseover", update(1));
+
+	document.getElementById("btnHuman").addEventListener("click", update(0));
+	document.getElementById("btnHuman").addEventListener("mouseover", update(0));
 
 });
 
