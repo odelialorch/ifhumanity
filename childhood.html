@@ -218,72 +218,72 @@ labels1.transition()
 longline.transition()
 	.attr("x1", 100).attr("x2", 100 + longLineLength*0.2)
 	.duration(0)
-	.delay(25000);
+	.delay(23000);
 
 labels1.transition()
 	.attr("opacity", function(i) {return i===1 ? 0:1;})
 	.duration(0)
-	.delay(25000);
+	.delay(23000);
 
 labels2.transition()
 	.attr("opacity", function(i) {return i===1 ? 0:1;})
 	.duration(0)
-	.delay(25000);
+	.delay(23000);
 
 ticks.transition()
 	.attr("opacity", function(i) {return i===1 ? 0:1;})
 	.duration(0)
-	.delay(25000);
+	.delay(23000);
 
 //expand timeline
 
 longline.transition()
 	.attr("x2", 100 + longLineLength)
 	.duration(500)
-	.delay(25500);
+	.delay(23500);
 
 labels1.transition()
 	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
 	.attr("fill", "#353b3c")
 	.duration(500)
-	.delay(25500);
+	.delay(23500);
 
 labels2.transition()
 	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
 	.attr("fill", "#353b3c")
 	.duration(500)
-	.delay(25500);
+	.delay(23500);
 
 ticks.transition()
 	.attr("stroke", "#353b3c")
 	.attr("x1", function(i) {return i===0 ? 100 : 100 + longLineLength;})
 	.attr("x2", function(i) {return i===0 ? 100 : 100 + longLineLength;})
 	.duration(500)
-	.delay(25500);
+	.delay(23500);
 
 //DROP TO BOTTOM OF SCREEN
 
 labels1.transition()
 	.attr("opacity", 0)
 	.duration(0)
-	.delay(26000);
+	.delay(24000);
 
 longline.transition()
 	.attr("y1", bottomLineY)
 	.attr("y2", bottomLineY)
 	.duration(500)
-	.delay(26000);
+	.delay(24000);
 
 ticks.transition()
 	.attr("y1", bottomLineY - 20)
 	.attr("y2", bottomLineY + 20)
 	.duration(500)
-	.delay(26000);
+	.delay(24000);
 
 labels2.transition()
 	.attr("y", bottomLineY + 40)
 	.duration(500)
-	.delay(26000);
+	.delay(24000);
 
 text4.transition()
 	.attr("font-family", "Georgia", "serif")
@@ -294,7 +294,7 @@ text4.transition()
 	.attr("font-variant", "null")
 	.text("If humanity were one human...")
 	.duration(500)
-	.delay(26000);
+	.delay(24000);
 
 
 
@@ -343,7 +343,7 @@ let barChart = function() {
     console.log(y(80));
 
 	let xAxis = g => g
-	    .attr("transform", `translate(0,${height + 60})`)
+	    .attr("transform", `translate(0,${height + 160})`)
 	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
  		.attr("font-variant", "small-caps")
 	   	.attr("font-weight", "bold")
@@ -360,7 +360,7 @@ let barChart = function() {
 	    	.selectAll("g")
 	   		.data(data)
 	    	.join("g")
-	      	  .attr("transform", d => `translate(${x0(d["year"])},0)`);
+	      	  .attr("transform", d => `translate(${x0(d["year"])},120)`);
 
 	    var human = g.append("image")
   	  	.attr("xlink:href", (d, i) => humans[i])
@@ -391,7 +391,7 @@ let barChart = function() {
   	    });
 
   	    g.append("text")
-  	    .attr("transform", `translate(${1100/12},${height + 76})`)
+  	    .attr("transform", `translate(${1100/12},${height + 176})`)
   	    .text((d, i) => ages[i])
   	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
   	    .attr("text-align", "center")
@@ -426,7 +426,7 @@ let barChart = function() {
 
 	let legend = svg => {
 	  const g = svg
-	      .attr("transform", `translate(0,0)`)
+	      .attr("transform", `translate(0,100)`)
 	      .attr("text-anchor", "end")
 	      .attr("font-family", "Georgia")
 	      .attr("font-size", 10)
@@ -493,7 +493,7 @@ let barChart = function() {
 	    .attr("id", "#viz")
 	    .data(data)
 	    .join("g")
-	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	      .attr("transform", d => `translate(${x0(d["year"])},120)`)
 	    .selectAll("rect")
 	    .data(d => keys.map(key => ({key, value: d[key]})))
 	    .join("rect")
@@ -563,7 +563,25 @@ let barChart = function() {
 
 //barChart();
 
-setTimeout(barChart, 27000);
+setTimeout(barChart, 25000);
+
+//LENGTHEN LINE AGAIN
+
+longline.transition()
+	.attr("x1", 50)
+	.attr("x2", 1150)
+	.duration(0)
+	.delay(25000);
+
+ticks.transition()
+	.attr("opacity", 0)
+	.duration(0)
+	.delay(25000);
+
+labels2.transition()
+	.attr("opacity", 0)
+	.duration(0)
+	.delay(25000);
 // var svg = d3.select("body").select("svg");
 
 
