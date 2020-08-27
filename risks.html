@@ -40,6 +40,8 @@
 		<div id="buttons">
 
 			<select id="country">
+				<option value="51.7">Afghanistan</option>
+				<option value="78.5">Albania</option>
 				<option value="75.7">China</option>
 				<option value="79.5" selected>Denmark</option>
 				<option value="75.2">Malaysia</option>
@@ -262,6 +264,11 @@ d3.csv("test.csv").then(function(data) {
 	document.getElementById("researcher").addEventListener("change", update);
 
 });
+
+window.onbeforeunload = function(e){
+    document.getElementById('human').className = 'humanRisksToRoom';
+    document.getElementById('risks').className = 'fadeOut';
+}
 
 // makeBubbleChart();
 // document.getElementById("country").addEventListener("change", makeBubbleChart);

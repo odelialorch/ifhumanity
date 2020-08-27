@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Childhood</title>
+	<script src="https://d3js.org/d3.v5.js"></script>
+	<link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
+
+	<a href="index.html" class="navigate left every_page">&#8249;</a>
+	<a href="adolescence.html" class="navigate right every_page">&#8250;</a>
+
+	<h1>Childhood</h1>
+
+	<div class = "entrance">
+		<svg id = "timeline" width="1200" height="1000" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+
+// var longLineLength = 1000;
+// var bottomLineY = 520;
+// var lifeExpectancy = localStorage.getItem("expectancy");
+
+// var svg = d3.select("body").select("svg");
+
+
+// var text1 = svg.append("text")
+// 	.text("Homo sapiens could exist for 1 MILLION* years.")
+// 	.attr({"x": 600, "y": 180})
+// 	.attr("font-family", "Optima")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("fill", "#a2999e")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 35)
+// 	.attr("opacity", 0);
+
+// var text2 = svg.append("text")
+// 	.text("*this is the lifespan of an average mammalian species.")
+// 	.attr({"x": 800, "y": 210})
+// 	.attr("font-family", "Optima", "sans-serif")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("fill", "#a2999e")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 20)
+// 	.attr("opacity", 0);
+
+// var text3 = svg.append("text")
+// 	.text("Let's put this into perspective.")
+// 	.attr({"x": 600, "y": 180})
+// 	.attr("font-family", "Optima")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("fill", "#a2999e")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 35)
+// 	.attr("opacity", 0);
+
+// var text4 = svg.append("text")
+// 	.text("What if humanity were one human?")
+// 	.attr({"x": 600, "y": 180})
+// 	.attr("font-family", "Optima")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("fill", "#a2999e")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 35)
+// 	.attr("opacity", 0);
+	
+// var longline = svg.append("line")
+//     .attr("x1", 100).attr("y1", 300).attr("x2", 100 + longLineLength).attr("y2", 300)
+//     .attr("stroke-width", 2)
+//     .attr("stroke", "#353b3c");
+
+// var tickPosition = [100, 100 + longLineLength, 100 + longLineLength*0.2];
+
+// var ticks = svg.selectAll("ticks")
+//   .data([0, 1, 2])
+//   .enter()
+//   .append("line")
+//   	.attr("stroke-width", 2)
+//     .attr("stroke", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+//     .attr("opacity", 0)
+//     .attr("x1", function(d){return tickPosition[d]} ).attr("y1", 280)
+//     .attr("x2", function(d){return tickPosition[d]} ).attr("y2", 320);
+
+// var humanityLabels = ["200K BCE", "800K CE", "2020 CE"]
+// var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
+// var timelineLabels = ["First homo sapiens", "1M years later", "Today"]
+
+// var labels1 = svg.selectAll("labels1") //humanityLabels
+//   .data([0, 1, 2])
+//   .enter()
+//   .append("text")
+//   	.text(function(d) {return humanityLabels[d]})
+//   	.attr({"x": function(d) {return tickPosition[d]}, "y": 340})
+//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 15)
+// 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+//   	.attr("opacity", 0);
+
+// var labels2 = svg.selectAll("labels2")	//humanLabels
+//   .data([0, 1, 2])
+//   .enter()
+//   .append("text")
+//   	.text(function(d) {return humanLabels[d]})
+//   	.attr({"x": function(d) {return tickPosition[d]}, "y": 340})
+//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 20)
+// 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+//   	.attr("opacity", 0);
+
+// var labels3 = svg.selectAll("labels3") //timelineLabels
+//   .data([0, 1, 2])
+//   .enter()
+//   .append("text")
+//   	.text(function(d) {return timelineLabels[d]})
+//   	.attr({"x": function(d) {return tickPosition[d]}, "y": 260})
+//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+// 	.attr("font-weight", "bold")
+// 	.attr("font-size", 15)
+// 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+//   	.attr("opacity", 0);
+
+// //Humans could exist for... This is the average lifespan...
+
+// text1.transition()
+// 	.attr("opacity", 1)
+//     .duration(1000);
+
+// text2.transition()
+// 	.attr("opacity", 1)
+//     .duration(1000)
+//     .delay(2000);
+
+// text1.transition()
+// 	.attr("opacity", 0)
+//     .duration(1000)
+//     .delay(5000);
+
+// text2.transition()
+// 	.attr("opacity", 0)
+//     .duration(1000)
+//     .delay(5000);
+
+// //Let's put this into perspective, build humanity timeline
+
+// text3.transition()
+//     .attr("opacity", 1)
+//     .duration(1000)
+//     .delay(6000)
+//     .transition()
+//     .attr("opacity", 0)
+//     .duration(1000)
+//     .delay(14000);
+
+// longline.attr("stroke-dasharray", longLineLength + " " + longLineLength)
+// 	.attr("stroke-dashoffset", longLineLength)
+// 	.transition()
+// 	.duration(2000)
+// 	.delay(8000)
+// 	.ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
+// 	.attr("stroke-dashoffset", 0)
+// 	.style("stroke-width",3);
+
+// ticks.transition()
+// 	.attr("opacity", 1)
+//     .duration(0)
+//     .delay(function(i){return(8000 + i*2000)});
+
+// labels1.transition()
+// 	.attr("opacity", 1)
+//     .duration(0)
+//     .delay(function(i){return(8000 + i*2000)});
+
+// labels3.transition()
+// 	.attr("opacity", 1)
+//     .duration(0)
+//     .delay(function(i){return(8500 + i*2000)});
+
+// labels3.transition()
+// 	.attr("opacity", 0)
+//     .duration(0)
+//     .delay(function(i){return(10000 + i*2000)});
+
+// //What if humanity were one human? build human timeline
+
+// text4.transition()
+//     .attr("opacity", 1)
+//     .duration(1000)
+//     .delay(16000);
+
+// labels2.transition()
+// 	.attr("opacity", 1)
+//     .duration(1000)
+//     .delay(function(i){return(17500 + i*1000)});
+
+// labels1.transition()
+// 	.attr("y", 260)
+//     .duration(1000)
+//     .delay(17000);
+
+// //shrink timeline
+
+// longline.transition()
+// 	.attr("x1", 100).attr("x2", 100 + longLineLength*0.2)
+// 	.duration(0)
+// 	.delay(25000);
+
+// labels1.transition()
+// 	.attr("opacity", function(i) {return i===1 ? 0:1;})
+// 	.duration(0)
+// 	.delay(25000);
+
+// labels2.transition()
+// 	.attr("opacity", function(i) {return i===1 ? 0:1;})
+// 	.duration(0)
+// 	.delay(25000);
+
+// ticks.transition()
+// 	.attr("opacity", function(i) {return i===1 ? 0:1;})
+// 	.duration(0)
+// 	.delay(25000);
+
+// //expand timeline
+
+// longline.transition()
+// 	.attr("x2", 100 + longLineLength)
+// 	.duration(500)
+// 	.delay(25500);
+
+// labels1.transition()
+// 	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+// 	.attr("fill", "#353b3c")
+// 	.duration(500)
+// 	.delay(25500);
+
+// labels2.transition()
+// 	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+// 	.attr("fill", "#353b3c")
+// 	.duration(500)
+// 	.delay(25500);
+
+// ticks.transition()
+// 	.attr("stroke", "#353b3c")
+// 	.attr("x1", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+// 	.attr("x2", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+// 	.duration(500)
+// 	.delay(25500);
+
+// //DROP TO BOTTOM OF SCREEN
+
+// labels1.transition()
+// 	.attr("opacity", 0)
+// 	.duration(0)
+// 	.delay(26000);
+
+// longline.transition()
+// 	.attr("y1", bottomLineY)
+// 	.attr("y2", bottomLineY)
+// 	.duration(500)
+// 	.delay(26000);
+
+// ticks.transition()
+// 	.attr("y1", bottomLineY - 20)
+// 	.attr("y2", bottomLineY + 20)
+// 	.duration(500)
+// 	.delay(26000);
+
+// labels2.transition()
+// 	.attr("y", bottomLineY + 40)
+// 	.duration(500)
+// 	.delay(26000);
+
+// text4.transition()
+// 	.attr("font-family", "Georgia", "serif")
+// 	.attr("fill", "#c6c7c4")
+// 	.attr("font-size", 18)
+// 	.attr("y", 40)
+// 	.attr("x", 200)
+// 	.attr("font-variant", "null")
+// 	.text("If humanity were one human...")
+// 	.duration(500)
+// 	.delay(26000);
+
+
+
+
+//CHART
+
+let barChart = function() {
+	var svg = d3.select("body").select("svg");
+
+	var adolescentHeight = 80;
+
+	var data = [{"year": "~15000 BCE", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": 71.4, "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
+
+	var keys = ["lifeExpec", "population", "skillsBox1", "skillsBox2"]
+
+	let labels = new Map([
+    	["lifeExpec", "life expectancy"],
+	    ["population", "population"],
+ 	    ["skillsBox1", "skills"]
+	]);
+
+	let margin = ({top: 0, right: 0, bottom: 0, left: 0});
+
+	let height = 420;
+
+	let width = 1100;
+
+	let color = d3.scaleOrdinal()
+	    .range(["#98abc5", "#8a89a6", "#8a89a6", "#8a89a6", "#a05d56", "#d0743c", "#ff8c00"]);
+
+	let x0 = d3.scaleBand()
+   		.domain(data.map(d => d["year"]))
+   		.rangeRound([0, width])
+    	.paddingInner(0.1);
+
+    let x1 = d3.scaleBand()
+   	 	.domain(keys)
+   	 	.rangeRound([0, x0.bandwidth()])
+  	 	.padding(0.05);
+
+  	let y = d3.scaleLinear()
+    	.domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
+    	.rangeRound([height - margin.bottom, margin.top]);
+
+    console.log(y(80));
+
+	let xAxis = g => g
+	    .attr("transform", `translate(0,${height + 60})`)
+	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+ 		.attr("font-variant", "small-caps")
+	   	.attr("font-weight", "bold")
+ 	 	.style("font-size", 20)
+	 	.style("fill", "#353b3c")
+	    .call(d3.axisBottom(x0).tickSize(0))
+	    .call(g => g.select(".domain").remove());
+
+	let addHumans = svg => {
+		var humans = ["human1.png", "human2.png", "human3.png", "human4.png", "human5.png", "human6.png"]
+
+		const g = svg
+	    	.selectAll("g")
+	   		.data(data)
+	    	.join("g")
+	      	  .attr("transform", d => `translate(${x0(d["year"])},0)`);
+
+	    g.append("image")
+  	  	.attr("xlink:href", (d, i) => humans[i])
+  	    .attr("width", 1100/6)
+  	    .attr("opacity", 1)
+  	    .on("mouseover", function(d) {
+  	    	d3.select(this)
+  	    	.attr("opacity", 0);
+  	    })
+  	    .on("mouseout", function(d) {
+  	    	d3.select(this)
+  	    	.attr("opacity", 1);
+  	    });
+
+  	    //append images of height marks here, these stay opaque the whole time
+
+	}
+
+	let toggleClass = (i,toggle) => {
+   		d3.select("#viz:nth-child("+ i +")").classed("highlightBar",toggle);
+   		d3.select("#legend:nth-child("+ i +")").classed("highlightText",toggle);
+	};
+
+	let legend = svg => {
+	  const g = svg
+	      .attr("transform", `translate(0,0)`)
+	      .attr("text-anchor", "end")
+	      .attr("font-family", "sans-serif")
+	      .attr("font-size", 10)
+	    .selectAll("g")
+	    .attr("id", "#legend")
+	    .data(color.domain().filter(function(d) {return d != "skillsBox2";}))
+	    .join("g")
+	      .attr("transform", (d, i) => `translate(0,${i * 20})`);
+
+	  g.append("rect")
+	      .attr("x", 20)
+	      .attr("width", 19)
+	      .attr("height", 19)
+	      .attr("fill", color);
+
+	  g.append("text")
+	      .attr("x", 45)
+	      .attr("y", 9.5)
+	      .attr("dy", "0.35em")
+	      .text(d => labels.get(d))
+	      .style("text-anchor", "start")
+	      .attr("font-family", "Helvetica", "sans-serif")
+	   	  .attr("font-weight", "bold")
+ 	 	  .attr("font-size", 15)
+	 	  .attr("fill", "#353b3c")
+	 	  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
+  		  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
+	}
+
+	let chart = function() {
+	  var svg = d3.select("body").select("svg");
+
+	  svg.append("g")
+	    .selectAll("g")
+	    .attr("id", "#viz")
+	    .data(data)
+	    .join("g")
+	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	    .selectAll("rect")
+	    .data(d => keys.map(key => ({key, value: d[key]})))
+	    .join("rect")
+	      .attr("x", d => x1(d.key))
+	      .attr("y", d => y(d.value))
+	      .attr("width", x1.bandwidth())
+	      .attr("height", d => y(0) - y(d.value))
+	      .attr("fill", d => color(d.key))
+	      .attr("opacity", 1)
+	      .on("mouseover", function(d, i) {toggleClass(i+1, true)})
+  		  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
+
+	  svg.append("g")
+	      .call(xAxis);
+
+	  svg.append("g")
+	      .call(addHumans); 
+
+	  svg.append("g")
+	      .call(legend);
+
+
+
+	  // svg.selectAll("rect")
+  	// 	.transition()
+  	// 	.duration(0)
+ 		// .attr("opacity", 1)
+  	// 	.delay(0);
+
+  	  
+
+  	  // svg.selectAll("g")
+  	  // 	.data(data)
+	    //  	.attr("transform", d => `translate(${x0(d["year"])},0)`)
+  	  // 	.selectAll("image")
+  	  // 	.join("image")
+  	  // 		.attr("xlink:href", i => humans[i])
+  	  // 		.attr("width", 1100 / 6)
+  	  // 		.attr("opacity", 1);
+
+
+
+
+	}
+
+	chart();
+
+}
+
+barChart();
+
+
+// var svg = d3.select("body").select("svg");
+
+
+// svg.data(humans).append("image")
+// 	.attr("xlink:href", function(d) {return d;})
+//   	.attr("x", function(i) {return (1100.0 / 12) + (i * 1100.0/6);})
+//   	.attr("y", 520);
+
+//setTimeout(barChart, 12800);
+
+
+
+
+</script>
+
+</html>

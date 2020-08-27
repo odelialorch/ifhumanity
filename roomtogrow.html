@@ -13,7 +13,7 @@
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
 
 	<a href="risks.html" class="navigate left every_page">&#8249;</a>
-	<!--<a href="potential.html" class="navigate right every_page">&#8250;</a>-->
+	<a href="acknowledgments.html" class="navigate right every_page">&#8250;</a>
 
 	<div class = "row">
 		<div class = "column5">
@@ -33,7 +33,6 @@
 			<h4 style = "top:20px;">Responsibility for Actions</h4>
 
 			<h4 style = "top:50px;">Humility</h4>
-			<p style = "top:230px;">Our generation should not have privilege over past and future ones. We must stop making decisions that seal the fate of future generations.</p>
 
 			<h4 style = "top:80px;">Self-discipline</h4>
 
@@ -53,5 +52,40 @@
 </div>
 
 </body>
+
+<script type="text/javascript">
+
+var top = 20;
+
+var text = [{"value": "Responsibility for Actions", "explanation": "hi"}, {"value": "Humility", "explanation": "Our generation should not have privilege over past and future ones. We must stop making decisions that seal the fate of future generations."}, {"value": "Self-discipline", "explanation": "hi"}, {"value": "Patience", "explanation": "hi"}, {"value": "Perseverance", "explanation": "hi"}, {"value": "Hope", "explanation": "hi"}]
+
+d3.select(".grow").selectAll("div")
+  .data(text)
+  .enter()
+  .append("text")
+  	.text(function(d) {return d.value; })
+  	.attr({"x": 0, "y": function(i) {return top + i * 30;}})
+  	.style("font-family", "Optima", "sans-serif")
+  	.style("font-variant", "small-caps")
+  	.attr("font-size", 40)	
+  	.attr("fill", "#006d77")
+  .on("mouseover", function(d){    //switches to x-risk image on mouseover
+    d3.select(this)
+    	.text(function(d) {return d.explanation; })
+    	.attr("font-family", "Georgia", "sans-serif")
+		.attr("fill", "#2a3d45")
+		.attr("font-size", 12)
+   })
+  .on("mouseout", function(d){    //switches to x-risk image on mouseover
+    d3.select(this)
+    	.text(function(d) {return d.value; })
+		.attr("font-family", "Optima", "sans-serif")
+		.attr("font-variant", "small-caps")
+		.attr("fill", "#006d77")
+		.attr("font-size", 20)
+   });
+
+
+</script>
 
 </html>

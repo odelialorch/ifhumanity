@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>If humanity...</title>
+	<script src="https://d3js.org/d3.v3.js"></script>
+	<link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body class = "intro">
+	<a class="next close" href = "childhood.html">&times;</a>
+	<h1 style = "position: relative; text-align: center; top: 50px; left: 20px;">Welcome!</h1>
+
+	<div class = "questions">
+
+		<h2>Where do you live?</h2>
+		<select id="country">
+			<option value="51.7" selected>Afghanistan</option>
+			<option value="78.5">Albania</option>
+			<option value="75.7">China</option>
+			<option value="79.5">Denmark</option>
+			<option value="75.2">Malaysia</option>
+		</select>
+
+		<h2>How optimistic are you about the future of humanity?</h1>
+		<div class = "smileys">
+			<img src = "face1.png">
+			<img src = "face2.png">
+			<img src = "face3.png">
+			<img src = "face4.png">
+			<img src = "face5.png">
+		</div>
+	</div>
+
+	<a class="next continue" href = "childhood.html" style = "position: relative; text-align: center;">continue &#8250;</a>
+
+</body>
+
+<script type="text/javascript">
+
+var chooseCountry = function() {
+	localStorage.setItem("country", document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
+	localStorage.setItem("expectancy", document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
+}
+
+document.getElementById("country").addEventListener("change", chooseCountry);
+
+
+</script>
+
+</html>
