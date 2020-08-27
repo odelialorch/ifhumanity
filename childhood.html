@@ -10,287 +10,290 @@
 </head>
 
 <body>
-	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
-
 	<a href="index.html" class="navigate left every_page">&#8249;</a>
 	<a href="adolescence.html" class="navigate right every_page">&#8250;</a>
 
-	<h1>Childhood</h1>
-
 	<div class = "entrance">
-		<svg id = "timeline" width="1200" height="1000" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+		<svg id = "timeline" width="1200" height="600" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
 	</div>
 
 </body>
 
 <script type="text/javascript">
 
-// var longLineLength = 1000;
-// var bottomLineY = 520;
-// var lifeExpectancy = localStorage.getItem("expectancy");
+var longLineLength = 1000;
+var bottomLineY = 550;
+var lifeExpectancy = localStorage.getItem("expectancy");
 
-// var svg = d3.select("body").select("svg");
+var svg = d3.select("body").select("svg");
 
 
-// var text1 = svg.append("text")
-// 	.text("Homo sapiens could exist for 1 MILLION* years.")
-// 	.attr({"x": 600, "y": 180})
-// 	.attr("font-family", "Optima")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("fill", "#a2999e")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 35)
-// 	.attr("opacity", 0);
+var text1 = svg.append("text")
+	.text("Homo sapiens could exist for 1 MILLION* years.")
+	.attr("x", 600)
+	.attr("y", 180)
+	.attr("font-family", "Georgia")
+	.attr("font-variant", "small-caps")
+	.attr("fill", "#a2999e")
+	.attr("font-weight", "bold")
+	.attr("font-size", 35)
+	.attr("opacity", 0);
 
-// var text2 = svg.append("text")
-// 	.text("*this is the lifespan of an average mammalian species.")
-// 	.attr({"x": 800, "y": 210})
-// 	.attr("font-family", "Optima", "sans-serif")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("fill", "#a2999e")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 20)
-// 	.attr("opacity", 0);
+var text2 = svg.append("text")
+	.text("*this is the lifespan of an average mammalian species.")
+	.attr("x", 800) 
+	.attr("y", 210)
+	.attr("font-family", "Georgia", "sans-serif")
+	.attr("font-variant", "small-caps")
+	.attr("fill", "#a2999e")
+	.attr("font-weight", "bold")
+	.attr("font-size", 20)
+	.attr("opacity", 0);
 
-// var text3 = svg.append("text")
-// 	.text("Let's put this into perspective.")
-// 	.attr({"x": 600, "y": 180})
-// 	.attr("font-family", "Optima")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("fill", "#a2999e")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 35)
-// 	.attr("opacity", 0);
+var text3 = svg.append("text")
+	.text("Let's put this into perspective.")
+	.attr("x", 600)
+	.attr("y", 180)
+	.attr("font-family", "Georgia")
+	.attr("font-variant", "small-caps")
+	.attr("fill", "#a2999e")
+	.attr("font-weight", "bold")
+	.attr("font-size", 35)
+	.attr("opacity", 0);
 
-// var text4 = svg.append("text")
-// 	.text("What if humanity were one human?")
-// 	.attr({"x": 600, "y": 180})
-// 	.attr("font-family", "Optima")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("fill", "#a2999e")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 35)
-// 	.attr("opacity", 0);
+var text4 = svg.append("text")
+	.text("What if humanity were one human?")
+	.attr("x", 600)
+	.attr("y", 180)
+	.attr("font-family", "Georgia")
+	.attr("font-variant", "small-caps")
+	.attr("fill", "#a2999e")
+	.attr("font-weight", "bold")
+	.attr("font-size", 35)
+	.attr("opacity", 0);
 	
-// var longline = svg.append("line")
-//     .attr("x1", 100).attr("y1", 300).attr("x2", 100 + longLineLength).attr("y2", 300)
-//     .attr("stroke-width", 2)
-//     .attr("stroke", "#353b3c");
+var longline = svg.append("line")
+    .attr("x1", 100).attr("y1", 300).attr("x2", 100 + longLineLength).attr("y2", 300)
+    .attr("stroke-width", 2)
+    .attr("stroke", "#353b3c");
 
-// var tickPosition = [100, 100 + longLineLength, 100 + longLineLength*0.2];
+var tickPosition = [100, 100 + longLineLength, 100 + longLineLength*0.2];
 
-// var ticks = svg.selectAll("ticks")
-//   .data([0, 1, 2])
-//   .enter()
-//   .append("line")
-//   	.attr("stroke-width", 2)
-//     .attr("stroke", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-//     .attr("opacity", 0)
-//     .attr("x1", function(d){return tickPosition[d]} ).attr("y1", 280)
-//     .attr("x2", function(d){return tickPosition[d]} ).attr("y2", 320);
+var ticks = svg.selectAll("ticks")
+  .data([0, 1, 2])
+  .enter()
+  .append("line")
+  	.attr("stroke-width", 2)
+    .attr("stroke", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+    .attr("opacity", 0)
+    .attr("x1", function(d){return tickPosition[d]} ).attr("y1", 280)
+    .attr("x2", function(d){return tickPosition[d]} ).attr("y2", 320);
 
-// var humanityLabels = ["200K BCE", "800K CE", "2020 CE"]
-// var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
-// var timelineLabels = ["First homo sapiens", "1M years later", "Today"]
+var humanityLabels = ["200K BCE", "800K CE", "2020 CE"]
+var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
+var timelineLabels = ["First homo sapiens", "1M years later", "Today"]
 
-// var labels1 = svg.selectAll("labels1") //humanityLabels
-//   .data([0, 1, 2])
-//   .enter()
-//   .append("text")
-//   	.text(function(d) {return humanityLabels[d]})
-//   	.attr({"x": function(d) {return tickPosition[d]}, "y": 340})
-//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 15)
-// 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-//   	.attr("opacity", 0);
+var labels1 = svg.selectAll("labels1") //humanityLabels
+  .data([0, 1, 2])
+  .enter()
+  .append("text")
+  	.text(function(d) {return humanityLabels[d]})
+  	.attr("x", function(d) {return tickPosition[d]})
+  	.attr("y", 340)
+  	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+	.attr("font-variant", "small-caps")
+	.attr("font-weight", "bold")
+	.attr("font-size", 15)
+	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+  	.attr("opacity", 0);
 
-// var labels2 = svg.selectAll("labels2")	//humanLabels
-//   .data([0, 1, 2])
-//   .enter()
-//   .append("text")
-//   	.text(function(d) {return humanLabels[d]})
-//   	.attr({"x": function(d) {return tickPosition[d]}, "y": 340})
-//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 20)
-// 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-//   	.attr("opacity", 0);
+var labels2 = svg.selectAll("labels2")	//humanLabels
+  .data([0, 1, 2])
+  .enter()
+  .append("text")
+  	.text(function(d) {return humanLabels[d]})
+  	.attr("x", function(d) {return tickPosition[d]})
+  	.attr("y", 340)
+  	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+	.attr("font-variant", "small-caps")
+	.attr("font-weight", "bold")
+	.attr("font-size", 20)
+	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+  	.attr("opacity", 0);
 
-// var labels3 = svg.selectAll("labels3") //timelineLabels
-//   .data([0, 1, 2])
-//   .enter()
-//   .append("text")
-//   	.text(function(d) {return timelineLabels[d]})
-//   	.attr({"x": function(d) {return tickPosition[d]}, "y": 260})
-//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-// 	.attr("font-weight", "bold")
-// 	.attr("font-size", 15)
-// 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-//   	.attr("opacity", 0);
+var labels3 = svg.selectAll("labels3") //timelineLabels
+  .data([0, 1, 2])
+  .enter()
+  .append("text")
+  	.text(function(d) {return timelineLabels[d]})
+  	.attr("x", function(d) {return tickPosition[d]})
+  	.attr("y", 260)
+  	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+	.attr("font-weight", "bold")
+	.attr("font-size", 15)
+	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
+  	.attr("opacity", 0);
 
-// //Humans could exist for... This is the average lifespan...
+//Humans could exist for... This is the average lifespan...
 
-// text1.transition()
-// 	.attr("opacity", 1)
-//     .duration(1000);
+text1.transition()
+	.attr("opacity", 1)
+    .duration(1000);
 
-// text2.transition()
-// 	.attr("opacity", 1)
-//     .duration(1000)
-//     .delay(2000);
+text2.transition()
+	.attr("opacity", 1)
+    .duration(1000)
+    .delay(2000);
 
-// text1.transition()
-// 	.attr("opacity", 0)
-//     .duration(1000)
-//     .delay(5000);
+text1.transition()
+	.attr("opacity", 0)
+    .duration(1000)
+    .delay(5000);
 
-// text2.transition()
-// 	.attr("opacity", 0)
-//     .duration(1000)
-//     .delay(5000);
+text2.transition()
+	.attr("opacity", 0)
+    .duration(1000)
+    .delay(5000);
 
-// //Let's put this into perspective, build humanity timeline
+//Let's put this into perspective, build humanity timeline
 
-// text3.transition()
-//     .attr("opacity", 1)
-//     .duration(1000)
-//     .delay(6000)
-//     .transition()
-//     .attr("opacity", 0)
-//     .duration(1000)
-//     .delay(14000);
+text3.transition()
+    .attr("opacity", 1)
+    .duration(1000)
+    .delay(6000)
+    .transition()
+    .attr("opacity", 0)
+    .duration(1000)
+    .delay(14000);
 
-// longline.attr("stroke-dasharray", longLineLength + " " + longLineLength)
-// 	.attr("stroke-dashoffset", longLineLength)
-// 	.transition()
-// 	.duration(2000)
-// 	.delay(8000)
-// 	.ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
-// 	.attr("stroke-dashoffset", 0)
-// 	.style("stroke-width",3);
+longline.attr("stroke-dasharray", longLineLength + " " + longLineLength)
+	.attr("stroke-dashoffset", longLineLength)
+	.transition()
+	.duration(2000)
+	.delay(8000)
+	.ease(d3.easeLinear) //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
+	.attr("stroke-dashoffset", 0)
+	.style("stroke-width",3);
 
-// ticks.transition()
-// 	.attr("opacity", 1)
-//     .duration(0)
-//     .delay(function(i){return(8000 + i*2000)});
+ticks.transition()
+	.attr("opacity", 1)
+    .duration(0)
+    .delay(function(i){return(8000 + i*2000)});
 
-// labels1.transition()
-// 	.attr("opacity", 1)
-//     .duration(0)
-//     .delay(function(i){return(8000 + i*2000)});
+labels1.transition()
+	.attr("opacity", 1)
+    .duration(0)
+    .delay(function(i){return(8000 + i*2000)});
 
-// labels3.transition()
-// 	.attr("opacity", 1)
-//     .duration(0)
-//     .delay(function(i){return(8500 + i*2000)});
+labels3.transition()
+	.attr("opacity", 1)
+    .duration(0)
+    .delay(function(i){return(8500 + i*2000)});
 
-// labels3.transition()
-// 	.attr("opacity", 0)
-//     .duration(0)
-//     .delay(function(i){return(10000 + i*2000)});
+labels3.transition()
+	.attr("opacity", 0)
+    .duration(0)
+    .delay(function(i){return(10000 + i*2000)});
 
-// //What if humanity were one human? build human timeline
+//What if humanity were one human? build human timeline
 
-// text4.transition()
-//     .attr("opacity", 1)
-//     .duration(1000)
-//     .delay(16000);
+text4.transition()
+    .attr("opacity", 1)
+    .duration(1000)
+    .delay(16000);
 
-// labels2.transition()
-// 	.attr("opacity", 1)
-//     .duration(1000)
-//     .delay(function(i){return(17500 + i*1000)});
+labels2.transition()
+	.attr("opacity", 1)
+    .duration(1000)
+    .delay(function(i){return(17500 + i*1000)});
 
-// labels1.transition()
-// 	.attr("y", 260)
-//     .duration(1000)
-//     .delay(17000);
+labels1.transition()
+	.attr("y", 260)
+    .duration(1000)
+    .delay(17000);
 
-// //shrink timeline
+//shrink timeline
 
-// longline.transition()
-// 	.attr("x1", 100).attr("x2", 100 + longLineLength*0.2)
-// 	.duration(0)
-// 	.delay(25000);
+longline.transition()
+	.attr("x1", 100).attr("x2", 100 + longLineLength*0.2)
+	.duration(0)
+	.delay(25000);
 
-// labels1.transition()
-// 	.attr("opacity", function(i) {return i===1 ? 0:1;})
-// 	.duration(0)
-// 	.delay(25000);
+labels1.transition()
+	.attr("opacity", function(i) {return i===1 ? 0:1;})
+	.duration(0)
+	.delay(25000);
 
-// labels2.transition()
-// 	.attr("opacity", function(i) {return i===1 ? 0:1;})
-// 	.duration(0)
-// 	.delay(25000);
+labels2.transition()
+	.attr("opacity", function(i) {return i===1 ? 0:1;})
+	.duration(0)
+	.delay(25000);
 
-// ticks.transition()
-// 	.attr("opacity", function(i) {return i===1 ? 0:1;})
-// 	.duration(0)
-// 	.delay(25000);
+ticks.transition()
+	.attr("opacity", function(i) {return i===1 ? 0:1;})
+	.duration(0)
+	.delay(25000);
 
-// //expand timeline
+//expand timeline
 
-// longline.transition()
-// 	.attr("x2", 100 + longLineLength)
-// 	.duration(500)
-// 	.delay(25500);
+longline.transition()
+	.attr("x2", 100 + longLineLength)
+	.duration(500)
+	.delay(25500);
 
-// labels1.transition()
-// 	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
-// 	.attr("fill", "#353b3c")
-// 	.duration(500)
-// 	.delay(25500);
+labels1.transition()
+	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.attr("fill", "#353b3c")
+	.duration(500)
+	.delay(25500);
 
-// labels2.transition()
-// 	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
-// 	.attr("fill", "#353b3c")
-// 	.duration(500)
-// 	.delay(25500);
+labels2.transition()
+	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.attr("fill", "#353b3c")
+	.duration(500)
+	.delay(25500);
 
-// ticks.transition()
-// 	.attr("stroke", "#353b3c")
-// 	.attr("x1", function(i) {return i===0 ? 100 : 100 + longLineLength;})
-// 	.attr("x2", function(i) {return i===0 ? 100 : 100 + longLineLength;})
-// 	.duration(500)
-// 	.delay(25500);
+ticks.transition()
+	.attr("stroke", "#353b3c")
+	.attr("x1", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.attr("x2", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.duration(500)
+	.delay(25500);
 
-// //DROP TO BOTTOM OF SCREEN
+//DROP TO BOTTOM OF SCREEN
 
-// labels1.transition()
-// 	.attr("opacity", 0)
-// 	.duration(0)
-// 	.delay(26000);
+labels1.transition()
+	.attr("opacity", 0)
+	.duration(0)
+	.delay(26000);
 
-// longline.transition()
-// 	.attr("y1", bottomLineY)
-// 	.attr("y2", bottomLineY)
-// 	.duration(500)
-// 	.delay(26000);
+longline.transition()
+	.attr("y1", bottomLineY)
+	.attr("y2", bottomLineY)
+	.duration(500)
+	.delay(26000);
 
-// ticks.transition()
-// 	.attr("y1", bottomLineY - 20)
-// 	.attr("y2", bottomLineY + 20)
-// 	.duration(500)
-// 	.delay(26000);
+ticks.transition()
+	.attr("y1", bottomLineY - 20)
+	.attr("y2", bottomLineY + 20)
+	.duration(500)
+	.delay(26000);
 
-// labels2.transition()
-// 	.attr("y", bottomLineY + 40)
-// 	.duration(500)
-// 	.delay(26000);
+labels2.transition()
+	.attr("y", bottomLineY + 40)
+	.duration(500)
+	.delay(26000);
 
-// text4.transition()
-// 	.attr("font-family", "Georgia", "serif")
-// 	.attr("fill", "#c6c7c4")
-// 	.attr("font-size", 18)
-// 	.attr("y", 40)
-// 	.attr("x", 200)
-// 	.attr("font-variant", "null")
-// 	.text("If humanity were one human...")
-// 	.duration(500)
-// 	.delay(26000);
+text4.transition()
+	.attr("font-family", "Georgia", "serif")
+	.attr("fill", "#c6c7c4")
+	.attr("font-size", 18)
+	.attr("y", 40)
+	.attr("x", 200)
+	.attr("font-variant", "null")
+	.text("If humanity were one human...")
+	.duration(500)
+	.delay(26000);
 
 
 
@@ -301,8 +304,9 @@ let barChart = function() {
 	var svg = d3.select("body").select("svg");
 
 	var adolescentHeight = 80;
+	var babyHeight = adolescentHeight * (45.0 / 163);
 
-	var data = [{"year": "~15000 BCE", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": 29, "population": 7.95, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": 71.4, "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
+	var data = [{"year": "~15000 BCE", "lifeExpec": babyHeight, "population": 0.01, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": babyHeight * (28 / 33), "population": 0.0243, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": babyHeight * (33 / 33), "population": 0.721, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": babyHeight * (29/33), "population": 5.54, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": babyHeight * (29/33), "population": 8.12, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": babyHeight*(71/33), "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
 
 	var keys = ["lifeExpec", "population", "skillsBox1", "skillsBox2"]
 
@@ -319,7 +323,7 @@ let barChart = function() {
 	let width = 1100;
 
 	let color = d3.scaleOrdinal()
-	    .range(["#98abc5", "#8a89a6", "#8a89a6", "#8a89a6", "#a05d56", "#d0743c", "#ff8c00"]);
+	    .range(["#98abc5", "#8a89a6", "#eef0f2", "#eef0f2", "#a05d56", "#d0743c", "#ff8c00"]);
 
 	let x0 = d3.scaleBand()
    		.domain(data.map(d => d["year"]))
@@ -349,6 +353,7 @@ let barChart = function() {
 
 	let addHumans = svg => {
 		var humans = ["human1.png", "human2.png", "human3.png", "human4.png", "human5.png", "human6.png"]
+		var ages = [(Math.round(lifeExpectancy * (0.5 / 71) * 12).toString() + " mo"), (Math.round(lifeExpectancy * (6 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (14 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (16 / 71)).toString() + " yrs")]
 
 		const g = svg
 	    	.selectAll("g")
@@ -356,11 +361,26 @@ let barChart = function() {
 	    	.join("g")
 	      	  .attr("transform", d => `translate(${x0(d["year"])},0)`);
 
-	    g.append("image")
+	    var human = g.append("image")
   	  	.attr("xlink:href", (d, i) => humans[i])
   	    .attr("width", 1100/6)
   	    .attr("opacity", 1)
-  	    .on("mouseover", function(d) {
+  	    .on("mouseover", function(d, i) {
+  	    	d3.select(this)
+  	    	.attr("opacity", 0);
+  	    	disappear(i);
+  	    })
+  	    .on("mouseout", function(d, i) {
+  	    	d3.select(this)
+  	    	.attr("opacity", 1);
+  	    });
+
+  	    g.append("rect")
+  	      .attr("transform", `translate(0,${height + 60})`)
+	      .attr("width", 1100/6)
+	      .attr("height", 25)
+	      .attr("fill", "#eef0f2")
+	      .on("mouseover", function(d) {
   	    	d3.select(this)
   	    	.attr("opacity", 0);
   	    })
@@ -368,6 +388,31 @@ let barChart = function() {
   	    	d3.select(this)
   	    	.attr("opacity", 1);
   	    });
+
+  	    g.append("text")
+  	    .attr("transform", `translate(${1100/12},${height + 76})`)
+  	    .text((d, i) => ages[i])
+  	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+  	    .attr("text-align", "center")
+  	    .attr("font-variant", "small-caps")
+  	    .attr("font-weight", "bold")
+ 	 	.style("font-size", 24)
+	 	.style("fill", "#353b3c")
+	 	.style("background-color", "#eef0f2")
+	 	.attr("opacity", 1);
+  	    // .on("mouseover", function(d) {
+  	    // 	d3.select(this)
+  	    // 	.attr("opacity", 0);
+  	    // })
+  	    // .on("mouseout", function(d) {
+  	    // 	d3.select(this)
+  	    // 	.attr("opacity", 1);
+  	    // });
+
+  	    var disappear = n => {
+  	    	g.selectAll("rect").transition().duration(0).attr("opacity", function(i) {return i===n ? 0 : 1;}).delay(0);
+  	    	g.selectAll("text").transition().duration(0).attr("opacity", function(i) {return i===n ? 0 : 1;}).delay(0);
+  	    }
 
   	    //append images of height marks here, these stay opaque the whole time
 
@@ -382,7 +427,7 @@ let barChart = function() {
 	  const g = svg
 	      .attr("transform", `translate(0,0)`)
 	      .attr("text-anchor", "end")
-	      .attr("font-family", "sans-serif")
+	      .attr("font-family", "Georgia")
 	      .attr("font-size", 10)
 	    .selectAll("g")
 	    .attr("id", "#legend")
@@ -402,13 +447,42 @@ let barChart = function() {
 	      .attr("dy", "0.35em")
 	      .text(d => labels.get(d))
 	      .style("text-anchor", "start")
-	      .attr("font-family", "Helvetica", "sans-serif")
+	      .attr("font-family", "Georgia")
 	   	  .attr("font-weight", "bold")
  	 	  .attr("font-size", 15)
 	 	  .attr("fill", "#353b3c")
 	 	  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
   		  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
 	}
+
+// 	let labels = svg => {
+//   		let label = svg.append("g")
+//      		.style("font", "bold 12px var(--sans-serif)")
+//       		.style("font-variant-numeric", "tabular-nums")
+//       		.attr("text-anchor", "start")
+//     		.selectAll("text")
+//     		.data(data)
+//     .join(
+//       enter => enter.append("text")
+//         .attr("transform", d => `translate(${x((prev.get(d) || d).value)},${y((prev.get(d) || d).rank)})`)
+//         .attr("y", y.bandwidth() / 2)
+//         .attr("x", 2)
+//         .attr("dy", "-0.25em")
+//         .text(d => d.name)
+//         .call(text => text.append("tspan")
+//           .attr("fill-opacity", 0.7)
+//           .attr("font-weight", "normal")
+//           .attr("x", 2)
+//           .attr("dy", "1.15em")),
+//       update => update,
+//       exit => exit.transition(transition).remove()
+//         .attr("transform", d => `translate(${x((next.get(d) || d).value)},${y((next.get(d) || d).rank)})`)
+//         .call(g => g.select("tspan").tween("text", d => textTween(d.value, (next.get(d) || d).value)))
+//     )
+//     .call(bar => bar.transition(transition)
+//       .attr("transform", d => `translate(${x(d.value)},${y(d.rank)})`)
+//       .call(g => g.select("tspan").tween("text", d => textTween((prev.get(d) || d).value, d.value))));
+// }
 
 	let chart = function() {
 	  var svg = d3.select("body").select("svg");
@@ -430,6 +504,24 @@ let barChart = function() {
 	      .attr("opacity", 1)
 	      .on("mouseover", function(d, i) {toggleClass(i+1, true)})
   		  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
+
+  	  // svg.append("g")
+	    // .selectAll("g")
+	    // .attr("id", "#viz")
+	    // .data(data)
+	    // .join("g")
+	    //   .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	    // .selectAll("text")
+	    // .data(d => keys.map(key => ({key, value: d[key]})))
+	    // .join("text")
+	    //   .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100)))
+	    //   .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
+	    //   .attr("y", d => y(d.value) - 5)
+	    //   .attr("fill", "#353b3c")
+	    //   .style("font", "bold 14px var(--sans-serif)")
+     //  	  .style("font-variant-numeric", "tabular-nums")
+	    //   .attr("opacity", 1);
+
 
 	  svg.append("g")
 	      .call(xAxis);
@@ -468,9 +560,9 @@ let barChart = function() {
 
 }
 
-barChart();
+//barChart();
 
-
+setTimeout(barChart, 27000);
 // var svg = d3.select("body").select("svg");
 
 
@@ -478,8 +570,6 @@ barChart();
 // 	.attr("xlink:href", function(d) {return d;})
 //   	.attr("x", function(i) {return (1100.0 / 12) + (i * 1100.0/6);})
 //   	.attr("y", 520);
-
-//setTimeout(barChart, 12800);
 
 
 

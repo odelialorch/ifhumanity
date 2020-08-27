@@ -164,7 +164,7 @@ d3.csv("test.csv").then(function(data) {
 			match.himg = closest.img;
 			match.hvalue = closest.value;
 			match.xvalue = value;
-			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2;
+			match.value = parseFloat(value);
 			//hrisks = hrisks. //delete closest;
 			console.log(match);
 			finalfinalData.push(match);
