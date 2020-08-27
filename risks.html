@@ -93,96 +93,121 @@ researchers.set("Pamlin & Armstrong", pamlin);
 
 //BUBBLE CHART
 
-// let data1 =
-// 	[{"hrisk": "ischemic heart disease", "himg": "1heart.png", "xrisk": "total existential risk", "ximg": "1x.png", "value": 7},
-// 	{"hrisk": "self-harm", "himg": "1selfharm.png", "xrisk": "unaligned artificial intelligence", "ximg": "1ai.png", "value": 4},
-// 	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "'naturally' arising pandemics", "ximg": "1naturalpandemic.png", "value": 0.004},
-// 	{"hrisk": "substance abuse disorders", "himg": "1drugs.png", "xrisk": "engineered pandemics", "ximg": "1engpandemic.png", "value": 1},
-// 	{"hrisk": "chronic liver diseases", "himg": "1liver.png", "xrisk": "other anthropogenic risks", "ximg": "1anthro.png", "value": 0.9},
-// 	{"hrisk": "intestinal nematode infections", "himg": "1intestines.png", "xrisk": "stellar explosion", "ximg": "1stellar.png", "value": 0.000000001},
-// 	{"hrisk": "coal workers pneumoconiosis", "himg": "1lungs.png", "xrisk": "asteroid or comet impact", "ximg": "1asteroid.png", "value": 0.00004},
-// 	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "supervolcanic eruption", "ximg": "1supervolcano.png", "value": 0.004},
-// 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "nuclear war", "ximg": "1nuclear.png", "value": 0.04},
-// 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
-// 	{}]
+let data1 =
+	[{"hrisk": "ischemic heart disease", "himg": "1heart.png", "xrisk": "total existential risk", "ximg": "1x.png", "value": 7},
+	{"hrisk": "self-harm", "himg": "1selfharm.png", "xrisk": "unaligned artificial intelligence", "ximg": "1ai.png", "value": 4},
+	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "'naturally' arising pandemics", "ximg": "1naturalpandemic.png", "value": 0.004},
+	{"hrisk": "substance abuse disorders", "himg": "1drugs.png", "xrisk": "engineered pandemics", "ximg": "1engpandemic.png", "value": 1},
+	{"hrisk": "chronic liver diseases", "himg": "1liver.png", "xrisk": "other anthropogenic risks", "ximg": "1anthro.png", "value": 0.9},
+	{"hrisk": "intestinal nematode infections", "himg": "1intestines.png", "xrisk": "stellar explosion", "ximg": "1stellar.png", "value": 0.000000001},
+	{"hrisk": "coal workers pneumoconiosis", "himg": "1lungs.png", "xrisk": "asteroid or comet impact", "ximg": "1asteroid.png", "value": 0.00004},
+	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "supervolcanic eruption", "ximg": "1supervolcano.png", "value": 0.004},
+	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "nuclear war", "ximg": "1nuclear.png", "value": 0.04},
+	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
+	{}]
 
 
 
-d3.csv("test.csv").then(function(data) {
- 	var hrisks = [];
- 	data.forEach(function(d) {
-    	d.risk = d.risk;
-    	d.value = +d.value;
-   		d.img = d.img;
-   		hrisks.push(d);
-   	});
+// d3.csv("test.csv").then(function(data) {
+//  	var hrisks = [];
+//  	data.forEach(function(d) {
+//     	d.risk = d.risk;
+//     	d.value = +d.value;
+//    		d.img = d.img;
+//    		hrisks.push(d);
+//    	});
 
-   	console.log(hrisks);
+//    	console.log(hrisks);
 
-   	console.log(data[0]);
-  	console.log(hrisks[0]);
+//    	console.log(data[0]);
+//   	console.log(hrisks[0]);
 
-  	function riskMatching() {
-  		var finalData = [];
-		var finalfinalData = [];
+//   	function riskMatching() {
+//   		var finalData = [];
+// 		var finalfinalData = [];
 
-  		hrisks = data.filter(function(d) {
-  	  		return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
-  		});
+//   		hrisks = data.filter(function(d) {
+//   	  		return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
+//   		});
 
-  		console.log(hrisks);
-		console.log(hrisks[0]);
+//   		console.log(hrisks);
+// 		console.log(hrisks[0]);
 
-		let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
-	// console.log(data2);
+// 		let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
+// 	// console.log(data2);
 
-		console.log(xrisks);
+// 		console.log(xrisks);
 
-		finalData = xrisks.map(function(x) {
-			var match = {}
-			match.xrisk = x.risk;
-			match.ximg = x.img;
+// 		finalData = xrisks.map(function(x) {
+// 			var match = {}
+// 			match.xrisk = x.risk;
+// 			match.ximg = x.img;
 		
-			var value = parseFloat(x.value) * parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value) / 100; // x-risk scaled to life expectancy, multiplied by years of life expectancy / 100 years
+// 			var value = parseFloat(x.value) * parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value) / 100; // x-risk scaled to life expectancy, multiplied by years of life expectancy / 100 years
 
-			console.log(value);
+// 			console.log(value);
 
-			var closest = hrisks[0];
+// 			var closest = hrisks[0];
 
-			console.log(closest);
+// 			console.log(closest);
 
-			hrisks.forEach(function(n) { 
-				console.log(n);
-				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
-					console.log(n);
-					console.log(n.risk);
-					closest = {"risk": n.risk, "value": +n.value, "img": n.img};
-					console.log(closest);
-				};
-			});
-			match.hrisk = closest.risk;
-			match.himg = closest.img;
-			match.hvalue = closest.value;
-			match.xvalue = value;
-			match.value = parseFloat(value);
-			//hrisks = hrisks. //delete closest;
-			console.log(match);
-			finalfinalData.push(match);
-			console.log("length " + hrisks.length);
-			for( var i = 0; i < hrisks.length; i++){ 
-				if ( hrisks[i].risk.localeCompare(closest.risk) == 0) { 
-					hrisks.splice(i, 1); 
-				};
-			};
-			console.log("length " + hrisks.length);
-			return match;
-		});
-		console.log(finalData);
-		console.log(finalfinalData);
-		return finalData;
-  	}
+// 			hrisks.forEach(function(n) { 
+// 				console.log(n);
+// 				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
+// 					console.log(n);
+// 					console.log(n.risk);
+// 					closest = {"risk": n.risk, "value": +n.value, "img": n.img};
+// 					console.log(closest);
+// 				};
+// 			});
+// 			match.hrisk = closest.risk;
+// 			match.himg = closest.img;
+// 			match.hvalue = closest.value;
+// 			match.xvalue = value;
+// 			match.value = parseFloat(value);
+// 			//hrisks = hrisks. //delete closest;
+// 			console.log(match);
+// 			finalfinalData.push(match);
+// 			console.log("length " + hrisks.length);
+// 			for( var i = 0; i < hrisks.length; i++){ 
+// 				if ( hrisks[i].risk.localeCompare(closest.risk) == 0) { 
+// 					hrisks.splice(i, 1); 
+// 				};
+// 			};
+// 			console.log("length " + hrisks.length);
+// 			return match;
+// 		});
+// 		console.log(finalData);
+// 		console.log(finalfinalData);
+// 		return finalData;
+//   	}
 
- 	function bubbleChart(data) {
+ 	
+
+// 	function update() {
+// 		let updata = riskMatching();
+// 		console.log(updata);
+
+//  		svg = d3.select("body").select("svg"),
+//  		width = +svg.attr("width"),
+//  		height = +svg.attr("height");
+
+//  		svg.selectAll("*").remove();
+
+//  		bubbleChart(updata);
+// 	}
+
+// 	document.getElementById("country").addEventListener("change", update);
+// 	document.getElementById("researcher").addEventListener("change", update);
+
+// });
+
+// window.onbeforeunload = function(e){
+//     document.getElementById('human').className = 'humanRisksToRoom';
+//     document.getElementById('risks').className = 'fadeOut';
+// }
+
+function bubbleChart(data) {
  		console.log(data);
 
  		d3.select("body").append("p").data(data).text(function(d) {
@@ -245,30 +270,7 @@ d3.csv("test.csv").then(function(data) {
     	.text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.value)}`);
 	}
 
-	bubbleChart(riskMatching());
-
-	function update() {
-		let updata = riskMatching();
-		console.log(updata);
-
- 		svg = d3.select("body").select("svg"),
- 		width = +svg.attr("width"),
- 		height = +svg.attr("height");
-
- 		svg.selectAll("*").remove();
-
- 		bubbleChart(updata);
-	}
-
-	document.getElementById("country").addEventListener("change", update);
-	document.getElementById("researcher").addEventListener("change", update);
-
-});
-
-window.onbeforeunload = function(e){
-    document.getElementById('human').className = 'humanRisksToRoom';
-    document.getElementById('risks').className = 'fadeOut';
-}
+	bubbleChart(data1);
 
 // makeBubbleChart();
 // document.getElementById("country").addEventListener("change", makeBubbleChart);
