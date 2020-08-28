@@ -69,22 +69,21 @@ let probExamples = [{"value": 6, "example": " roll a 2 with any die."}, {"value"
 let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
 {"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
 {"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png"}, {"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png"},
-{"risk": "climate change", "value": 0.001, "img": "1climate.png"}, {"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1x.png"},
+{"risk": "climate change", "value": 0.001, "img": "1climate.png"}, 
 {"risk": "supervolcanic eruption", "value": 0.0001, "img": "1supervolcano.png"},
 {"risk": "asteroid or comet impact", "value": 0.000001, "img": "1asteroid.png"}, {"risk": "stellar explosion", "value": 0.000000001, "img": "1stellar.png"},
-{"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1x.png"},
-{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png"}, 
-{"risk": "total anthropogenic existential risk", "value": 0.17, "img": "1x.png"}] 
+{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png"}] 
 
 //imgs: add for other enviro damage! add for unforseen anthro! add for total natural! add for total anthro!
 
-let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, {"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},
-{"risk": "synthetic biology", "value": 0.000001, "img": "1x.png"}, {"risk": "nanotechnology", "value": 0.0001, "img": "1x.png"}, 
+//{"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1x.png"}, {"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1x.png"}, {"risk": "total anthropogenic existential risk", "value": 0.17, "img": "1x.png"}
+
+let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, {"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},  
 {"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png"}, {"risk": "climate change", "value": 0.0001, "img": "1climate.png"}, 
-{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png"}, {"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png"},
-{"risk": "ecological catastrophe", "value": 0.005, "img": "1x.png"}, {"risk": "uncertain risk", "value": 0.005, "img": "1x.png"}]
+{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png"}, {"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png"}]
 
 //imgs: add for synthetic biology! add for nanotechnology! add for ecological catastrophe! add for uncertain risks!
+//{"risk": "synthetic biology", "value": 0.000001, "img": "1x.png"}, {"risk": "nanotechnology", "value": 0.0001, "img": "1x.png"}, {"risk": "ecological catastrophe", "value": 0.005, "img": "1x.png"}, {"risk": "uncertain risk", "value": 0.005, "img": "1x.png"}
 
 let researchers = new Map();
 researchers.set("Toby Ord", tobyord);
