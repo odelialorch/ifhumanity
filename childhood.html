@@ -542,22 +542,22 @@ let barChart = function() {
 	     //  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
   		  // .on("mouseout", function(d, i) {toggleClass(i+1, false)});
 
-  	  svg.append("g")
-	    .selectAll("g")
-	    .attr("id", "#viz")
-	    .data(data)
-	    .join("g")
-	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
-	    .selectAll("text")
-	    .data(d => keys.map(key => ({key, value: d[key]})))
-	    .join("text")
-	      .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100).toFixed(3)))
-	      .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
-	      .attr("y", d => y(d.value) - 5)
-	      .attr("fill", "#353b3c")
-	      .style("font", "bold 14px var(--sans-serif)")
-      	  .style("font-variant-numeric", "tabular-nums")
-	      .attr("opacity", 1);
+  	  // svg.append("g")
+	    // .selectAll("g")
+	    // .attr("id", "#viz")
+	    // .data(data)
+	    // .join("g")
+	    //   .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	    // .selectAll("text")
+	    // .data(d => keys.map(key => ({key, value: d[key]})))
+	    // .join("text")
+	    //   .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100).toFixed(3)))
+	    //   .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
+	    //   .attr("y", d => y(d.value) - 5)
+	    //   .attr("fill", "#353b3c")
+	    //   .style("font", "bold 14px var(--sans-serif)")
+     //  	  .style("font-variant-numeric", "tabular-nums")
+	    //   .attr("opacity", 1);
 
 	   // svg.append("g")
 	   //  .selectAll("g")
@@ -589,7 +589,7 @@ let barChart = function() {
 	  bars.transition()
 	  	  .attr("opacity", 1)
 	  	  .duration(0)
-	  	  .delay(0); 
+	  	  .delay(1200); 
 
 
 
