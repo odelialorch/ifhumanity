@@ -4,7 +4,7 @@
 <head>
 
 	<title>Acknowledgments</title>
-	<script src="https://d3js.org/d3.v3.js"></script>
+	<script src="https://d3js.org/d3.v5.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -12,26 +12,26 @@
 <body>
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
 
-	<a href="roomtogrow.html" class="navigate left every_page">&#8249;</a>
+	<a href="risks.html" class="navigate left every_page">&#8249;</a>
 
 	<h1 style = "margin-bottom: 0px;">Sources</h1>
 
 	<div id = "sources">
-		<h2>global development</h2>
+		<h2 class = "transitionIn">global development</h2>
 		<ul class = "source"> 	
-			<li><a href = "https://ourworldindata.org/">Our World in Data</a>.</li>
-			<li>Steven Pinker (2018), <a href = "https://stevenpinker.com/publications/enlightenment-now-case-reason-science-humanism-and-progress">Enlightenment Now</a>.</li>
-			<li><a href = "https://www.prb.org/">Population Reference Bureau</a>.</li>
+			<li class = "transitionIn"><a href = "https://ourworldindata.org/">Our World in Data</a>.</li>
+			<li class = "transitionIn">Steven Pinker (2018), <a href = "https://stevenpinker.com/publications/enlightenment-now-case-reason-science-humanism-and-progress">Enlightenment Now</a>.</li>
+			<li class = "transitionIn"><a href = "https://www.prb.org/">Population Reference Bureau</a>.</li>
 		</ul>
-		<h2>mortality risks</h2>
+		<h2 class = "transitionIn">mortality risks</h2>
 		<ul class = "source"> 	
-			<li> Institute for Health Metrics and Evaluation, <a href = "http://ghdx.healthdata.org/gbd-results-tool">Global Burden of Disease Study 2017</a>.</li>
+			<li class = "transitionIn"> Institute for Health Metrics and Evaluation, <a href = "http://ghdx.healthdata.org/gbd-results-tool">Global Burden of Disease Study 2017</a>.</li>
 		</ul>
-		<h2>existential risks estimates</h2>
+		<h2 class = "transitionIn">existential risks estimates</h2>
 		<ul class = "source"> 	
-			<li>Michael Aird (2020), <a href = "https://docs.google.com/spreadsheets/d/1W10B6NJjicD8O0STPiT3tNV3oFnT8YsfjmtYR8RO_RI/edit#gid=1429038499">Database of existential risks (or similar)</a></li>
-			<li>Toby Ord (2020), <a href = "https://theprecipice.com/">The Precipice</a>.</li>
-			<li>Dennis Pamlin & Stuart Armstrong (2015), <a href = "https://www.researchgate.net/publication/291086909_12_Risks_that_threaten_human_civilisation_The_case_for_a_new_risk_category">Global Challenges: 12 Risks that Threaten Human Civilisation, Global Challenges Foundation</a>.</li>
+			<li class = "transitionIn">Michael Aird (2020), <a href = "https://docs.google.com/spreadsheets/d/1W10B6NJjicD8O0STPiT3tNV3oFnT8YsfjmtYR8RO_RI/edit#gid=1429038499">Database of existential risks (or similar)</a></li>
+			<li class = "transitionIn">Toby Ord (2020), <a href = "https://theprecipice.com/">The Precipice</a>.</li>
+			<li class = "transitionIn">Dennis Pamlin & Stuart Armstrong (2015), <a href = "https://www.researchgate.net/publication/291086909_12_Risks_that_threaten_human_civilisation_The_case_for_a_new_risk_category">Global Challenges: 12 Risks that Threaten Human Civilisation, Global Challenges Foundation</a>.</li>
 		</ul>
 	</div>
 
@@ -48,7 +48,44 @@
 
 <script type="text/javascript">
 
-d3.select("body").getElementById("sources").attr("opacity", 0);
+let bigTitles = d3.select("body").selectAll("h1");
+let sourceTitles = d3.select("body").select("#sources").selectAll("h2");
+let sourceSections = d3.select("body").select("#sources").selectAll("li");
+let regAck = d3.select("#regular");
+let youAck = d3.select("#thankYOU");
+
+let transitions = d3.selectAll(".transitionIn");
+
+bigTitles.style("opacity", 0);
+sourceTitles.style("opacity", 0);
+sourceSections.style("opacity", 0);
+regAck.style("opacity", 0);
+youAck.style("opacity", 0);
+
+transitions.transition()
+	.style("opacity", 1)
+	.ease(d3.easeLinear)
+	.duration(50)
+	.delay((d, i) => 700 + 50*i);
+
+bigTitles.transition()
+	.style("opacity", 1)
+	.ease(d3.easeLinear)
+	.duration(700)
+	.delay((d, i) => 1800*i);
+
+regAck.transition()
+	.style("opacity", 1)
+	.ease(d3.easeLinear)
+	.duration(500)
+	.delay(2500);
+
+youAck.transition()
+	.style("opacity", 1)
+	.ease(d3.easeLinear)
+	.duration(500)
+	.delay(4000);
+
 
 </script>
 

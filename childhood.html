@@ -13,24 +13,31 @@
 	<a href="index.html" class="navigate left every_page">&#8249;</a>
 	<a href="adolescence.html" class="navigate right every_page">&#8250;</a>
 
+	<h1>Childhood</h1>
+	
 	<div class = "entrance">
-		<svg id = "timeline" width="1200" height="600" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+		<svg id = "timeline" width="1200" height="600" text-anchor="middle"></svg>
 	</div>
 
 </body>
 
 <script type="text/javascript">
 
+var title = d3.select("body").select("h1");
+title.style("opacity", 0).attr("transform", `translate(0,143)`);
+
 var longLineLength = 1000;
 var bottomLineY = 550;
 var lifeExpectancy = localStorage.getItem("expectancy");
 
-var svg = d3.select("body").select("svg");
+var svg = d3.select("body").select("svg"), 
+	width = +svg.attr("width"),
+ 	height = +svg.attr("height");;
 
 
 var text1 = svg.append("text")
 	.text("Homo sapiens could exist for 1 MILLION* years.")
-	.attr("x", 600)
+	.attr("x", width/2)
 	.attr("y", 180)
 	.attr("font-family", "Georgia")
 	.attr("font-variant", "small-caps")
@@ -41,7 +48,7 @@ var text1 = svg.append("text")
 
 var text2 = svg.append("text")
 	.text("*this is the lifespan of an average mammalian species.")
-	.attr("x", 800) 
+	.attr("x", width/2 + 200) 
 	.attr("y", 210)
 	.attr("font-family", "Georgia", "sans-serif")
 	.attr("font-variant", "small-caps")
@@ -52,7 +59,7 @@ var text2 = svg.append("text")
 
 var text3 = svg.append("text")
 	.text("Let's put this into perspective.")
-	.attr("x", 600)
+	.attr("x", width/2)
 	.attr("y", 180)
 	.attr("font-family", "Georgia")
 	.attr("font-variant", "small-caps")
@@ -63,7 +70,7 @@ var text3 = svg.append("text")
 
 var text4 = svg.append("text")
 	.text("What if humanity were one human?")
-	.attr("x", 600)
+	.attr("x", width/2)
 	.attr("y", 180)
 	.attr("font-family", "Georgia")
 	.attr("font-variant", "small-caps")
@@ -73,11 +80,11 @@ var text4 = svg.append("text")
 	.attr("opacity", 0);
 	
 var longline = svg.append("line")
-    .attr("x1", 100).attr("y1", 300).attr("x2", 100 + longLineLength).attr("y2", 300)
+    .attr("x1", (width - longLineLength) / 2).attr("y1", 300).attr("x2", (width - longLineLength) / 2 + longLineLength).attr("y2", 300)
     .attr("stroke-width", 2)
     .attr("stroke", "#353b3c");
 
-var tickPosition = [100, 100 + longLineLength, 100 + longLineLength*0.2];
+var tickPosition = [(width - longLineLength) / 2, (width - longLineLength) / 2 + longLineLength, (width - longLineLength) / 2 + longLineLength*0.2];
 
 var ticks = svg.selectAll("ticks")
   .data([0, 1, 2])
@@ -216,7 +223,7 @@ labels1.transition()
 //shrink timeline
 
 longline.transition()
-	.attr("x1", 100).attr("x2", 100 + longLineLength*0.2)
+	.attr("x1", (width - longLineLength) / 2).attr("x2", (width - longLineLength) / 2 + longLineLength*0.2)
 	.duration(0)
 	.delay(23000);
 
@@ -238,26 +245,26 @@ ticks.transition()
 //expand timeline
 
 longline.transition()
-	.attr("x2", 100 + longLineLength)
+	.attr("x2", (width - longLineLength) / 2 + longLineLength)
 	.duration(500)
 	.delay(23500);
 
 labels1.transition()
-	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.attr("fill", "#353b3c")
 	.duration(500)
 	.delay(23500);
 
 labels2.transition()
-	.attr("x", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.attr("fill", "#353b3c")
 	.duration(500)
 	.delay(23500);
 
 ticks.transition()
 	.attr("stroke", "#353b3c")
-	.attr("x1", function(i) {return i===0 ? 100 : 100 + longLineLength;})
-	.attr("x2", function(i) {return i===0 ? 100 : 100 + longLineLength;})
+	.attr("x1", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
+	.attr("x2", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.duration(500)
 	.delay(23500);
 
@@ -289,10 +296,10 @@ text4.transition()
 	.attr("font-family", "Georgia", "serif")
 	.attr("fill", "#c6c7c4")
 	.attr("font-size", 18)
-	.attr("y", 40)
-	.attr("x", 200)
-	.attr("font-variant", "null")
+	.attr("y", 47)
+	.attr("x", 165)
 	.text("If humanity were one human...")
+	.attr("font-variant", "null")
 	.duration(500)
 	.delay(24000);
 
@@ -307,15 +314,30 @@ let barChart = function() {
 	var adolescentHeight = 80;
 	var babyHeight = adolescentHeight * (45.0 / 163);
 
-	var data = [{"year": "~15000 BCE", "lifeExpec": babyHeight, "population": 0.01, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": babyHeight * (28 / 33), "population": 0.0243, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": babyHeight * (33 / 33), "population": 0.721, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": babyHeight * (29/33), "population": 5.54, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": babyHeight * (29/33), "population": 8.12, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": babyHeight*(71/33), "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
+	var data = [{"year": "~15000 BCE", "lifeExpec": 33, "population": 0.01, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": 28, "population": 0.0243, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": 33, "population": 0.721, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": 29, "population": 5.54, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": 29, "population": 8.12, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": 71, "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
 
 	var keys = ["lifeExpec", "population", "skillsBox1", "skillsBox2"]
 
 	let labels = new Map([
-    	["lifeExpec", "life expectancy"],
-	    ["population", "population"],
+    	["lifeExpec", "life expectancy (yrs)"],
+	    ["population", "population (million)"],
  	    ["skillsBox1", "skills"]
 	]);
+
+	let skills1 = ["hunting and foraging"]
+	let skills2 = ["agriculture", "cities"]
+	let skills3 = ["writing", "mathematics", "law"]
+	let skills4 = ["scientific method", "heliocentric astronomy", "physiology", "telescope"]
+	let skills5 = ["typewriting", "photography", "steam and water wheel", "telegraph communication", "factories", "steam power"]
+	let skills6 = ["internet", "artificial intelligence", "biotechnology", "nanotechnology", "nuclear weapons", "space exploration"]
+
+	let dataWithSkills = [
+    	{"year": "~15000 BCE", "skillset": skills1},
+	    {"year": "~10000 BCE", "skillset": skills2},
+ 	    {"year": "~2000 BCE", "skillset": skills3},
+ 	    {"year": "~1600", "skillset": skills4},
+ 	    {"year": "~1760", "skillset": skills5},
+ 	    {"year": "~2020", "skillset": skills6}]
 
 	let margin = ({top: 0, right: 0, bottom: 0, left: 0});
 
@@ -343,7 +365,7 @@ let barChart = function() {
     console.log(y(80));
 
 	let xAxis = g => g
-	    .attr("transform", `translate(0,${height + 160})`)
+	    .attr("transform", `translate(0,${height + 157})`)
 	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
  		.attr("font-variant", "small-caps")
 	   	.attr("font-weight", "bold")
@@ -352,77 +374,10 @@ let barChart = function() {
 	    .call(d3.axisBottom(x0).tickSize(0))
 	    .call(g => g.select(".domain").remove());
 
-	let addHumans = svg => {
-		var humans = ["human1.png", "human2.png", "human3.png", "human4.png", "human5.png", "human6.png"]
-		var ages = [(Math.round(lifeExpectancy * (0.5 / 71) * 12).toString() + " mo"), (Math.round(lifeExpectancy * (6 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (14 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (16 / 71)).toString() + " yrs")]
-
-		const g = svg
-	    	.selectAll("g")
-	   		.data(data)
-	    	.join("g")
-	      	  .attr("transform", d => `translate(${x0(d["year"])},120)`);
-
-	    var human = g.append("image")
-  	  	.attr("xlink:href", (d, i) => humans[i])
-  	    .attr("width", 1100/6)
-  	    .attr("opacity", 1)
-  	    .on("mouseover", function(d, i) {
-  	    	d3.select(this)
-  	    	.attr("opacity", 0);
-  	    	disappear(i);
-  	    })
-  	    .on("mouseout", function(d, i) {
-  	    	d3.select(this)
-  	    	.attr("opacity", 1);
-  	    });
-
-  	    g.append("rect")
-  	      .attr("transform", `translate(0,${height + 60})`)
-	      .attr("width", 1100/6)
-	      .attr("height", 25)
-	      .attr("fill", "#eef0f2")
-	      .on("mouseover", function(d) {
-  	    	d3.select(this)
-  	    	.attr("opacity", 0);
-  	    })
-  	    .on("mouseout", function(d) {
-  	    	d3.select(this)
-  	    	.attr("opacity", 1);
-  	    });
-
-  	    g.append("text")
-  	    .attr("transform", `translate(${1100/12},${height + 176})`)
-  	    .text((d, i) => ages[i])
-  	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-  	    .attr("text-align", "center")
-  	    .attr("font-variant", "small-caps")
-  	    .attr("font-weight", "bold")
- 	 	.style("font-size", 24)
-	 	.style("fill", "#353b3c")
-	 	.style("background-color", "#eef0f2")
-	 	.attr("opacity", 1);
-  	    // .on("mouseover", function(d) {
-  	    // 	d3.select(this)
-  	    // 	.attr("opacity", 0);
-  	    // })
-  	    // .on("mouseout", function(d) {
-  	    // 	d3.select(this)
-  	    // 	.attr("opacity", 1);
-  	    // });
-
-  	    var disappear = n => {
-  	    	g.selectAll("rect").transition().duration(0).attr("opacity", function(i) {return i===n ? 0 : 1;}).delay(0);
-  	    	g.selectAll("text").transition().duration(0).attr("opacity", function(i) {return i===n ? 0 : 1;}).delay(0);
-  	    }
-
-  	    //append images of height marks here, these stay opaque the whole time
-
-	}
-
-	let toggleClass = (i,toggle) => {
-   		d3.select("#viz:nth-child("+ i +")").classed("highlightBar",toggle);
-   		d3.select("#legend:nth-child("+ i +")").classed("highlightText",toggle);
-	};
+	// let toggleClass = (i,toggle) => {
+ //   		d3.select("#viz:nth-child("+ i +")").classed("highlightBar",toggle);
+ //   		d3.select("#legend:nth-child("+ i +")").classed("highlightText",toggle);
+	// };
 
 	let legend = svg => {
 	  const g = svg
@@ -451,9 +406,90 @@ let barChart = function() {
 	      .attr("font-family", "Georgia")
 	   	  .attr("font-weight", "bold")
  	 	  .attr("font-size", 15)
-	 	  .attr("fill", "#353b3c")
-	 	  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
-  		  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
+	 	  .attr("fill", "#353b3c");
+	 	  // .on("mouseover", function(d, i) {toggleClass(i+1, true)})
+  		 //  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
+	}
+
+	let addHumans = svg => {
+		var humans = ["human1.png", "human2.png", "human3.png", "human4.png", "human5.png", "human6.png"]
+		var ages = [(Math.round(lifeExpectancy * (0.5 / 71) * 12).toString() + " mo"), (Math.round(lifeExpectancy * (6 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (14 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (16 / 71)).toString() + " yrs")]
+
+		const g = svg
+	    	.selectAll("g")
+	   		.data(data)
+	    	.join("g")
+	      	  .attr("transform", d => `translate(${x0(d["year"])},0)`);
+
+	    var covers = g.append("rect")
+  	      .attr("transform", `translate(0,${height + 158})`)
+	      .attr("width", 1100/6)
+	      .attr("height", 25)
+	      .attr("fill", "#eef0f2")
+	      .attr("opacity", 1);
+
+	    let legendCover = svg.append("rect").attr("transform", `translate(0,100)`)
+	    	.attr("width", 200)
+	      	.attr("height", 200)
+	      	.attr("fill", "#eef0f2")
+	      	.attr("opacity", 1);
+
+  	    var labels = g.append("text")
+  	    .attr("transform", `translate(${1100/12},${height + 176})`)
+  	    .text((d, i) => ages[i])
+  	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+  	    .attr("text-align", "center")
+  	    .attr("font-variant", "small-caps")
+  	    .attr("font-weight", "bold")
+ 	 	.style("font-size", 24)
+	 	.style("fill", "#353b3c")
+	 	.style("background-color", "#eef0f2")
+	 	.attr("opacity", 0);
+
+	 	var disappear = function(n) {
+  	    	labels.attr("opacity", function(d, i) {return i===n ? 0 : 1;});
+  	    	covers.attr("opacity", function(d, i) {return i===n ? 0 : 1;});
+  	    	legendCover.attr("opacity", 0);
+  	    }
+
+  	    var reappear = function(n) {
+  	    	labels.attr("opacity", 1);
+  	    	covers.attr("opacity", 1);
+  	    	legendCover.attr("opacity", 1);
+  	    }
+
+	    var human = g.append("image")
+  	  	.attr("transform", d => `translate(0,120)`)
+  	  	.attr("xlink:href", (d, i) => humans[i])
+  	    .attr("width", 1100/6)
+  	    .attr("opacity", 0)
+  	    .on("mouseover", function(d, i) {
+  	    	var n = i;
+  	    	d3.select(this)
+  	    	.attr("opacity", 0)
+  	    	.call(disappear(n));
+  	    })
+  	    .on("mouseout", function(d, i) {
+  	    	var n = i;
+  	    	d3.select(this)
+  	    	.attr("opacity", 1)
+  	    	.call(reappear(n));
+  	    });
+
+  	    human.transition()
+  	    	.attr("opacity", 1)
+  	    	.duration(250)
+  	    	.delay((d, i) => 250 * i);
+
+  	    labels.transition()
+  	    	.attr("opacity", 1)
+  	    	.duration(250)
+  	    	.delay((d, i) => 250 * i);
+
+
+
+  	    //append images of height marks here, these stay opaque the whole time
+
 	}
 
 // 	let labels = svg => {
@@ -486,9 +522,9 @@ let barChart = function() {
 // }
 
 	let chart = function() {
-	  var svg = d3.select("body").select("svg");
-
-	  svg.append("g")
+	  var svg = d3.select("body").select("svg"); 
+	  
+	  var bars = svg.append("g")
 	    .selectAll("g")
 	    .attr("id", "#viz")
 	    .data(data)
@@ -498,40 +534,62 @@ let barChart = function() {
 	    .data(d => keys.map(key => ({key, value: d[key]})))
 	    .join("rect")
 	      .attr("x", d => x1(d.key))
-	      .attr("y", d => y(d.value))
+	      .attr("y", d => (d.key === "lifeExpec") ? y(d.value) * (babyHeight/ 33) : y(d.value))
 	      .attr("width", x1.bandwidth())
-	      .attr("height", d => y(0) - y(d.value))
+	      .attr("height", d => (d.key === "lifeExpec") ? y(0) - y(d.value) * (babyHeight/ 33) : y(0) - y(d.value))
 	      .attr("fill", d => color(d.key))
-	      .attr("opacity", 1)
-	      .on("mouseover", function(d, i) {toggleClass(i+1, true)})
-  		  .on("mouseout", function(d, i) {toggleClass(i+1, false)});
+	      .attr("opacity", 0);
+	     //  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
+  		  // .on("mouseout", function(d, i) {toggleClass(i+1, false)});
 
-  	  // svg.append("g")
-	    // .selectAll("g")
-	    // .attr("id", "#viz")
-	    // .data(data)
-	    // .join("g")
-	    //   .attr("transform", d => `translate(${x0(d["year"])},0)`)
-	    // .selectAll("text")
-	    // .data(d => keys.map(key => ({key, value: d[key]})))
-	    // .join("text")
-	    //   .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100)))
-	    //   .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
-	    //   .attr("y", d => y(d.value) - 5)
-	    //   .attr("fill", "#353b3c")
-	    //   .style("font", "bold 14px var(--sans-serif)")
-     //  	  .style("font-variant-numeric", "tabular-nums")
-	    //   .attr("opacity", 1);
+  	  svg.append("g")
+	    .selectAll("g")
+	    .attr("id", "#viz")
+	    .data(data)
+	    .join("g")
+	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	    .selectAll("text")
+	    .data(d => keys.map(key => ({key, value: d[key]})))
+	    .join("text")
+	      .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100).toFixed(3)))
+	      .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
+	      .attr("y", d => y(d.value) - 5)
+	      .attr("fill", "#353b3c")
+	      .style("font", "bold 14px var(--sans-serif)")
+      	  .style("font-variant-numeric", "tabular-nums")
+	      .attr("opacity", 1);
+
+	   svg.append("g")
+	    .selectAll("g")
+	    .attr("id", "#viz")
+	    .data(data)
+	    .join("g")
+	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	    .selectAll("text")
+	    .data(d => keys.map(key => ({key, value: d[key]})))
+	    .join("text")
+	      .text()
+	      .attr("x", d => x0(d.year) + (x0.bandwidth() / 2) + x1.bandwidth())
+	      .attr("y", d => y(d.value) + 5)
+	      .attr("fill", "#353b3c")
+	      .style("font", "bold 14px var(--sans-serif)")
+      	  .style("font-variant-numeric", "tabular-nums")
+	      .attr("opacity", 1);
 
 
 	  svg.append("g")
 	      .call(xAxis);
 
 	  svg.append("g")
-	      .call(addHumans); 
+	      .call(legend);
 
 	  svg.append("g")
-	      .call(legend);
+	      .call(addHumans);
+
+	  bars.transition()
+	  	  .attr("opacity", 1)
+	  	  .duration(0)
+	  	  .delay(0); 
 
 
 
@@ -581,6 +639,11 @@ ticks.transition()
 labels2.transition()
 	.attr("opacity", 0)
 	.duration(0)
+	.delay(25000);
+
+title.transition()
+	.style("opacity", 1)
+	.duration(1000)
 	.delay(25000);
 // var svg = d3.select("body").select("svg");
 

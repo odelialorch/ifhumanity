@@ -17,9 +17,9 @@
 
 		<h2>Where do you live?</h2>
 		<select id="country">
-			<option value="51.7" selected>Afghanistan</option>
+<!-- 			<option value="51.7" selected>Afghanistan</option>
 			<option value="78.5">Albania</option>
-			<option value="75.7">China</option>
+			<option value="75.7">China</option> -->
 			<option value="79.5">Denmark</option>
 			<option value="75.2">Malaysia</option>
 		</select>
@@ -39,6 +39,19 @@
 </body>
 
 <script type="text/javascript">
+
+// d3.select(".smileys").selectAll("img").on("mouseover", function(){
+//     d3.select(this).attr("class", "selected");
+// });
+
+// d3.select(".smileys").selectAll("img").on("mouseout", function(){
+//     d3.select(this).attr("class", "null");
+// });
+
+d3.select(".smileys").selectAll("img").on("click", function(){
+    d3.select(".smileys").selectAll("img").attr("class", "null");
+    d3.select(this).attr("class", "selected");
+});
 
 var chooseCountry = function() {
 	localStorage.setItem("country", document.getElementById("country").options[document.getElementById("country").selectedIndex].text);

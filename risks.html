@@ -40,9 +40,9 @@
 		<div id="buttons">
 
 			<select id="country">
-				<option value="51.7">Afghanistan</option>
+<!-- 				<option value="51.7">Afghanistan</option>
 				<option value="78.5">Albania</option>
-				<option value="75.7">China</option>
+				<option value="75.7">China</option> -->
 				<option value="79.5" selected>Denmark</option>
 				<option value="75.2">Malaysia</option>
 			</select>
@@ -64,8 +64,7 @@
 
 <script type="text/javascript">
 
-let probExamples = [{"value": 6, "example": "n"}, {"value": 7, "example": "n"}, {"value": 8, "example": "n"}, {"value": 9, "example": "n"}, 
-{"value": 10, "example": "n"}, {"value": 15, "example": "n"}, {"value": 20, "example": "n"}, {"value": 30, "example": "n"}]
+let probExamples = [{"value": 6, "example": " roll a 2 with any die."}, {"value": 7, "example": "r friend was born on a Tuesday"}, {"value": 8, "example": " flip a coin Tails three times in a row"}]
 
 let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
 {"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
@@ -230,7 +229,7 @@ d3.csv("test.csv").then(function(data) {
     		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
     		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
     		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-    		d3.select("#prob").text("This is the same as the chance you will " + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example);
+    		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example);
     	})
     	.on("mouseout", function(){     //switches back
     		d3.select(this)
