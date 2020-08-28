@@ -559,22 +559,22 @@ let barChart = function() {
       	  .style("font-variant-numeric", "tabular-nums")
 	      .attr("opacity", 1);
 
-	   svg.append("g")
-	    .selectAll("g")
-	    .attr("id", "#viz")
-	    .data(data)
-	    .join("g")
-	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
-	    .selectAll("text")
-	    .data(d => keys.map(key => ({key, value: d[key]})))
-	    .join("text")
-	      .text()
-	      .attr("x", d => x0(d.year) + (x0.bandwidth() / 2) + x1.bandwidth())
-	      .attr("y", d => y(d.value) + 5)
-	      .attr("fill", "#353b3c")
-	      .style("font", "bold 14px var(--sans-serif)")
-      	  .style("font-variant-numeric", "tabular-nums")
-	      .attr("opacity", 1);
+	   // svg.append("g")
+	   //  .selectAll("g")
+	   //  .attr("id", "#viz")
+	   //  .data(data)
+	   //  .join("g")
+	   //    .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	   //  .selectAll("text")
+	   //  .data(d => keys.map(key => ({key, value: d[key]})))
+	   //  .join("text")
+	   //    .text()
+	   //    .attr("x", d => x0(d.year) + (x0.bandwidth() / 2) + x1.bandwidth())
+	   //    .attr("y", d => y(d.value) + 5)
+	   //    .attr("fill", "#353b3c")
+	   //    .style("font", "bold 14px var(--sans-serif)")
+    //   	  .style("font-variant-numeric", "tabular-nums")
+	   //    .attr("opacity", 1);
 
 
 	  svg.append("g")
