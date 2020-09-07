@@ -1,5 +1,8 @@
-html {
+body {
 	background-color: #eef0f2;
+	align-items: center;
+	height: 100vh;
+  	padding: 0;
 }
 
 .intro {
@@ -50,12 +53,13 @@ html {
 	font-variant: small-caps;
 	font-size: 35px;
 	font-weight: bold;
-	position: relative;
+	position: absolute;
 	text-align: center;
 	float: center;
 	left: 0;
 	right: 0;
 	top: 80px;
+	z-index: 10;
 }
 
 .questions {
@@ -133,16 +137,19 @@ html.risks {
 	background: radial-gradient(transparent 60%, black), #c6c7c4;
 }
 
-h1 {
+.title {
+	position: relative; 
+	text-align: center; 
+	top: 40px; 
+	left: 20px;
+	z-index: 10;
 	font-family: "Optima", sans-serif;
 	font-variant: small-caps;
 	color: #353b3c;
 	font-size: 35px;
 	font-weight: bold;
-	text-align: center;
-	margin-top: 0px;
-	z-index: 10;
 }
+
 
 .navigate{
 	color: black;
@@ -177,6 +184,7 @@ h3.every_page  {
 	margin-top: 30px;
 	margin-bottom: 0px;
 	z-index: 20;
+	position: absolute;
 } 
 
 .every_page a {
@@ -185,8 +193,9 @@ h3.every_page  {
 	text-decoration: none;
 }
 
-a:focus, a:hover, a:active { 
+span:focus, span:hover, span:active { 
 	color: #846a6a; 
+	cursor: pointer;
 }
 
 
@@ -285,6 +294,10 @@ select {
 	font-size: 15px;
 	position: relative;
 	text-align: center;
+}
+
+#adolescence {
+	position: absolute;
 }
 
 #quote1 {

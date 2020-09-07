@@ -4,7 +4,7 @@
 <head>
 
 	<title>Adolescence</title>
-	<script src="https://d3js.org/d3.v3.js"></script>
+	<script src="https://d3js.org/d3.v5.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -12,11 +12,15 @@
 <body>
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
 
-	<a href="childhood.html" class="navigate left every_page">&#8249;</a>
-	<a href="risks.html" class="navigate right every_page">&#8250;</a>
+	<span onclick="window.location.href='childhood.html'" class="navigate left every_page">&#8249;</span>
+	<span onclick="exitTransition()" class="navigate right every_page">&#8250;</span>
+
+	<svg id = "adolescence" width="1200" height="600" text-anchor="middle"></svg>
+
+	<h1 style = "position: relative; text-align: center; top: 40px;" class = "title">Adolescence</h1>
 
 	<div class = "adolescence row">
-		<div class = "column5">
+ 		<div class = "column5">
 			<h2 class = "blank">Blank</h2>
 		</div>
 
@@ -25,9 +29,8 @@
         <br><br>Carl Sagan</p>
 		</div>
 
-		<div class = "column5">
-			<h1>Adolescence</h1>
-			<img class = "human" src = "crowd_human.png">
+		<div class = "column5"> 
+			<h2 class = "blank">Blank</h2>
 		</div>
 
 		<div class = "column5">
@@ -41,7 +44,7 @@
 
 		<div class = "column5">
 			<h2 class = "blank">Blank</h2>
-		</div>
+		</div> 
 	</div>
 	
 </div>
@@ -50,10 +53,64 @@
 
 <script type="text/javascript">
 
-var leavePage = function() {
-	window.addEventListener("beforeunload", function () {
-  		document.body.classList.add("animate-out");
-	});
+
+var svg = d3.select("body").select("svg"), 
+	width = +svg.attr("width"),
+ 	height = +svg.attr("height");
+
+svg.attr("margin-top", 0);
+
+var longLineLength = 1000;
+var bottomLineY = 550;
+
+var humanityhuman = svg.append("image")
+  	.attr("x", width / 2 - 27 - 40)
+  	.attr("y", 115)
+  	.attr("xlink:href", "crowd_human.png")
+  	.attr("height", 450)
+  	.attr("opacity", 1);
+
+var longline = svg.append("line")
+    .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12 + 55)
+		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12 + 55)
+		.attr("y1", bottomLineY).attr("y2", bottomLineY)
+    .attr("stroke-width", 2)
+    .attr("stroke", "#353b3c");
+
+var title = d3.select("body").select("h1")
+	.style("opacity", 0);
+
+var quotes = d3.select("body").selectAll("p").data([0, 1]).style("opacity", 0);
+
+quotes.transition().style("opacity", 1).duration(2000).delay(function(i){return(2000 + i*3000)})
+
+title.transition().style("opacity", 1).duration(1000).delay(1000);
+
+let exitTransition = function() {
+
+	var longLineLength = 1000;
+	var bottomLineY = 550;
+
+	var page = d3.select("body");
+
+	title.transition().style("opacity", 0).duration(1000).delay(0);
+	quotes.transition().style("opacity", 0).duration(1000).delay(0);
+
+	// page.transition().attr("gradientUnits", "objectBoundingBox")
+ //    .attr("cx", 0)
+ //    .attr("cy", 0)
+ //    .attr("r", "60%").duration(1000).delay(0);
+
+	
+ 	d3.select("html").style("background-color", "#eef0f2");
+	page.transition().style("background", 'radial-gradient(transparent 60%, black)')
+		.ease(d3.easeExpOut)
+		.duration(4000).delay(0);
+
+	let exit = function() {
+		window.location.href="risks.html";
+	}
+	setTimeout(exit, 3000);
 }
 
 </script>

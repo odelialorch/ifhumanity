@@ -10,10 +10,10 @@
 </head>
 
 <body>
-	<a href="index.html" class="navigate left every_page">&#8249;</a>
-	<a href="adolescence.html" class="navigate right every_page">&#8250;</a>
+	<span onclick="window.location.href='intro.html'" class="navigate left every_page">&#8249;</span>
+	<span onclick="exitTransition()" class="navigate right every_page">&#8250;</span>
 
-	<h1>Childhood</h1>
+	<h1 style = "top: 40px;" class = "title">Childhood</h1>
 	
 	<div class = "entrance">
 		<svg id = "timeline" width="1200" height="600" text-anchor="middle"></svg>
@@ -24,7 +24,6 @@
 <script type="text/javascript">
 
 var title = d3.select("body").select("h1");
-title.style("opacity", 0).attr("transform", `translate(0,143)`);
 
 var longLineLength = 1000;
 var bottomLineY = 550;
@@ -32,284 +31,56 @@ var lifeExpectancy = localStorage.getItem("expectancy");
 
 var svg = d3.select("body").select("svg"), 
 	width = +svg.attr("width"),
- 	height = +svg.attr("height");;
-
-
-var text1 = svg.append("text")
-	.text("Homo sapiens could exist for 1 MILLION* years.")
-	.attr("x", width/2)
-	.attr("y", 180)
-	.attr("font-family", "Georgia")
-	.attr("font-variant", "small-caps")
-	.attr("fill", "#a2999e")
-	.attr("font-weight", "bold")
-	.attr("font-size", 35)
-	.attr("opacity", 0);
-
-var text2 = svg.append("text")
-	.text("*this is the lifespan of an average mammalian species.")
-	.attr("x", width/2 + 200) 
-	.attr("y", 210)
-	.attr("font-family", "Georgia", "sans-serif")
-	.attr("font-variant", "small-caps")
-	.attr("fill", "#a2999e")
-	.attr("font-weight", "bold")
-	.attr("font-size", 20)
-	.attr("opacity", 0);
-
-var text3 = svg.append("text")
-	.text("Let's put this into perspective.")
-	.attr("x", width/2)
-	.attr("y", 180)
-	.attr("font-family", "Georgia")
-	.attr("font-variant", "small-caps")
-	.attr("fill", "#a2999e")
-	.attr("font-weight", "bold")
-	.attr("font-size", 35)
-	.attr("opacity", 0);
+ 	height = +svg.attr("height");
 
 var text4 = svg.append("text")
-	.text("What if humanity were one human?")
-	.attr("x", width/2)
-	.attr("y", 180)
 	.attr("font-family", "Georgia")
-	.attr("font-variant", "small-caps")
-	.attr("fill", "#a2999e")
 	.attr("font-weight", "bold")
-	.attr("font-size", 35)
-	.attr("opacity", 0);
-	
-var longline = svg.append("line")
-    .attr("x1", (width - longLineLength) / 2).attr("y1", 300).attr("x2", (width - longLineLength) / 2 + longLineLength).attr("y2", 300)
-    .attr("stroke-width", 2)
-    .attr("stroke", "#353b3c");
-
-var tickPosition = [(width - longLineLength) / 2, (width - longLineLength) / 2 + longLineLength, (width - longLineLength) / 2 + longLineLength*0.2];
-
-var ticks = svg.selectAll("ticks")
-  .data([0, 1, 2])
-  .enter()
-  .append("line")
-  	.attr("stroke-width", 2)
-    .attr("stroke", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-    .attr("opacity", 0)
-    .attr("x1", function(d){return tickPosition[d]} ).attr("y1", 280)
-    .attr("x2", function(d){return tickPosition[d]} ).attr("y2", 320);
-
-var humanityLabels = ["200K BCE", "800K CE", "2020 CE"]
-var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
-var timelineLabels = ["First homo sapiens", "1M years later", "Today"]
-
-var labels1 = svg.selectAll("labels1") //humanityLabels
-  .data([0, 1, 2])
-  .enter()
-  .append("text")
-  	.text(function(d) {return humanityLabels[d]})
-  	.attr("x", function(d) {return tickPosition[d]})
-  	.attr("y", 340)
-  	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-	.attr("font-variant", "small-caps")
-	.attr("font-weight", "bold")
-	.attr("font-size", 15)
-	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-  	.attr("opacity", 0);
-
-var labels2 = svg.selectAll("labels2")	//humanLabels
-  .data([0, 1, 2])
-  .enter()
-  .append("text")
-  	.text(function(d) {return humanLabels[d]})
-  	.attr("x", function(d) {return tickPosition[d]})
-  	.attr("y", 340)
-  	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-	.attr("font-variant", "small-caps")
-	.attr("font-weight", "bold")
-	.attr("font-size", 20)
-	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-  	.attr("opacity", 0);
-
-var labels3 = svg.selectAll("labels3") //timelineLabels
-  .data([0, 1, 2])
-  .enter()
-  .append("text")
-  	.text(function(d) {return timelineLabels[d]})
-  	.attr("x", function(d) {return tickPosition[d]})
-  	.attr("y", 260)
-  	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-	.attr("font-weight", "bold")
-	.attr("font-size", 15)
-	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
-  	.attr("opacity", 0);
-
-//Humans could exist for... This is the average lifespan...
-
-text1.transition()
-	.attr("opacity", 1)
-    .duration(1000);
-
-text2.transition()
-	.attr("opacity", 1)
-    .duration(1000)
-    .delay(2000);
-
-text1.transition()
-	.attr("opacity", 0)
-    .duration(1000)
-    .delay(5000);
-
-text2.transition()
-	.attr("opacity", 0)
-    .duration(1000)
-    .delay(5000);
-
-//Let's put this into perspective, build humanity timeline
-
-text3.transition()
-    .attr("opacity", 1)
-    .duration(1000)
-    .delay(6000)
-    
-text3.transition()
-    .attr("opacity", 0)
-    .duration(1000)
-    .delay(14000);
-
-longline.attr("stroke-dasharray", longLineLength + " " + longLineLength)
-	.attr("stroke-dashoffset", longLineLength)
-	.transition()
-	.duration(2000)
-	.delay(8000)
-	.ease(d3.easeLinear) //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
-	.attr("stroke-dashoffset", 0)
-	.style("stroke-width",3);
-
-ticks.transition()
-	.attr("opacity", 1)
-    .duration(0)
-    .delay(function(i){return(8000 + i*2000)});
-
-labels1.transition()
-	.attr("opacity", 1)
-    .duration(0)
-    .delay(function(i){return(8000 + i*2000)});
-
-labels3.transition()
-	.attr("opacity", 1)
-    .duration(0)
-    .delay(function(i){return(8000 + i*2000)});
-
-labels3.transition()
-	.attr("opacity", 0)
-    .duration(0)
-    .delay(function(i){return(9500 + i*2000)});
-
-//What if humanity were one human? build human timeline
-
-text4.transition()
-    .attr("opacity", 1)
-    .duration(1000)
-    .delay(16000);
-
-labels2.transition()
-	.attr("opacity", 1)
-    .duration(1000)
-    .delay(function(i){return(17500 + i*1000)});
-
-labels1.transition()
-	.attr("y", 260)
-    .duration(1000)
-    .delay(17000);
-
-//shrink timeline
-
-longline.transition()
-	.attr("x1", (width - longLineLength) / 2).attr("x2", (width - longLineLength) / 2 + longLineLength*0.2)
-	.duration(0)
-	.delay(23000);
-
-labels1.transition()
-	.attr("opacity", function(i) {return i===1 ? 0:1;})
-	.duration(0)
-	.delay(23000);
-
-labels2.transition()
-	.attr("opacity", function(i) {return i===1 ? 0:1;})
-	.duration(0)
-	.delay(23000);
-
-ticks.transition()
-	.attr("opacity", function(i) {return i===1 ? 0:1;})
-	.duration(0)
-	.delay(23000);
-
-//expand timeline
-
-longline.transition()
-	.attr("x2", (width - longLineLength) / 2 + longLineLength)
-	.duration(500)
-	.delay(23500);
-
-labels1.transition()
-	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-	.attr("fill", "#353b3c")
-	.duration(500)
-	.delay(23500);
-
-labels2.transition()
-	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-	.attr("fill", "#353b3c")
-	.duration(500)
-	.delay(23500);
-
-ticks.transition()
-	.attr("stroke", "#353b3c")
-	.attr("x1", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-	.attr("x2", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-	.duration(500)
-	.delay(23500);
-
-//DROP TO BOTTOM OF SCREEN
-
-labels1.transition()
-	.attr("opacity", 0)
-	.duration(0)
-	.delay(24000);
-
-longline.transition()
-	.attr("y1", bottomLineY)
-	.attr("y2", bottomLineY)
-	.duration(500)
-	.delay(24000);
-
-ticks.transition()
-	.attr("y1", bottomLineY - 20)
-	.attr("y2", bottomLineY + 20)
-	.duration(500)
-	.delay(24000);
-
-labels2.transition()
-	.attr("y", bottomLineY + 40)
-	.duration(500)
-	.delay(24000);
-
-text4.transition()
-	.attr("font-family", "Georgia", "serif")
 	.attr("fill", "#c6c7c4")
 	.attr("font-size", 18)
 	.attr("y", 47)
 	.attr("x", 165)
-	.text("If humanity were one human...")
-	.attr("font-variant", "null")
-	.duration(500)
-	.delay(24000);
+	.text("If humanity were one human...");
+	
+var longline = svg.append("line")
+    .attr("x1", (width - longLineLength) / 2).attr("y1", bottomLineY).attr("x2", (width - longLineLength) / 2 + longLineLength).attr("y2", bottomLineY)
+    .attr("stroke-width", 2)
+    .attr("stroke", "#353b3c");
 
+// var tickPosition = [(width - longLineLength) / 2, (width - longLineLength) / 2 + longLineLength, (width - longLineLength) / 2 + longLineLength*0.2];
+
+// var ticks = svg.selectAll("ticks")
+//   .data([0, 1, 2])
+//   .enter()
+//   .append("line")
+//   	.attr("stroke-width", 2)
+//     .attr("opacity", function(i) {return i===1 ? 0:1;})
+//     .attr("stroke", "#353b3c")
+// 	.attr("x1", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
+// 	.attr("x2", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
+// 	.attr("y1", bottomLineY - 20)
+// 	.attr("y2", bottomLineY + 20);
+
+// var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
+
+// var labels2 = svg.selectAll("labels2")	//humanLabels
+//   .data([0, 1, 2])
+//   .enter()
+//   .append("text")
+//   	.text(function(d) {return humanLabels[d]})
+//   	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
+//   	.attr("y", bottomLineY + 40)
+//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+// 	.attr("font-variant", "small-caps")
+// 	.attr("font-size", 20)
+// 	.attr("stroke", "#353b3c")
+//   	.attr("opacity", function(i) {return i===1 ? 0:1;});
 
 
 
 //CHART
 
-let barChart = function() {
-	var svg = d3.select("body").select("svg");
+//	var svg = d3.select("body").select("svg");
 
 	var adolescentHeight = 80;
 	var babyHeight = adolescentHeight * (45.0 / 163);
@@ -341,9 +112,9 @@ let barChart = function() {
 
 	let margin = ({top: 0, right: 0, bottom: 0, left: 0});
 
-	let height = 420;
+	height = 420;
 
-	let width = 1100;
+	width = 1100;
 
 	let color = d3.scaleOrdinal()
 	    .range(["#98abc5", "#8a89a6", "#eef0f2", "#eef0f2", "#a05d56", "#d0743c", "#ff8c00"]);
@@ -363,6 +134,9 @@ let barChart = function() {
     	.rangeRound([height - margin.bottom, margin.top]);
 
     console.log(y(80));
+
+
+let barChart = function() {
 
 	let xAxis = g => g
 	    .attr("transform", `translate(0,${height + 157})`)
@@ -429,7 +203,7 @@ let barChart = function() {
 	      .attr("opacity", 1);
 
 	    let legendCover = svg.append("rect").attr("transform", `translate(0,100)`)
-	    	.attr("width", 200)
+	    	.attr("width", 250)
 	      	.attr("height", 200)
 	      	.attr("fill", "#eef0f2")
 	      	.attr("opacity", 1);
@@ -542,39 +316,38 @@ let barChart = function() {
 	     //  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
   		  // .on("mouseout", function(d, i) {toggleClass(i+1, false)});
 
-  	  // svg.append("g")
-	    // .selectAll("g")
-	    // .attr("id", "#viz")
-	    // .data(data)
-	    // .join("g")
-	    //   .attr("transform", d => `translate(${x0(d["year"])},0)`)
-	    // .selectAll("text")
-	    // .data(d => keys.map(key => ({key, value: d[key]})))
-	    // .join("text")
-	    //   .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100).toFixed(3)))
-	    //   .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
-	    //   .attr("y", d => y(d.value) - 5)
-	    //   .attr("fill", "#353b3c")
-	    //   .style("font", "bold 14px var(--sans-serif)")
-     //  	  .style("font-variant-numeric", "tabular-nums")
-	    //   .attr("opacity", 1);
+  	  svg.append("g")
+	    .selectAll("g")
+	    .attr("id", "#viz")
+	    .data(data)
+	    .join("g")
+	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	    .selectAll("text")
+	    .data(d => keys.map(key => ({key, value: d[key]})))
+	    .join("text")
+	      .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100).toFixed(3)))
+	      .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
+	      .attr("y", d => y(d.value) - 5)
+	      .attr("fill", "#353b3c")
+	      .style("font", "bold 14px var(--sans-serif)")
+      	  .style("font-variant-numeric", "tabular-nums")
+	      .attr("opacity", 1);
 
-	   // svg.append("g")
-	   //  .selectAll("g")
-	   //  .attr("id", "#viz")
-	   //  .data(data)
-	   //  .join("g")
-	   //    .attr("transform", d => `translate(${x0(d["year"])},0)`)
-	   //  .selectAll("text")
-	   //  .data(d => keys.map(key => ({key, value: d[key]})))
-	   //  .join("text")
-	   //    .text()
-	   //    .attr("x", d => x0(d.year) + (x0.bandwidth() / 2) + x1.bandwidth())
-	   //    .attr("y", d => y(d.value) + 5)
-	   //    .attr("fill", "#353b3c")
-	   //    .style("font", "bold 14px var(--sans-serif)")
-    //   	  .style("font-variant-numeric", "tabular-nums")
-	   //    .attr("opacity", 1);
+	   var skills = svg.append("g")
+	    .selectAll("g")
+	    .attr("id", "#viz")
+	    .data(dataWithSkills)
+	    .join("g")
+	      .attr("transform", d => `translate(${x0(d["year"]) + (x0.bandwidth() / 2) + x1.bandwidth()},0)`)
+	    .selectAll("text")
+	    .data(d => d.skillset)
+	    .join("text")
+	      .text(d => d)
+	      .attr("y", (d, i) => bottomLineY - 60 - 60*i)
+	      .attr("fill", "#353b3c")
+	      .style("font", "bold 10px var(--sans-serif)")
+      	  .attr("font-variant", "small-caps")
+	      .attr("opacity", 0);
 
 
 	  svg.append("g")
@@ -589,7 +362,12 @@ let barChart = function() {
 	  bars.transition()
 	  	  .attr("opacity", 1)
 	  	  .duration(0)
-	  	  .delay(1200); 
+	  	  .delay(1800); 
+
+	  skills.transition()
+	  	  .attr("opacity", 1)
+	  	  .duration(0)
+	  	  .delay(1800); 
 
 
 
@@ -619,32 +397,76 @@ let barChart = function() {
 
 }
 
-//barChart();
+barChart();
 
-setTimeout(barChart, 25000);
+let exitTransition = function() {
+	d3.selectAll("svg > *").transition().attr("opacity", 0).duration(1000).delay(0).ease(d3.easeLinear);
 
-//LENGTHEN LINE AGAIN
+	var longLineLength = 1000;
+	var bottomLineY = 550;
 
-longline.transition()
-	.attr("x1", 50)
-	.attr("x2", 1150)
-	.duration(0)
-	.delay(25000);
+	title.transition().style("opacity", 0).duration(0).delay(0);
 
-ticks.transition()
-	.attr("opacity", 0)
-	.duration(0)
-	.delay(25000);
+	var longline = svg.append("line")
+    	.attr("x1", (width - longLineLength) / 2).attr("y1", bottomLineY).attr("x2", (width - longLineLength) / 2 + longLineLength).attr("y2", bottomLineY)
+    	.attr("stroke-width", 2)
+    	.attr("stroke", "#353b3c");
 
-labels2.transition()
-	.attr("opacity", 0)
-	.duration(0)
-	.delay(25000);
+    var human6 = svg.append("image")
+  	  	.attr("x", x0("~2020"))
+  	  	.attr("y", 120)
+  	  	.attr("xlink:href", "human6.png")
+  	    .attr("width", 1100/6)
+  	    .attr("opacity", 1);
 
-title.transition()
-	.style("opacity", 1)
-	.duration(1000)
-	.delay(25000);
+  	var humanityhuman = svg.append("image")
+  	  	.attr("x", width / 2 - 27 - 40)
+  	  	.attr("y", 115)
+  	  	.attr("xlink:href", "crowd_human.png")
+  	    .attr("height", 450)
+  	    .attr("opacity", 0);
+
+	longline.transition()
+		.attr("x1", (width - longLineLength) / 2 + longLineLength * 5/6)
+		.duration(0)
+		.delay(0);
+
+
+
+	longline.transition()
+		.attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12 + 55)
+		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12 + 55)
+		.ease(d3.easeLinear)
+		.duration(500)
+		.delay(500);
+
+	human6.transition()
+		.attr("x", width / 2 - 40)
+		.ease(d3.easeLinear)
+		.duration(500)
+		.delay(500);
+
+	human6.transition()
+		.attr("opacity", 0)
+		.ease(d3.easeLinear)
+		.duration(2000)
+		.delay(1000);
+
+	humanityhuman.transition()
+		.attr("opacity", 1)
+		.ease(d3.easeLinear)
+		.duration(2000)
+		.delay(1000);
+
+
+	let exit = function() {
+		window.location.href="adolescence.html";
+	}
+	setTimeout(exit, 3000);
+}
+
+
+//setTimeout(barChart, 1000);
 // var svg = d3.select("body").select("svg");
 
 

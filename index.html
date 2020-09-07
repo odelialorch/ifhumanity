@@ -4,14 +4,14 @@
 <head>
 
 	<title>If humanity...</title>
-	<script src="https://d3js.org/d3.v3.js"></script>
+	<script src="https://d3js.org/d3.v5.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body class = "intro">
-	<a class="next close" href = "childhood.html">&times;</a>
-	<h1 style = "position: relative; text-align: center; top: 50px; left: 20px;">Welcome!</h1>
+	<a class="next close" href = "intro.html">&times;</a>
+	<h1 style = "position: relative; text-align: center; top: 50px; left: 20px;" class = "title">Welcome!</h1>
 
 	<div class = "questions">
 
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<a class="next continue" href = "childhood.html" style = "position: relative; text-align: center;">continue &#8250;</a>
+	<a class="next continue" href = "intro.html" style = "position: relative; text-align: center;">continue &#8250;</a>
 
 </body>
 
@@ -48,9 +48,17 @@
 //     d3.select(this).attr("class", "null");
 // });
 
+d3.select("#country").on("mouseover", function(){
+    d3.select(this).style("cursor", "pointer");
+});
+
 d3.select(".smileys").selectAll("img").on("click", function(){
     d3.select(".smileys").selectAll("img").attr("class", "null");
     d3.select(this).attr("class", "selected");
+});
+
+d3.select(".smileys").selectAll("img").on("mouseover", function(){
+    d3.select(this).style("cursor", "pointer");
 });
 
 var chooseCountry = function() {
