@@ -181,7 +181,7 @@ h3.every_page  {
 	color: #c6c7c4;
 	font-size: 18px;
 	margin-left: 50px;
-	margin-top: 30px;
+	margin-top: 7px;
 	margin-bottom: 0px;
 	z-index: 20;
 	position: absolute;
@@ -302,6 +302,7 @@ select {
 
 #quote1 {
 	top: 300px;
+	margin-bottom: 0px;
 }
 
 #quote2 {

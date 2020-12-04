@@ -29,6 +29,7 @@ title.style("opacity", 0).attr("transform", `translate(0,143)`);
 var longLineLength = 1000;
 var bottomLineY = 550;
 var lifeExpectancy = localStorage.getItem("expectancy");
+var country = localStorage.getItem("country");
 
 var svg = d3.select("body").select("svg"), 
 	width = +svg.attr("width"),
@@ -141,6 +142,30 @@ var labels3 = svg.selectAll("labels3") //timelineLabels
 	.attr("fill", function(i) {return i == 2 ? "#006d77" : "#353b3c";})
   	.attr("opacity", 0);
 
+var humanityLabel = svg.append("text")
+	.text("humanity")
+	.attr("x", width/2)
+	.attr("y", 260)
+	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+	.attr("fill", "#c6c7c4")
+//	.attr("font-variant", "small-caps")
+	.attr("font-style", "italic")
+	.attr("font-weight", "bold")
+	.attr("font-size", 15)
+	.attr("opacity", 0);
+
+var humanInCountryLabel = svg.append("text")
+	.text("human in " + country)
+	.attr("x", width/2)
+	.attr("y", 340)
+	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
+	.attr("fill", "#c6c7c4")
+	.attr("font-weight", "bold")
+//	.attr("font-variant", "small-caps")
+	.attr("font-style", "italic")
+	.attr("font-size", 15)
+	.attr("opacity", 0);
+
 //Humans could exist for... This is the average lifespan...
 
 text1.transition()
@@ -178,7 +203,7 @@ longline.attr("stroke-dasharray", longLineLength + " " + longLineLength)
 	.attr("stroke-dashoffset", longLineLength)
 	.transition()
 	.duration(2000)
-	.delay(8000)
+	.delay(9000)
 	.ease(d3.easeLinear) //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
 	.attr("stroke-dashoffset", 0)
 	.style("stroke-width",3);
@@ -186,22 +211,22 @@ longline.attr("stroke-dasharray", longLineLength + " " + longLineLength)
 ticks.transition()
 	.attr("opacity", 1)
     .duration(0)
-    .delay(function(i){return(8000 + i*2000)});
+    .delay(function(i){return(8000 + i*3000)});
 
 labels1.transition()
 	.attr("opacity", 1)
     .duration(0)
-    .delay(function(i){return(8000 + i*2000)});
+    .delay(function(i){return(8000 + i*3000)});
 
 labels3.transition()
 	.attr("opacity", 1)
     .duration(0)
-    .delay(function(i){return(8000 + i*2000)});
+    .delay(function(i){return(8000 + i*3000)});
 
 labels3.transition()
 	.attr("opacity", 0)
     .duration(0)
-    .delay(function(i){return(9500 + i*2000)});
+    .delay(function(i){return(9500 + i*3000)});
 
 //What if humanity were one human? build human timeline
 
@@ -213,84 +238,104 @@ text4.transition()
 labels2.transition()
 	.attr("opacity", 1)
     .duration(1000)
-    .delay(function(i){return(17500 + i*1000)});
+    .delay(function(i){return(19500 + i*1000)});
 
 labels1.transition()
 	.attr("y", 260)
     .duration(1000)
     .delay(17000);
 
+humanityLabel.transition()
+    .attr("opacity", 1)
+    .duration(1000)
+    .delay(17500);
+
+humanInCountryLabel.transition()
+    .attr("opacity", 1)
+    .duration(1000)
+    .delay(19500);
+
 //shrink timeline
+
+humanityLabel.transition()
+    .attr("opacity", 0)
+    .duration(0)
+    .delay(25000);
+
+humanInCountryLabel.transition()
+    .attr("opacity", 0)
+    .duration(0)
+    .delay(25000);
 
 longline.transition()
 	.attr("x1", (width - longLineLength) / 2).attr("x2", (width - longLineLength) / 2 + longLineLength*0.2)
 	.duration(0)
-	.delay(23000);
+	.delay(25000);
 
 labels1.transition()
 	.attr("opacity", function(i) {return i===1 ? 0:1;})
 	.duration(0)
-	.delay(23000);
+	.delay(25000);
 
 labels2.transition()
 	.attr("opacity", function(i) {return i===1 ? 0:1;})
 	.duration(0)
-	.delay(23000);
+	.delay(25000);
 
 ticks.transition()
 	.attr("opacity", function(i) {return i===1 ? 0:1;})
 	.duration(0)
-	.delay(23000);
+	.delay(25000);
 
 //expand timeline
 
 longline.transition()
 	.attr("x2", (width - longLineLength) / 2 + longLineLength)
 	.duration(500)
-	.delay(23500);
+	.delay(25500);
 
 labels1.transition()
 	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.attr("fill", "#353b3c")
 	.duration(500)
-	.delay(23500);
+	.delay(25500);
 
 labels2.transition()
 	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.attr("fill", "#353b3c")
 	.duration(500)
-	.delay(23500);
+	.delay(25500);
 
 ticks.transition()
 	.attr("stroke", "#353b3c")
 	.attr("x1", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.attr("x2", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
 	.duration(500)
-	.delay(23500);
+	.delay(25500);
 
 //DROP TO BOTTOM OF SCREEN
 
 labels1.transition()
 	.attr("opacity", 0)
 	.duration(0)
-	.delay(24000);
+	.delay(26000);
 
 longline.transition()
 	.attr("y1", bottomLineY)
 	.attr("y2", bottomLineY)
 	.duration(500)
-	.delay(24000);
+	.delay(26000);
 
 ticks.transition()
 	.attr("y1", bottomLineY - 20)
 	.attr("y2", bottomLineY + 20)
 	.duration(500)
-	.delay(24000);
+	.delay(26000);
 
 labels2.transition()
 	.attr("y", bottomLineY + 40)
 	.duration(500)
-	.delay(24000);
+	.delay(26000);
 
 text4.transition()
 	.attr("font-size", 18)
@@ -302,14 +347,14 @@ text4.transition()
 	.attr("font-variant", "null")
 	.ease(d3.easeLinear)
 	.duration(500)
-	.delay(24000);
+	.delay(26000);
 
 
 let redirect = function() {
 	window.location.href="childhood.html";
 }
 
-setTimeout(redirect, 24000);
+setTimeout(redirect, 26000);
 
 
 

@@ -90,8 +90,8 @@ var longline = svg.append("line")
 	var keys = ["lifeExpec", "population", "skillsBox1", "skillsBox2"]
 
 	let labels = new Map([
-    	["lifeExpec", "life expectancy (yrs)"],
-	    ["population", "population (million)"],
+    	["lifeExpec", "life expectancy (years)"],
+	    ["population", "population (millions)"],
  	    ["skillsBox1", "skills"]
 	]);
 
@@ -144,7 +144,7 @@ let barChart = function() {
  		.attr("font-variant", "small-caps")
 	   	.attr("font-weight", "bold")
  	 	.style("font-size", 20)
-	 	.style("fill", "#353b3c")
+	 	.style('color', '#353b3c')
 	    .call(d3.axisBottom(x0).tickSize(0))
 	    .call(g => g.select(".domain").remove());
 
@@ -188,6 +188,7 @@ let barChart = function() {
 	let addHumans = svg => {
 		var humans = ["human1.png", "human2.png", "human3.png", "human4.png", "human5.png", "human6.png"]
 		var ages = [(Math.round(lifeExpectancy * (0.5 / 71) * 12).toString() + " mo"), (Math.round(lifeExpectancy * (6 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (14 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (16 / 71)).toString() + " yrs")]
+		var heightImgs = ["height1.png", "height2.png", "height3.png", "height4.png", "height5.png", "height6.png"]
 
 		const g = svg
 	    	.selectAll("g")
@@ -203,12 +204,12 @@ let barChart = function() {
 	      .attr("opacity", 1);
 
 	    let legendCover = svg.append("rect").attr("transform", `translate(0,100)`)
-	    	.attr("width", 250)
-	      	.attr("height", 200)
+	    	.attr("width", 235)
+	      	.attr("height", 150)
 	      	.attr("fill", "#eef0f2")
 	      	.attr("opacity", 1);
 
-  	    var labels = g.append("text")
+  	    var labels = g.append("text") //x-axis age labels
   	    .attr("transform", `translate(${1100/12},${height + 176})`)
   	    .text((d, i) => ages[i])
   	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
@@ -250,6 +251,13 @@ let barChart = function() {
   	    	.call(reappear(n));
   	    });
 
+  	    var heights = g.append("image")
+  	  	.data(data)
+  	  	.attr("transform", d => `translate(0,${d["skillsBox1"]})`)
+  	  	.attr("xlink:href", (d, i) => heightImgs[i])
+  	    .attr("width", 1100/6)
+  	    .attr("opacity", 0);
+
   	    human.transition()
   	    	.attr("opacity", 1)
   	    	.duration(250)
@@ -261,8 +269,10 @@ let barChart = function() {
   	    	.delay((d, i) => 250 * i);
 
 
-
-  	    //append images of height marks here, these stay opaque the whole time
+  	    heights.transition()
+  	    	.attr("opacity", 1)
+  	    	.duration(250)
+  	    	.delay((d, i) => 250 * i ); 	    //append images of height marks here, these stay opaque the whole time
 
 	}
 
@@ -316,7 +326,7 @@ let barChart = function() {
 	     //  .on("mouseover", function(d, i) {toggleClass(i+1, true)})
   		  // .on("mouseout", function(d, i) {toggleClass(i+1, false)});
 
-  	  svg.append("g")
+  	  var values = svg.append("g") //value labels!
 	    .selectAll("g")
 	    .attr("id", "#viz")
 	    .data(data)
@@ -325,13 +335,15 @@ let barChart = function() {
 	    .selectAll("text")
 	    .data(d => keys.map(key => ({key, value: d[key]})))
 	    .join("text")
-	      .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : (d.value * 100).toFixed(3)))
+	      .text(d => (d.key === "skillsBox1" || d.key === "skillsBox2") ? "" : (d.key === "lifeExpec" ? Math.round(d.value) : parseFloat((d.value * 100).toPrecision(3))))
 	      .attr("x", d => x1(d.key) + (x1.bandwidth() / 2))
-	      .attr("y", d => y(d.value) - 5)
+	      .attr("y", d => (d.key === "lifeExpec") ? y(d.value) * (babyHeight/ 33) + 115 : y(d.value) + 115)
 	      .attr("fill", "#353b3c")
 	      .style("font", "bold 14px var(--sans-serif)")
+	      .style("font-size", "14px")
+	      .style("font-weight", "bold")
       	  .style("font-variant-numeric", "tabular-nums")
-	      .attr("opacity", 1);
+	      .attr("opacity", 0);
 
 	   var skills = svg.append("g")
 	    .selectAll("g")
@@ -346,7 +358,7 @@ let barChart = function() {
 	      .attr("y", (d, i) => bottomLineY - 60 - 60*i)
 	      .attr("fill", "#353b3c")
 	      .style("font", "bold 10px var(--sans-serif)")
-      	  .attr("font-variant", "small-caps")
+      	  .style("font-variant", "small-caps")
 	      .attr("opacity", 0);
 
 
@@ -363,6 +375,11 @@ let barChart = function() {
 	  	  .attr("opacity", 1)
 	  	  .duration(0)
 	  	  .delay(1800); 
+
+	  values.transition()
+	  	  .attr("opacity", 1)
+	  	  .duration(0)
+	  	  .delay(1800);
 
 	  skills.transition()
 	  	  .attr("opacity", 1)
@@ -404,6 +421,8 @@ let exitTransition = function() {
 
 	var longLineLength = 1000;
 	var bottomLineY = 550;
+
+	width = +svg.attr("width");
 
 	title.transition().style("opacity", 0).duration(0).delay(0);
 
