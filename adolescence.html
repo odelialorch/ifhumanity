@@ -75,10 +75,10 @@ var longLineLength = 1000;
 var bottomLineY = 550;
 
 var humanityhuman = svg.append("image")
-  	.attr("height", 450)
-  	.attr("x", d => width / 2 - 225 / 2)
+  	.attr("x", width / 2 - 225 / 2 + 24)
   	.attr("y", 115)
   	.attr("xlink:href", "crowd_human.png")
+  	.attr("width", 1100/6)
   	.attr("opacity", 1);
 
 var longline = svg.append("line")

@@ -142,15 +142,24 @@ h3.every_page  {
   	text-align-last: center;
   	width: 140px;
   	height: 30px;
+  	background-color: #a2999e;
+  	color: white;
+  	border: 0px;
+
+/*  	font-family: Georgia;
+  	text-align: center;
+  	text-align-last: center;
+  	width: 140px;
+  	height: 30px;
   	background-color: #eef0f2;
   	color: #a2999e;
-  	outline: none;
+  	outline: none;*/
   	/*-webkit-appearance: none;*/
 }
 
 select:hover, select:focus{
     outline: none;
-    background-color: #353b3c;
+    background-color: #eef0f2;
     opacity: 0.6;
     color: #a2999e;
 }
@@ -301,6 +310,7 @@ select {
   	height: 30px;
   	background-color: #a2999e;
   	color: white;
+  	border: 0px;
   	/*-webkit-appearance: none;*/
 }
 

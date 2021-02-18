@@ -23,13 +23,13 @@
 	<h1 class = "title">Mortality Risks</h1>
 
 	<div class = "entrance">
-		<svg width="1200" height="600" text-anchor="middle" z-index="-10"></svg>
+		<svg width="1200" height="600" text-anchor="middle"></svg>
 	</div>
 
 
 	<div class = "risks row">
 		<div class = "column3">
-			<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+			<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle" z-index="10"></svg>
 		</div>
 
 		<div class = "column3">
@@ -88,10 +88,10 @@ var longLineLength = 1000;
 var bottomLineY = 550;
 
 var humanityhuman = svg.append("image")
-  	.attr("height", 450)
-  	.attr("x", d => width / 2 - 225 / 2)
+  	.attr("x", width / 2 - 225 / 2 + 24)
   	.attr("y", 115)
   	.attr("xlink:href", "crowd_human.png")
+  	.attr("width", 1100/6)
   	.attr("opacity", 1);
 
 var longline = svg.append("line")

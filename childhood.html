@@ -340,10 +340,11 @@ let barChart = function() {
 	    .selectAll("text")
 	    .data(d => d.skillset)
 	    .join("text")
-	      .text(d => d)
-	      .attr("y", (d, i) => (bottomLineY - ((bottomLineY - ___) / (d.length()) + 1) * (i + 1))
+	      .html(d => d)
+	      .attr("y", (d, i) => bottomLineY - 60 - 60*i)
+//	      .attr("y", (d, i) => (bottomLineY - ((bottomLineY - ___) / (d.length()) + 1) * (i + 1))
 	      .attr("fill", "#353b3c")
-	      .style("font", "bold 10px var(--sans-serif)")
+	      .style("font", "bold 2px var(--sans-serif)")
       	  .style("font-variant", "small-caps")
 	      .attr("opacity", 0);
 
@@ -432,10 +433,10 @@ let exitTransition = function() {
   	    .attr("opacity", 1);
 
   	var humanityhuman = svg.append("image")
-  	  	.attr("x", width / 2 - 225 / 2)
+  	  	.attr("x", width / 2 - 225 / 2 + 24)
   	  	.attr("y", 115)
   	  	.attr("xlink:href", "crowd_human.png")
-  	    .attr("height", 450)
+  	    .attr("width", 1100/6)
   	    .attr("opacity", 0);
 
 	// longline.transition()
