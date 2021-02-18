@@ -20,20 +20,20 @@
 	<span onclick="window.location.href='adolescence.html'" class="navigate left every_page">&#8249;</span>
 	<span onclick="window.location.href='acknowledgments.html'" class="navigate right every_page">&#8250;</span>
 
-	<h1 class = "title">Mortality Risks</h1>
-
-	<div class = "entrance">
-		<svg width="1200" height="600" text-anchor="middle"></svg>
-	</div>
+	
 
 
 	<div class = "risks row">
 		<div class = "column3">
-			<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle" z-index="10"></svg>
+			<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
 		</div>
 
 		<div class = "column3">
-			<h2 class = "blank">Blank</h2>
+			<h1 class = "title">Mortality Risks</h1>
+
+			<div class = "entrance">
+				<svg id="human" width="1100/6" height="600" text-anchor="middle" display="inline-block" margin="auto" position="relative" left="50%"></svg>
+			</div>
 		</div>
 
 		<div class = "column3">
@@ -80,9 +80,10 @@ $("body").keydown(function(e) {
   }
 });
 
-var svg = d3.select("body").select("svg"), 
-	width = +svg.attr("width"),
+var svg = d3.select("body").select("#human"), 
+	width = 1270,
  	height = +svg.attr("height");
+
 
 var longLineLength = 1000;
 var bottomLineY = 550;
@@ -225,8 +226,6 @@ d3.csv("test.csv").then(function(data) {
   	}
 
  	function bubbleChart(data) {
- 		console.log(data);
-
  		d3.select("body").append("p").data(data).text(function(d) {
  			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
  		});
@@ -307,10 +306,10 @@ d3.csv("test.csv").then(function(data) {
 
 });
 
-window.onbeforeunload = function(e){
-    document.getElementById('human').className = 'humanRisksToRoom';
-    document.getElementById('risks').className = 'fadeOut';
-}
+// window.onbeforeunload = function(e){
+//     document.getElementById('human').className = 'humanRisksToRoom';
+//     document.getElementById('risks').className = 'fadeOut';
+// }
 
 // makeBubbleChart();
 // document.getElementById("country").addEventListener("change", makeBubbleChart);
@@ -703,7 +702,5 @@ window.onbeforeunload = function(e){
 
 
 </script>
-
-</body>
 
 </html>

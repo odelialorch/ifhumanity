@@ -44,7 +44,7 @@ var svg = d3.select("body").select("svg"), //is this necessary?
 
 
 var text1 = svg.append("text")
-	.html("Homo sapiens could exist for <tspan class = 'italics'>at least</tspan> 1 MILLION* years.")
+	.html("Homo sapiens could exist for <tspan class = 'italics'>at least</tspan> <tspan class='turquoise'>1 MILLION</tspan> years.")
 	.attr("x", width/2)
 	.attr("y", 180)
 	.attr("font-family", "Georgia")
@@ -55,7 +55,7 @@ var text1 = svg.append("text")
 	.attr("opacity", 0);
 
 var text2 = svg.append("text")
-	.text("*this is the lifespan of an average mammalian species.")
+	.html("<tspan class='turquoise'>this is the lifespan of an average mammalian species.</tspan>")
 	.attr("x", width/2 + 200) 
 	.attr("y", 210)
 	.attr("font-family", "Georgia", "sans-serif")

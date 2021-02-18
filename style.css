@@ -209,7 +209,11 @@ select:hover, select:focus{
 }
 
 .italics {
-	font-style: italic;
+	font-style: italic !important;
+}
+
+.turquoise {
+	fill: #006d77 !important;
 }
 
 /*----------------------------------------CHILDHOOD.HTML----------------------------------------*/
@@ -311,6 +315,7 @@ select {
   	background-color: #a2999e;
   	color: white;
   	border: 0px;
+  	opacity: 0.5;
   	/*-webkit-appearance: none;*/
 }
 
