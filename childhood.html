@@ -5,6 +5,7 @@
 
 	<title>Childhood</title>
 	<script src="https://d3js.org/d3.v5.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -24,6 +25,15 @@
 </body>
 
 <script type="text/javascript">
+
+$("body").keydown(function(e) {
+  if(e.which == 37) { // left     
+      $(".left").trigger("click");
+  }
+  else if(e.which == 39) { // right     
+      $(".right").trigger("click");
+  }
+});
 
 var title = d3.select("body").select("h1");
 
@@ -104,7 +114,7 @@ let x1 = d3.scaleBand()
 	 	.rangeRound([0, x0.bandwidth()])
 	 	.padding(0.05);
 
-	let y = d3.scaleLinear()
+let y = d3.scaleLinear()
 	.domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
 	.rangeRound([height - margin.bottom, margin.top]);
 
@@ -203,7 +213,7 @@ let barChart = function() {
   	    	legendCover.attr("opacity", 0);
   	    }
 
-  	    var reappear = function(n) {
+  	    var reappear = function() {
   	    	labels.attr("opacity", 1);
   	    	covers.attr("opacity", 1);
   	    	legendCover.attr("opacity", 1);
@@ -224,14 +234,14 @@ let barChart = function() {
   	    	var n = i;
   	    	d3.select(this)
   	    	.attr("opacity", 1)
-  	    	.call(reappear(n));
+  	    	.call(reappear());
   	    });
 
   	    var heights = g.append("image")
   	  	.data(data)
   	  	.attr("y", (d, i) => 
-  	  		skillHeights[i])
-//  	  	.attr("transform", d => `translate(0,${-d["skillsBox1"]})`)
+  	  		y(skillHeights[i]))
+  	  	.attr("transform", d => `translate(50,115)`)
   	  	.attr("xlink:href", (d, i) => heightImgs[i])
   	    .attr("width", 1100/6)
   	    .attr("opacity", 0);
@@ -246,12 +256,10 @@ let barChart = function() {
   	    	.duration(250)
   	    	.delay((d, i) => 250 * i);
 
-
   	    heights.transition()
   	    	.attr("opacity", 1)
   	    	.duration(250)
   	    	.delay((d, i) => 250 * i ); 	    //append images of height marks here, these stay opaque the whole time
-
 	}
 
 // 	let labels = svg => {
@@ -333,7 +341,7 @@ let barChart = function() {
 	    .data(d => d.skillset)
 	    .join("text")
 	      .text(d => d)
-	      .attr("y", (d, i) => bottomLineY - 60 - 60*i)
+	      .attr("y", (d, i) => (bottomLineY - ((bottomLineY - ___) / (d.length()) + 1) * (i + 1))
 	      .attr("fill", "#353b3c")
 	      .style("font", "bold 10px var(--sans-serif)")
       	  .style("font-variant", "small-caps")
@@ -416,6 +424,13 @@ let exitTransition = function() {
   	    .attr("width", 1100/6)
   	    .attr("opacity", 1);
 
+  	var humanheight = svg.append("image")
+  		.attr("x", x0("~2020") + 50)
+  		.attr("y", y(adolescentHeight) + 115)
+  	  	.attr("xlink:href", "height6.png")
+  	    .attr("width", 1100/6)
+  	    .attr("opacity", 1);
+
   	var humanityhuman = svg.append("image")
   	  	.attr("x", width / 2 - 225 / 2)
   	  	.attr("y", 115)
@@ -443,10 +458,16 @@ let exitTransition = function() {
 		.duration(500)
 		.delay(500);
 
+	humanheight.transition()
+		.attr("x", width / 2 - 225 / 2 + 24)
+		.ease(d3.easeLinear)
+		.duration(500)
+		.delay(500);
+
 	human6.transition()
 		.attr("opacity", 0)
 		.ease(d3.easeLinear)
-		.duration(2000)
+		.duration(1500)
 		.delay(1000);
 
 	humanityhuman.transition()

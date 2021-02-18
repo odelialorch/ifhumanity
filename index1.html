@@ -5,42 +5,78 @@
 
 	<title>If humanity were one human...</title>
 	<script src="https://d3js.org/d3.v5.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body>
 	<div id = "intro">
-		<a class="next close" href = "intro.html">&times;</a>
-		<h1 style = "position: relative; text-align: center; top: 50px; left: 20px;" class = "title">Welcome!</h1>
-
-		<div class = "questions">
-
-			<h2>Where do you live?</h2>
-			<select id="country">
-	<!-- 			<option value="51.7" selected>Afghanistan</option>
-				<option value="78.5">Albania</option>
-				<option value="75.7">China</option> -->
-				<option value="79.5">Denmark</option>
-				<option value="75.2">Malaysia</option>
-			</select>
-
-			<h2>How optimistic are you about the future of humanity?</h1>
-			<div class = "smileys">
-				<img src = "face1.png">
-				<img src = "face2.png">
-				<img src = "face3.png">
-				<img src = "face4.png">
-				<img src = "face5.png">
-			</div>
+		<div class = "t1">
+			<a class="next close" href = "intro.html">&times;</a>
+			<h1 style = "position: relative; text-align: center; top: 50px; left: 20px;" class = "title">Welcome!</h1>
 		</div>
 
-		<a class="next continue" href = "intro.html" style = "position: relative; text-align: center;">continue &#8250;</a>
+		<div class = "questions">
+			<div class = "t2">
+				<h2>Where do you live?</h2>
+				<select id="country">
+		<!-- 			<option value="51.7" selected>Afghanistan</option>
+					<option value="78.5">Albania</option>
+					<option value="75.7">China</option> -->
+					<option value="79.5">Denmark</option>
+					<option value="75.2">Malaysia</option>
+				</select>
+			</div>
+
+			<div class = "t3">
+				<h2>How optimistic are you about the future of humanity?</h2>
+				<div class = "smileys">
+					<img src = "face1.png">
+					<img src = "face2.png">
+					<img src = "face3.png">
+					<img src = "face4.png">
+					<img src = "face5.png">
+				</div>
+			</div>
+		</div>
+		<div class = "t4">
+			<a class="next continue" href = "intro.html" style = "position: relative; text-align: center;">continue &#8250;</a>
+		</div>
 	</div>
 
 </body>
 
 <script type="text/javascript">
+
+//transition in
+
+let box = d3.select("#intro");
+let t1 = d3.select("body").selectAll(".t1");
+let t2 = d3.select("body").selectAll(".t2");
+let t3 = d3.select("body").selectAll(".t3");
+let t4 = d3.select("body").selectAll(".t4");
+
+box.style("background-color", "#eef0f2");
+t1.attr("class", "transition").style("opacity", 0);
+t2.attr("class", "transition").style("opacity", 0);
+t3.attr("class", "transition").style("opacity", 0);
+t4.attr("class", "transition").style("opacity", 0);
+
+let transitions = d3.selectAll(".transition");
+
+
+box.transition()
+	.style("background-color", "white")
+	.ease(d3.easeLinear)
+	.duration(200)
+	.delay(500);
+
+transitions.transition()
+	.style("opacity", 1)
+	.ease(d3.easeLinear)
+	.duration(200)
+	.delay((d, i) => 500 + 200*i);
 
 //cursor on clickable items
 

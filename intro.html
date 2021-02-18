@@ -5,13 +5,14 @@
 
 	<title>Intro</title>
 	<script src="https://d3js.org/d3.v5.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
 
 <body>
-	<a href="index.html" class="navigate left every_page">&#8249;</a>
-	<a href="childhood.html" class="navigate right every_page">&#8250;</a>
+	<span onclick="window.location.href='index.html'" class="navigate left every_page">&#8249;</span>
+	<span onclick="window.location.href='childhood.html'" class="navigate right every_page">&#8250;</span>
 	
 	<div class = "entrance ">
 		<svg width="1200" height="600" text-anchor="middle"></svg>
@@ -22,6 +23,15 @@
 </body>
 
 <script type="text/javascript">
+
+$("body").keydown(function(e) {
+  if(e.which == 37) { // left     
+      $(".left").trigger("click");
+  }
+  else if(e.which == 39) { // right     
+      $(".right").trigger("click");
+  }
+});
 
 var longLineLength = 1000;
 var bottomLineY = 550;

@@ -5,6 +5,7 @@
 
 	<title>Adolescence</title>
 	<script src="https://d3js.org/d3.v5.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -55,6 +56,14 @@
 
 <script type="text/javascript">
 
+$("body").keydown(function(e) {
+  if(e.which == 37) { // left     
+      $(".left").trigger("click");
+  }
+  else if(e.which == 39) { // right     
+      $(".right").trigger("click");
+  }
+});
 
 var svg = d3.select("body").select("svg"), 
 	width = +svg.attr("width"),
@@ -90,9 +99,6 @@ title.transition().style("opacity", 1).duration(1000).delay(0);
 
 let exitTransition = function() {
 
-	var longLineLength = 1000;
-	var bottomLineY = 550;
-
 	var page = d3.select("html");
 
 	title.transition().style("opacity", 0).duration(1000).delay(0);
@@ -104,7 +110,8 @@ let exitTransition = function() {
  //    .attr("r", "60%").duration(1000).delay(0);
 
 	
- 	page.style("background-color", "#eef0f2");
+ 	page.transition().style("background-color", "#c6c7c4")
+		.duration(1000).delay(0);
 
 	page.transition().style("background", 'radial-gradient(transparent 60%, black)')
 		.ease(d3.easeExpOut)
@@ -113,7 +120,7 @@ let exitTransition = function() {
 	let exit = function() {
 		window.location.href="risks.html";
 	}
-	setTimeout(exit, 3000);
+	setTimeout(exit, 4000);
 }
 
 </script>
