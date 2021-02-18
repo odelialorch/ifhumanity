@@ -19,6 +19,11 @@
 <a href="adolescence.html" class="navigate left every_page">&#8249;</a>
 <a href="acknowledgments.html" class="navigate right every_page">&#8250;</a>
 
+<h1 class = "title">Mortality Risks</h1>
+
+<div class = "entrance">
+	<svg width="1200" height="600" text-anchor="middle"></svg>
+</div>
 
 
 <div class = "risks row">
@@ -27,8 +32,7 @@
 	</div>
 
 	<div class = "column3">
-		<h1 class = "title">Mortality Risks</h1>
-		<img class = "human" src = "crowd_human.png"> <!-- use js here to add line behind/underneath  -->
+		<h2 class = "blank">Blank</h2>
 	</div>
 
 	<div class = "column3">
@@ -63,6 +67,34 @@
 
 
 <script type="text/javascript">
+
+var svg = d3.select("body").select("svg"), 
+	width = +svg.attr("width"),
+ 	height = +svg.attr("height");
+
+var longLineLength = 1000;
+var bottomLineY = 550;
+
+var humanityhuman = svg.append("image")
+  	.attr("height", 450)
+  	.attr("x", d => width / 2 - 225 / 2)
+  	.attr("y", 115)
+  	.attr("xlink:href", "crowd_human.png")
+  	.attr("opacity", 1);
+
+var longline = svg.append("line")
+    .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
+		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
+		.attr("y1", bottomLineY).attr("y2", bottomLineY)
+    .attr("stroke-width", 2)
+    .attr("stroke", "#353b3c");
+
+var title = d3.select("body").select("h1")
+	.style("opacity", 0);
+
+title.transition().style("opacity", 1).duration(1000).delay(0);
+
+
 
 let probExamples = [{"value": 6, "example": " roll a 2 with any die."}, {"value": 7, "example": "r friend was born on a Tuesday"}, {"value": 8, "example": " flip a coin Tails three times in a row"}]
 
@@ -189,7 +221,7 @@ d3.csv("test.csv").then(function(data) {
 
  		let format = d3.format(",d");
 
- 		var svg = d3.select("body").select("svg"),
+ 		var svg = d3.select("body").select("#bubble_chart"),
  		width = +svg.attr("width"),
  		height = +svg.attr("height");
 
@@ -249,7 +281,7 @@ d3.csv("test.csv").then(function(data) {
 		let updata = riskMatching();
 		console.log(updata);
 
- 		svg = d3.select("body").select("svg"),
+ 		svg = d3.select("body").select("#bubble_chart"),
  		width = +svg.attr("width"),
  		height = +svg.attr("height");
 

@@ -16,10 +16,10 @@
 	<span onclick="exitTransition()" class="navigate right every_page">&#8250;</span>
 
 	<div class = "entrance">
-		<svg id = "timeline" width="1200" height="600" text-anchor="middle"></svg>
+		<svg width="1200" height="600" text-anchor="middle"></svg>
 	</div>
 
-	<h1 style = "position: relative; text-align: center; top: 40px;" class = "title">Adolescence</h1>
+	<h1 class = "title">Adolescence</h1>
 
 	<div class = "adolescence row">
  		<div class = "column5">
@@ -86,14 +86,14 @@ var quotes = d3.select("body").selectAll("p").data([0, 1]).style("opacity", 0);
 
 quotes.transition().style("opacity", 1).duration(2000).delay(function(i){return(2000 + i*3000)})
 
-title.transition().style("opacity", 1).duration(1000).delay(1000);
+title.transition().style("opacity", 1).duration(1000).delay(0);
 
 let exitTransition = function() {
 
 	var longLineLength = 1000;
 	var bottomLineY = 550;
 
-	var page = d3.select("body");
+	var page = d3.select("html");
 
 	title.transition().style("opacity", 0).duration(1000).delay(0);
 	quotes.transition().style("opacity", 0).duration(1000).delay(0);
@@ -104,7 +104,8 @@ let exitTransition = function() {
  //    .attr("r", "60%").duration(1000).delay(0);
 
 	
- 	d3.select("html").style("background-color", "#eef0f2");
+ 	page.style("background-color", "#eef0f2");
+
 	page.transition().style("background", 'radial-gradient(transparent 60%, black)')
 		.ease(d3.easeExpOut)
 		.duration(4000).delay(0);

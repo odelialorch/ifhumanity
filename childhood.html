@@ -10,13 +10,15 @@
 </head>
 
 <body>
+	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
+
 	<span onclick="window.location.href='intro.html'" class="navigate left every_page">&#8249;</span>
 	<span onclick="exitTransition()" class="navigate right every_page">&#8250;</span>
 
-	<h1 style = "top: 40px;" class = "title">Childhood</h1>
+	<h1 class = "title">Childhood</h1>
 	
 	<div class = "entrance">
-		<svg id = "timeline" width="1200" height="600" text-anchor="middle"></svg>
+		<svg width="1200" height="600" text-anchor="middle"></svg>
 	</div>
 
 </body>
@@ -47,99 +49,72 @@ var longline = svg.append("line")
     .attr("stroke-width", 2)
     .attr("stroke", "#353b3c");
 
-// var tickPosition = [(width - longLineLength) / 2, (width - longLineLength) / 2 + longLineLength, (width - longLineLength) / 2 + longLineLength*0.2];
-
-// var ticks = svg.selectAll("ticks")
-//   .data([0, 1, 2])
-//   .enter()
-//   .append("line")
-//   	.attr("stroke-width", 2)
-//     .attr("opacity", function(i) {return i===1 ? 0:1;})
-//     .attr("stroke", "#353b3c")
-// 	.attr("x1", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-// 	.attr("x2", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-// 	.attr("y1", bottomLineY - 20)
-// 	.attr("y2", bottomLineY + 20);
-
-// var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
-
-// var labels2 = svg.selectAll("labels2")	//humanLabels
-//   .data([0, 1, 2])
-//   .enter()
-//   .append("text")
-//   	.text(function(d) {return humanLabels[d]})
-//   	.attr("x", function(i) {return i===0 ? (width - longLineLength) / 2 : (width - longLineLength) / 2 + longLineLength;})
-//   	.attr("y", bottomLineY + 40)
-//   	.attr("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-// 	.attr("font-variant", "small-caps")
-// 	.attr("font-size", 20)
-// 	.attr("stroke", "#353b3c")
-//   	.attr("opacity", function(i) {return i===1 ? 0:1;});
-
-
-
-//CHART
+//-----------CHART-----------
 
 //	var svg = d3.select("body").select("svg");
 
-	var adolescentHeight = 80;
-	var babyHeight = adolescentHeight * (45.0 / 163);
+var adolescentHeight = 80;
+var babyHeight = adolescentHeight * (45.0 / 163);
 
-	var data = [{"year": "~15000 BCE", "lifeExpec": 33, "population": 0.01, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": 28, "population": 0.0243, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": 33, "population": 0.721, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": 29, "population": 5.54, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": 29, "population": 8.12, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": 71, "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
+//-----------DATA-----------
 
-	var keys = ["lifeExpec", "population", "skillsBox1", "skillsBox2"]
+var data = [{"year": "~15000 BCE", "lifeExpec": 33, "population": 0.01, "skillsBox1": adolescentHeight * (45.0 / 163), "skillsBox2": adolescentHeight * (45.0 / 163)}, {"year": "~10000 BCE", "lifeExpec": 28, "population": 0.0243, "skillsBox1": adolescentHeight * (110.0 / 163), "skillsBox2": adolescentHeight * (110.0 / 163)}, {"year": "~2000 BCE", "lifeExpec": 33, "population": 0.721, "skillsBox1": adolescentHeight * (145.0 / 163), "skillsBox2": adolescentHeight * (145.0 / 163)}, {"year": "~1600", "lifeExpec": 29, "population": 5.54, "skillsBox1": adolescentHeight * (156.0 / 163), "skillsBox2": adolescentHeight * (156.0 / 163)}, {"year": "~1760", "lifeExpec": 29, "population": 8.12, "skillsBox1": adolescentHeight * (160.0 / 163), "skillsBox2": adolescentHeight * (160.0 / 163)}, {"year": "~2020", "lifeExpec": 71, "population": 76.92, "skillsBox1": adolescentHeight, "skillsBox2": adolescentHeight}]
 
-	let labels = new Map([
-    	["lifeExpec", "life expectancy (years)"],
-	    ["population", "population (millions)"],
- 	    ["skillsBox1", "skills"]
-	]);
+var keys = ["lifeExpec", "population", "skillsBox1", "skillsBox2"]
 
-	let skills1 = ["hunting and foraging"]
-	let skills2 = ["agriculture", "cities"]
-	let skills3 = ["writing", "mathematics", "law"]
-	let skills4 = ["scientific method", "heliocentric astronomy", "physiology", "telescope"]
-	let skills5 = ["typewriting", "photography", "steam and water wheel", "telegraph communication", "factories", "steam power"]
-	let skills6 = ["internet", "artificial intelligence", "biotechnology", "nanotechnology", "nuclear weapons", "space exploration"]
+let labels = new Map([
+	["lifeExpec", "life expectancy (years)"],
+    ["population", "population (millions)"],
+	    ["skillsBox1", "skills"]
+]);
 
-	let dataWithSkills = [
-    	{"year": "~15000 BCE", "skillset": skills1},
-	    {"year": "~10000 BCE", "skillset": skills2},
- 	    {"year": "~2000 BCE", "skillset": skills3},
- 	    {"year": "~1600", "skillset": skills4},
- 	    {"year": "~1760", "skillset": skills5},
- 	    {"year": "~2020", "skillset": skills6}]
+let skills1 = ["hunting and foraging"]
+let skills2 = ["agriculture", "cities"]
+let skills3 = ["writing", "mathematics", "law"]
+let skills4 = ["scientific method", "heliocentric astronomy", "physiology", "telescope"]
+let skills5 = ["typewriting", "photography", "steam and water wheel", "telegraph communication", "factories", "steam power"]
+let skills6 = ["internet", "artificial intelligence", "biotechnology", "nanotechnology", "nuclear weapons", "space exploration"]
 
-	let margin = ({top: 0, right: 0, bottom: 0, left: 0});
+let dataWithSkills = [
+	{"year": "~15000 BCE", "skillset": skills1},
+    {"year": "~10000 BCE", "skillset": skills2},
+	    {"year": "~2000 BCE", "skillset": skills3},
+	    {"year": "~1600", "skillset": skills4},
+	    {"year": "~1760", "skillset": skills5},
+	    {"year": "~2020", "skillset": skills6}]
 
-	height = 420;
+//-----------BAR CHART POSITIONING AND COLORS-----------
 
-	width = 1100;
+let margin = ({top: 0, right: 0, bottom: 0, left: 0});
 
-	let color = d3.scaleOrdinal()
-	    .range(["#98abc5", "#8a89a6", "#eef0f2", "#eef0f2", "#a05d56", "#d0743c", "#ff8c00"]);
+height = 420;
 
-	let x0 = d3.scaleBand()
-   		.domain(data.map(d => d["year"]))
-   		.rangeRound([0, width])
-    	.paddingInner(0.1);
+width = 1100;
 
-    let x1 = d3.scaleBand()
-   	 	.domain(keys)
-   	 	.rangeRound([0, x0.bandwidth()])
-  	 	.padding(0.05);
+let color = d3.scaleOrdinal()
+    .range(["#98abc5", "#8a89a6", "#eef0f2", "#eef0f2", "#a05d56", "#d0743c", "#ff8c00"]);
 
-  	let y = d3.scaleLinear()
-    	.domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
-    	.rangeRound([height - margin.bottom, margin.top]);
+let x0 = d3.scaleBand()
+		.domain(data.map(d => d["year"]))
+		.rangeRound([0, width])
+	.paddingInner(0.1);
 
-    console.log(y(80));
+let x1 = d3.scaleBand()
+	 	.domain(keys)
+	 	.rangeRound([0, x0.bandwidth()])
+	 	.padding(0.05);
+
+	let y = d3.scaleLinear()
+	.domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
+	.rangeRound([height - margin.bottom, margin.top]);
+
+console.log(y(80));
 
 
 let barChart = function() {
 
 	let xAxis = g => g
-	    .attr("transform", `translate(0,${height + 157})`)
+	    .attr("transform", `translate(50,${height + 157})`)
 	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
  		.attr("font-variant", "small-caps")
 	   	.attr("font-weight", "bold")
@@ -189,6 +164,7 @@ let barChart = function() {
 		var humans = ["human1.png", "human2.png", "human3.png", "human4.png", "human5.png", "human6.png"]
 		var ages = [(Math.round(lifeExpectancy * (0.5 / 71) * 12).toString() + " mo"), (Math.round(lifeExpectancy * (6 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (14 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (15 / 71)).toString() + " yrs"), (Math.round(lifeExpectancy * (16 / 71)).toString() + " yrs")]
 		var heightImgs = ["height1.png", "height2.png", "height3.png", "height4.png", "height5.png", "height6.png"]
+		var skillHeights = [adolescentHeight * (45.0 / 163), adolescentHeight * (110.0 / 163), adolescentHeight * (145.0 / 163), adolescentHeight * (156.0 / 163), adolescentHeight * (160.0 / 163), adolescentHeight]
 
 		const g = svg
 	    	.selectAll("g")
@@ -197,7 +173,7 @@ let barChart = function() {
 	      	  .attr("transform", d => `translate(${x0(d["year"])},0)`);
 
 	    var covers = g.append("rect")
-  	      .attr("transform", `translate(0,${height + 158})`)
+  	      .attr("transform", `translate(50,${height + 158})`)
 	      .attr("width", 1100/6)
 	      .attr("height", 25)
 	      .attr("fill", "#eef0f2")
@@ -210,7 +186,7 @@ let barChart = function() {
 	      	.attr("opacity", 1);
 
   	    var labels = g.append("text") //x-axis age labels
-  	    .attr("transform", `translate(${1100/12},${height + 176})`)
+  	    .attr("transform", `translate(${1100/12 + 50},${height + 176})`)
   	    .text((d, i) => ages[i])
   	    .style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
   	    .attr("text-align", "center")
@@ -234,7 +210,7 @@ let barChart = function() {
   	    }
 
 	    var human = g.append("image")
-  	  	.attr("transform", d => `translate(0,120)`)
+  	  	.attr("transform", d => `translate(50,120)`)
   	  	.attr("xlink:href", (d, i) => humans[i])
   	    .attr("width", 1100/6)
   	    .attr("opacity", 0)
@@ -253,7 +229,9 @@ let barChart = function() {
 
   	    var heights = g.append("image")
   	  	.data(data)
-  	  	.attr("transform", d => `translate(0,${d["skillsBox1"]})`)
+  	  	.attr("y", (d, i) => 
+  	  		skillHeights[i])
+//  	  	.attr("transform", d => `translate(0,${-d["skillsBox1"]})`)
   	  	.attr("xlink:href", (d, i) => heightImgs[i])
   	    .attr("width", 1100/6)
   	    .attr("opacity", 0);
@@ -313,7 +291,7 @@ let barChart = function() {
 	    .attr("id", "#viz")
 	    .data(data)
 	    .join("g")
-	      .attr("transform", d => `translate(${x0(d["year"])},120)`)
+	      .attr("transform", d => `translate(${50 + x0(d["year"])},120)`)
 	    .selectAll("rect")
 	    .data(d => keys.map(key => ({key, value: d[key]})))
 	    .join("rect")
@@ -331,7 +309,7 @@ let barChart = function() {
 	    .attr("id", "#viz")
 	    .data(data)
 	    .join("g")
-	      .attr("transform", d => `translate(${x0(d["year"])},0)`)
+	      .attr("transform", d => `translate(${50 + x0(d["year"])},0)`)
 	    .selectAll("text")
 	    .data(d => keys.map(key => ({key, value: d[key]})))
 	    .join("text")
@@ -350,7 +328,7 @@ let barChart = function() {
 	    .attr("id", "#viz")
 	    .data(dataWithSkills)
 	    .join("g")
-	      .attr("transform", d => `translate(${x0(d["year"]) + (x0.bandwidth() / 2) + x1.bandwidth()},0)`)
+	      .attr("transform", d => `translate(${50 + x0(d["year"]) + (x0.bandwidth() / 2) + x1.bandwidth()},0)`)
 	    .selectAll("text")
 	    .data(d => d.skillset)
 	    .join("text")
@@ -424,7 +402,7 @@ let exitTransition = function() {
 
 	width = +svg.attr("width");
 
-	title.transition().style("opacity", 0).duration(0).delay(0);
+	title.transition().style("opacity", 0).duration(500).delay(0);
 
 	var longline = svg.append("line")
     	.attr("x1", (width - longLineLength) / 2).attr("y1", bottomLineY).attr("x2", (width - longLineLength) / 2 + longLineLength).attr("y2", bottomLineY)
@@ -432,35 +410,35 @@ let exitTransition = function() {
     	.attr("stroke", "#353b3c");
 
     var human6 = svg.append("image")
-  	  	.attr("x", x0("~2020"))
+  	  	.attr("x", x0("~2020") + 50)
   	  	.attr("y", 120)
   	  	.attr("xlink:href", "human6.png")
   	    .attr("width", 1100/6)
   	    .attr("opacity", 1);
 
   	var humanityhuman = svg.append("image")
-  	  	.attr("x", width / 2 - 27 - 40)
+  	  	.attr("x", width / 2 - 225 / 2)
   	  	.attr("y", 115)
   	  	.attr("xlink:href", "crowd_human.png")
   	    .attr("height", 450)
   	    .attr("opacity", 0);
 
-	longline.transition()
-		.attr("x1", (width - longLineLength) / 2 + longLineLength * 5/6)
-		.duration(0)
-		.delay(0);
+	// longline.transition()
+	// 	.attr("x1", (width - longLineLength) / 2 + longLineLength * 5/6 + 50)
+	// 	.duration(0)
+	// 	.delay(0);
 
 
 
 	longline.transition()
-		.attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12 + 55)
-		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12 + 55)
+		.attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
+		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
 		.ease(d3.easeLinear)
 		.duration(500)
-		.delay(500);
+		.delay(1000);
 
 	human6.transition()
-		.attr("x", width / 2 - 40)
+		.attr("x", width / 2 - 225 / 2 + 24)
 		.ease(d3.easeLinear)
 		.duration(500)
 		.delay(500);

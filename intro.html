@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Childhood</title>
+	<title>Intro</title>
 	<script src="https://d3js.org/d3.v5.js"></script>
 	<link href="style.css" type="text/css" rel="stylesheet">
 
@@ -13,8 +13,8 @@
 	<a href="index.html" class="navigate left every_page">&#8249;</a>
 	<a href="childhood.html" class="navigate right every_page">&#8250;</a>
 	
-	<div class = "entrance">
-		<svg id = "timeline" width="1200" height="600" text-anchor="middle"></svg>
+	<div class = "entrance ">
+		<svg width="1200" height="600" text-anchor="middle"></svg>
 	</div>
 
 	<a class="next continue" href = "childhood.html" style = "position: absolute; text-align: center; margin-top: 450px; opacity: 0.1;">skip &#8250;</a>
@@ -23,21 +23,18 @@
 
 <script type="text/javascript">
 
-var title = d3.select("body").select("h1");
-title.style("opacity", 0).attr("transform", `translate(0,143)`);
-
 var longLineLength = 1000;
 var bottomLineY = 550;
 var lifeExpectancy = localStorage.getItem("expectancy");
 var country = localStorage.getItem("country");
 
-var svg = d3.select("body").select("svg"), 
+var svg = d3.select("body").select("svg"), //is this necessary?
 	width = +svg.attr("width"),
  	height = +svg.attr("height");;
 
 
 var text1 = svg.append("text")
-	.text("Homo sapiens could exist for 1 MILLION* years.")
+	.html("Homo sapiens could exist for <tspan class = 'italics'>at least</tspan> 1 MILLION* years.")
 	.attr("x", width/2)
 	.attr("y", 180)
 	.attr("font-family", "Georgia")
@@ -80,6 +77,9 @@ var text4 = svg.append("text")
 	.attr("font-size", 35)
 	.attr("opacity", 0);
 	
+
+//TIMELINE WITH TICKS
+
 var longline = svg.append("line")
     .attr("x1", (width - longLineLength) / 2).attr("y1", 300).attr("x2", (width - longLineLength) / 2 + longLineLength).attr("y2", 300)
     .attr("stroke-width", 2)
@@ -96,6 +96,9 @@ var ticks = svg.selectAll("ticks")
     .attr("opacity", 0)
     .attr("x1", function(d){return tickPosition[d]} ).attr("y1", 280)
     .attr("x2", function(d){return tickPosition[d]} ).attr("y2", 320);
+
+
+//LABELS
 
 var humanityLabels = ["200K BCE", "800K CE", "2020 CE"]
 var humanLabels = ["Birth", Math.round(lifeExpectancy) + " years old", Math.round(lifeExpectancy * 0.2) + " years old"]
@@ -323,7 +326,7 @@ labels1.transition()
 longline.transition()
 	.attr("y1", bottomLineY)
 	.attr("y2", bottomLineY)
-	.duration(500)
+	.duration(1000)
 	.delay(26000);
 
 ticks.transition()
@@ -334,7 +337,7 @@ ticks.transition()
 
 labels2.transition()
 	.attr("y", bottomLineY + 40)
-	.duration(500)
+	.duration(1000)
 	.delay(26000);
 
 text4.transition()
@@ -346,7 +349,7 @@ text4.transition()
 	.text("If humanity were one human...")
 	.attr("font-variant", "null")
 	.ease(d3.easeLinear)
-	.duration(500)
+	.duration(1000)
 	.delay(26000);
 
 
@@ -354,7 +357,7 @@ let redirect = function() {
 	window.location.href="childhood.html";
 }
 
-setTimeout(redirect, 26000);
+setTimeout(redirect, 27000);
 
 
 
