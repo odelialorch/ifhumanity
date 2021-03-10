@@ -261,7 +261,7 @@ d3.csv("test.csv").then(function(data) {
       	.attr("xlink:href", function(d) { return "#" + d.id; });
 
       	node.append('image')
- //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
+        .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
  		.attr('width', function(d) { return d.r*2; })
  		.attr('height', function(d) { return d.r*2; })
  		.attr('xlink:href', function(d) { return d.data.himg; })
