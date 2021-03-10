@@ -80,7 +80,7 @@ $("body").keydown(function(e) {
   }
 });
 
-var svg = d3.select("body").select("#human"), 
+var svg1 = d3.select("body").select("#human"), 
 	width = +svg.attr("width");
  	height = +svg.attr("height");
 
@@ -89,14 +89,14 @@ var svg = d3.select("body").select("#human"),
 var longLineLength = 1000;
 var bottomLineY = 550;
 
-var humanityhuman = svg.append("image")
+var humanityhuman = svg1.append("image")
   	.attr("x", width / 2 - 225 / 2 + 24)
   	.attr("y", 115)
   	.attr("xlink:href", "crowd_human.png")
   	.attr("width", 1100/6)
   	.attr("opacity", 1);
 
-var longline = svg.append("line")
+var longline = svg1.append("line")
     .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
 		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
 		.attr("y1", bottomLineY).attr("y2", bottomLineY)
@@ -227,9 +227,9 @@ d3.csv("test.csv").then(function(data) {
   	}
 
  	function bubbleChart(data) {
- 		d3.select("body").append("p").data(data).text(function(d) {
- 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
- 		});
+ 		// d3.select("body").append("p").data(data).text(function(d) {
+ 		// 	return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
+ 		// });
 
  		let format = d3.format(",d");
 
