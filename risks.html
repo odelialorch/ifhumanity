@@ -18,7 +18,7 @@
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
 
 	<span onclick="window.location.href='adolescence.html'" class="navigate left every_page">&#8249;</span>
-	<span onclick="window.location.href='risks2.html'" class="navigate right every_page">&#8250;</span>
+	<span onclick="window.location.href='acknowledgments.html'" class="navigate right every_page">&#8250;</span>
 
 	
 
@@ -32,7 +32,7 @@
 			<h1 class = "title">Mortality Risks</h1>
 
 			<div class = "entrance">
-				<svg id="human" width="1100/6" height="600" text-anchor="middle" display="inline-block" margin="auto" position="relative" left="50%"></svg>
+				<svg id="human" width="183.3" height="600" text-anchor="middle" display="inline-block" margin="auto" position="relative" left="50%"></svg>
 			</div>
 		</div>
 
@@ -81,8 +81,9 @@ $("body").keydown(function(e) {
 });
 
 var svg = d3.select("body").select("#human"), 
-	width = 1270,
+	width = +svg.attr("width");
  	height = +svg.attr("height");
+
 
 
 var longLineLength = 1000;
