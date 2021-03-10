@@ -269,18 +269,18 @@ d3.csv("test.csv").then(function(data) {
    		.on("mouseover", function(d){    //switches to x-risk image on mouseover
     		d3.select(this)
     			.attr('xlink:href', function(d) { return d.data.ximg; });
-    		d3.select("body").("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
-    		d3.select("body").("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-    		d3.select("body").("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-    		d3.select("body").("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example);
+    		d3.select("body").select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
+    		d3.select("body").select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
+    		d3.select("body").select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
+    		d3.select("body").select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example);
     	})
     	.on("mouseout", function(){     //switches back
     		d3.select(this)
     			.attr('xlink:href', function(d) { return d.data.himg; });
-    		d3.select("body").("#risk").text("");
-    		d3.select("body").("#hrisk").text("");
-    		d3.select("body").("#xrisk").text("");
-    		d3.select("body").("#prob").text("");
+    		d3.select("body").select("#risk").text("");
+    		d3.select("body").select("#hrisk").text("");
+    		d3.select("body").select("#xrisk").text("");
+    		d3.select("body").select("#prob").text("");
     	});
 
     	node.append("title")
