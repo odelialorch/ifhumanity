@@ -303,7 +303,7 @@ d3.csv("data.csv").then(function(data) {
  		bubbleChart(updata);
 	}
 
-	d3.select("body").select("svg").selectAll(".node").addEventListener("mouseover", function(d){
+	d3.select("body").select("svg").selectAll(".node").on("mouseover", function(d){
 		d3.select(this)
 			.attr('xlink:href', function(d) { return d.data.ximg; });
 		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
@@ -312,7 +312,7 @@ d3.csv("data.csv").then(function(data) {
 		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
 		});
 
-	d3.select("body").select("svg").selectAll(".node").addEventListener("mouseout", function(){     //switches back
+	d3.select("body").select("svg").selectAll(".node").on("mouseout", function(){     //switches back
 		d3.select(this)
 			.attr('xlink:href', function(d) { return d.data.himg; });
 		d3.select("#risk").text("");
