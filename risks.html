@@ -303,14 +303,7 @@ d3.csv("data.csv").then(function(data) {
  		bubbleChart(updata);
 	}
 
-	let pack = d3.pack()
- 			.size([width - 2, height - 2])
- 			.padding(3);
-
-	const root = d3.hierarchy({children: data})
- 			.sum(function(d) {return d.value; });
-
-	d3.select("body").select("svg").selectAll(".node").data(pack(root).leaves()).addEventListener("mouseover", function(d){
+	d3.select("body").select("svg").selectAll(".node").addEventListener("mouseover", function(d){
 		d3.select(this)
 			.attr('xlink:href', function(d) { return d.data.ximg; });
 		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
@@ -319,7 +312,7 @@ d3.csv("data.csv").then(function(data) {
 		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
 		});
 
-	d3.select("body").select("svg").selectAll(".node").data(pack(root).leaves()).addEventListener("mouseout", function(){     //switches back
+	d3.select("body").select("svg").selectAll(".node").addEventListener("mouseout", function(){     //switches back
 		d3.select(this)
 			.attr('xlink:href', function(d) { return d.data.himg; });
 		d3.select("#risk").text("");
