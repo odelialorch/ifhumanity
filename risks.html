@@ -80,28 +80,28 @@ $("body").keydown(function(e) {
   }
 });
 
-var svg1 = d3.select("body").select("#human"), 
-	width = +svg1.attr("width");
- 	height = +svg1.attr("height");
+// var svg1 = d3.select("body").select("#human"), 
+// 	width = +svg1.attr("width");
+//  	height = +svg1.attr("height");
 
 
 
-var longLineLength = 1000;
-var bottomLineY = 550;
+// var longLineLength = 1000;
+// var bottomLineY = 550;
 
-var humanityhuman = svg1.append("image")
-  	.attr("x", width / 2 - 225 / 2 + 24)
-  	.attr("y", 115)
-  	.attr("xlink:href", "crowd_human.png")
-  	.attr("width", 1100/6)
-  	.attr("opacity", 1);
+// var humanityhuman = svg1.append("image")
+//   	.attr("x", width / 2 - 225 / 2 + 24)
+//   	.attr("y", 115)
+//   	.attr("xlink:href", "crowd_human.png")
+//   	.attr("width", 1100/6)
+//   	.attr("opacity", 1);
 
-var longline = svg1.append("line")
-    .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
-		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
-		.attr("y1", bottomLineY).attr("y2", bottomLineY)
-    .attr("stroke-width", 2)
-    .attr("stroke", "#353b3c");
+// var longline = svg1.append("line")
+//     .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
+// 		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
+// 		.attr("y1", bottomLineY).attr("y2", bottomLineY)
+//     .attr("stroke-width", 2)
+//     .attr("stroke", "#353b3c");
 
 var title = d3.select("body").select("h1")
 	.style("opacity", 0);
