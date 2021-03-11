@@ -303,6 +303,31 @@ d3.csv("data.csv").then(function(data) {
  		bubbleChart(updata);
 	}
 
+	let pack = d3.pack()
+ 			.size([width - 2, height - 2])
+ 			.padding(3);
+
+	const root = d3.hierarchy({children: data})
+ 			.sum(function(d) {return d.value; });
+
+	d3.select("body").select("svg").selectAll(".node").data(pack(root).leaves()).addEventListener("mouseover", function(d){
+		d3.select(this)
+			.attr('xlink:href', function(d) { return d.data.ximg; });
+		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
+		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
+		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
+		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
+		});
+
+	d3.select("body").select("svg").selectAll(".node").data(pack(root).leaves()).addEventListener("mouseout", function(){     //switches back
+		d3.select(this)
+			.attr('xlink:href', function(d) { return d.data.himg; });
+		d3.select("#risk").text("");
+		d3.select("#hrisk").text("");
+		d3.select("#xrisk").text("");
+		d3.select("#prob").text("");
+		});
+
 	document.getElementById("country").addEventListener("change", update);
 	document.getElementById("researcher").addEventListener("change", update);
 
