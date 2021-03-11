@@ -48,7 +48,8 @@
 	<!-- 				<option value="51.7">Afghanistan</option>
 					<option value="78.5">Albania</option>
 					<option value="75.7">China</option> -->
-					<option value="79.5" selected>Denmark</option>
+					<option value="80.43" selected>United States</option>
+					<option value="79.5">Denmark</option>
 					<option value="75.2">Malaysia</option>
 				</select>
 
@@ -80,9 +81,9 @@ $("body").keydown(function(e) {
   }
 });
 
-// var svg1 = d3.select("body").select("#human"), 
-// 	width = +svg1.attr("width");
-//  	height = +svg1.attr("height");
+var svg = d3.select("body").select("#bubble_chart"), 
+	width = +svg.attr("width");
+ 	height = +svg.attr("height");
 
 
 
@@ -110,7 +111,7 @@ title.transition().style("opacity", 1).duration(1000).delay(0);
 
 
 
-let probExamples = [{"value": 6, "example": " roll a 2 with any die."}, {"value": 7, "example": "r friend was born on a Tuesday"}, {"value": 8, "example": " flip a coin Tails three times in a row"}]
+let probExamples = [{"value": 6, "example": " roll a 2 with any die"}, {"value": 7, "example": "r friend was born on a Tuesday"}, {"value": 8, "example": " flip a coin Tails three times in a row"}]
 
 let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
 {"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
@@ -152,7 +153,7 @@ researchers.set("Pamlin & Armstrong", pamlin);
 
 
 
-d3.csv("test.csv").then(function(data) {
+d3.csv("data.csv").then(function(data) {
  	var hrisks = [];
  	data.forEach(function(d) {
     	d.risk = d.risk;
@@ -234,46 +235,46 @@ d3.csv("test.csv").then(function(data) {
  		let format = d3.format(",d");
 
  		var svg = d3.select("body").select("#bubble_chart"),
- 		width = +svg.attr("width"),
- 		height = +svg.attr("height");
+ 			width = +svg.attr("width"),
+ 			height = +svg.attr("height");
 
  		let pack = d3.pack()
- 		.size([width - 2, height - 2])
- 		.padding(3);
+ 			.size([width - 2, height - 2])
+ 			.padding(3);
 
  		const root = d3.hierarchy({children: data})
- 		.sum(function(d) {return d.value; });
+ 			.sum(function(d) {return d.value; });
 
  		const node = svg.selectAll(".node")
     	.data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
     	.enter().append("g")
-   		.attr("class", "node")
-      	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
+   			.attr("class", "node")
+      		.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
 
       	node.append("circle")
-      	.attr("id", function(d) {return d.id; })
-      	.attr("r", function(d) {return d.r; })       // radius?
-      	.attr("fill-opacity", 0.0);
+      	   .attr("id", function(d) {return d.id; })
+      		.attr("r", function(d) {return d.r; })       // radius?
+      		.attr("fill-opacity", 0.0);
 
       	node.append("clipPath")
-      	.attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
+      		.attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
       	.append("use")
-      	.attr("xlink:href", function(d) { return "#" + d.id; });
+      		.attr("xlink:href", function(d) { return "#" + d.id; });
 
       	node.append('image')
  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
- 		.attr('width', function(d) { return d.r*2; })
- 		.attr('height', function(d) { return d.r*2; })
- 		.attr('xlink:href', function(d) { return d.data.himg; })
- 		.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
+ 			.attr('width', function(d) { return d.r*2; })
+ 			.attr('height', function(d) { return d.r*2; })
+ 			.attr('xlink:href', function(d) { return d.data.himg; })
+ 			.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
    		.on("mouseover", function(d){    //switches to x-risk image on mouseover
     		d3.select(this)
     			.attr('xlink:href', function(d) { return d.data.ximg; });
     		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
     		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
     		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-    		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example);
-    	})
+    		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
+    		})
     	.on("mouseout", function(){     //switches back
     		d3.select(this)
     			.attr('xlink:href', function(d) { return d.data.himg; });
@@ -281,7 +282,7 @@ d3.csv("test.csv").then(function(data) {
     		d3.select("#hrisk").text("");
     		d3.select("#xrisk").text("");
     		d3.select("#prob").text("");
-    	});
+    		});
 
     	node.append("title")
     	.text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.value)}`);
