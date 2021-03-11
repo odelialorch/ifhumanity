@@ -1,0 +1,51 @@
+country,risk,value,img
+Denmark,rheumatic heart disease,0.001655662,1heart.png
+Denmark,ischemic heart disease,0.095962842,1heart.png
+Denmark,stroke,0.056622843,1brain.png
+Denmark,ischemic stroke,0.030407725,1brain.png
+Denmark,intracerebral hemorrhage,0.021372205,1brain.png
+Denmark,subarachnoid hemorrhage,0.004842913,1brain.png
+Denmark,hypertensive heart disease,0.003455812,1heart.png
+Denmark,cardiomyopathy and myocarditis,0.003607998,1heart.png
+Denmark,atrial fibrillation and flutter,0.012652125,1heart.png
+Denmark,aortic aneurysm,0.008372766,1heart.png
+Denmark,peripheral artery disease,0.003453535,1heart.png
+Denmark,endocarditis,0.001590966,1heart.png
+Denmark,non-rheumatic valvular heart disease,0.00838532,1heart.png
+Denmark,chronic respiratory diseases,0.059905717,1lungs.png
+Denmark,chronic obstructive pulmonary disease,0.055759315,1lungs.png
+Denmark,pneumoconiosis,0.000207902,1lungs.png
+Denmark,silicosis,1.08E-05,1lungs.png
+Denmark,asbestosis,0.000158322,1lungs.png
+Malaysia,maternal and neonatal diseases,0.077813465,1pregnancy.png
+Malaysia,tuberculosis,0.003144349,1lungs.png
+Malaysia,diarrheal diseases,0.001649832,1intestines.png
+Malaysia,lower respiratory infections,0.058148579,1lungs.png
+Malaysia,upper respiratory infections,1.04E-05,1lungs.png
+Malaysia,chronic respiratory diseases,0.014160894,1lungs.png
+Malaysia,chronic obstructive pulmonary disease,0.011784563,1lungs.png
+Malaysia,pneumoconiosis,5.69E-06,1lungs.png
+Malaysia,silicosis,1.41E-06,1lungs.png
+Malaysia,asbestosis,1.16E-06,1lungs.png
+Malaysia,coal workers pneumoconiosis,8.71E-07,1lungs.png
+Malaysia,asthma,0.001271889,1lungs.png
+United States of America,heart disease,0.136751832,1lungs.png
+United States of America,"tracheal, bronchus, and lung cancer",0.050565325,1lungs.png
+United States of America,shingles or chickenpox,7.95E-05,1lungs.png
+United States of America,chronic kidney disease,0.026228295,1lungs.png
+United States of America,drug use disorders,0.016115674,1lungs.png
+United States of America,rheumatoid arthritis,0.000750568,1lungs.png
+United States of America,drowning,0.000886504,1lungs.png
+United States of America,"fire, heat, and hot substances",0.000886823,1lungs.png
+United States of America,animal encounter,6.52E-05,1lungs.png
+United States of America,rabies,8.39E-07,1lungs.png
+United States of America,ebola,0,1lungs.png
+United States of America,colon or rectum cancer,0.020605743,1lungs.png
+United States of America,sexually transmitted infections excluding HIV,4.25E-05,1lungs.png
+United States of America,stroke,0.046460132,1lungs.png
+United States of America,Alzheimer's disease or other dementias,0.035293083,1lungs.png
+United States of America,typhoid or paratyphoid,4.99E-07,1lungs.png
+United States of America,measles,1.36E-07,1lungs.png
+United States of America,tetanus,1.86E-06,1lungs.png
+United States of America,interpersonal violence,0.004342845,1lungs.png
+United States of America,alcohol use disorders,0.00344407,1lungs.png
