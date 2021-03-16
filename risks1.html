@@ -173,6 +173,7 @@ let pack = d3.pack()
 
     node.append('image')
  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
+      .attr("class", "bubble")
       .attr('width', function(d) { return d.r*2; })
       .attr('height', function(d) { return d.r*2; })
       .attr('xlink:href', function(d) { return d.data.himg; })
