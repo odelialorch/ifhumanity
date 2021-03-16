@@ -298,7 +298,7 @@ d3.csv("data.csv").then(function(data) {
 	 			.attr('xlink:href', function(d) { return d.data.himg; })
 	 			.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
 		   		.on("mouseover", function(d){    //switches to x-risk image on mouseover
-		    		d3.select(".intro_note").text("");
+		    		d3.selectAll(".intro_note").text("");
 		    		d3.select(this)
 		    			.attr("xlink:href", function(d) { return d.data.ximg; });
 		    		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.data.value) + " chance");
