@@ -278,7 +278,7 @@ d3.csv("data.csv").then(function(data) {
 	 			.attr('height', function(d) { return d.r*2; })
 	 			.attr('xlink:href', function(d) { return d.data.himg; })
 	 			.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
-		   		.on("mouseover", function(d){    //switches to x-risk image on mouseover
+		   		.on("mouseenter", function(d){    //switches to x-risk image on mouseover
 		    		d3.select(this)
 		    			.attr("xlink:href", function(d) { return d.data.ximg; });
 		    		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.data.value) + " chance");
@@ -286,7 +286,7 @@ d3.csv("data.csv").then(function(data) {
 		    		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
 		    		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
 		    		})
-		    	.on("mouseout", function(d){     //switches back
+		    	.on("mouseleave", function(d){     //switches back
 		    		d3.select(this)
 		    			.attr("xlink:href", function(d) { return d.data.himg; });
 		    		d3.select("#risk").text("");
@@ -314,7 +314,7 @@ d3.csv("data.csv").then(function(data) {
  		bubbleChart(updata);
 	}
 
-	d3.select("body").select("svg").selectAll(".bubble").on("mouseover", function(d){
+	d3.select("body").select("svg").selectAll(".bubble").on("mouseenter", function(d){
 		d3.select(this)
 			.attr("xlink:href", function(d) { return d.data.ximg; });
 		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
@@ -323,7 +323,7 @@ d3.csv("data.csv").then(function(data) {
 		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
 		});
 
-	d3.select("body").select("svg").selectAll(".bubble").on("mouseout", function(){     //switches back
+	d3.select("body").select("svg").selectAll(".bubble").on("mouseleave", function(){     //switches back
 		d3.select(this)
 			.attr("xlink:href", function(d) { return d.data.himg; });
 		d3.select("#risk").text("");
