@@ -161,6 +161,8 @@ researchers.set("Pamlin & Armstrong", pamlin);
  		// 	return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
  		// });
 
+ 		let data = researchers.get(researcher);
+
  		let format = d3.format(",d");
 
  		var svg = d3.select("body").select("svg"),
@@ -183,7 +185,7 @@ researchers.set("Pamlin & Armstrong", pamlin);
 	// }, function(error, data) {
 	// 	if (error) throw error;
 
-		const root = d3.hierarchy({children: researchers.get(researcher)})
+		const root = d3.hierarchy({children: data})
 	    .sum(function(d) {return d.value; });
 
 		const node = svg.selectAll(".node")
