@@ -37,7 +37,7 @@
 		</div>
 
 		<div class = "column3">
-			<div class = "intro_note">What exactly are the risks we must come to terms with in our adolescence? <br><br><br>Scroll over the bubble chart on the left to explore mortality and extinction risk factors.</div>
+			<div class = "intro_note">HELLOWhat exactly are the risks we must come to terms with in our adolescence? <br><br><br>Scroll over the bubble chart on the left to explore mortality and extinction risk factors.</div>
 
 			<span id = "risk"></span>
 			<span id = "hrisk"></span>
@@ -264,7 +264,13 @@ d3.csv("data.csv").then(function(data) {
 	      	node.append("circle")
 	      	   .attr("id", function(d) {return d.id; })
 	      		.attr("r", function(d) {return d.r; })       // radius?
-	      		.attr("fill-opacity", 0.0);
+	      		.attr("fill-opacity", 0.0)
+	      		.on("mouseenter", function(d){    //switches to x-risk image on mouseover
+		    		d3.selectAll(".intro_note").text("");
+		    		})
+		    	.on("mouseleave", function(d){     //switches back
+		    		d3.selectAll(".intro_note").text("");
+		    		});
 
 	      	node.append("clipPath")
 	      		.attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
