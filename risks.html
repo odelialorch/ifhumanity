@@ -259,18 +259,18 @@ d3.csv("data.csv").then(function(data) {
 	    	.data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
 	    	.enter().append("g")
 	   			.attr("class", "node")
-	      		.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
-
-	      	node.append("circle")
-	      	   .attr("id", function(d) {return d.id; })
-	      		.attr("r", function(d) {return d.r; })       // radius?
-	      		.attr("fill-opacity", 0.0)
+	      		.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	      		.on("mouseenter", function(d){    //switches to x-risk image on mouseover
 		    		d3.selectAll(".intro_note").text("");
 		    		})
 		    	.on("mouseleave", function(d){     //switches back
 		    		d3.selectAll(".intro_note").text("");
-		    		});
+		    		});  // move the entire chart where you want it
+
+	      	node.append("circle")
+	      	   .attr("id", function(d) {return d.id; })
+	      		.attr("r", function(d) {return d.r; })       // radius?
+	      		.attr("fill-opacity", 0.0);
 
 	      	node.append("clipPath")
 	      		.attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?

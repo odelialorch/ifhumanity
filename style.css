@@ -272,6 +272,10 @@ span:focus, span:hover, span:active {
 	cursor: pointer;
 }
 
+.node {
+	cursor: pointer;
+}
+
 .intro_note {
 	position: absolute;
 	font-family: Trebuchet MS, Helvetica, sans-serif;
