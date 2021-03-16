@@ -176,6 +176,9 @@ d3.csv("data.csv").then(function(data) {
   		var finalData = [];
 		var finalfinalData = [];
 
+  		console.log("data " + data);
+  		console.log("data[0] " + data[0]);
+
   		hrisks = data.filter(function(d) {
   	  		return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
   		});
