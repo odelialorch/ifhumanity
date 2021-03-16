@@ -267,7 +267,7 @@ span:focus, span:hover, span:active {
 	margin-left: 150px;
 }
 
-.node {
+.bubble {
 	pointer-events: all;
 	cursor: pointer;
 }
