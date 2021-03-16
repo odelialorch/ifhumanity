@@ -269,6 +269,7 @@ span:focus, span:hover, span:active {
 
 .node {
 	pointer-events: all;
+	cursor: pointer;
 }
 
 .intro_note {

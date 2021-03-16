@@ -49,168 +49,166 @@ United States of America,measles,1.36E-07,1lungs.png
 United States of America,tetanus,1.86E-06,1lungs.png
 United States of America,interpersonal violence,0.004342845,1lungs.png
 United States of America,alcohol use disorders,0.00344407,1lungs.png
-United Kingdom,coronary heart disease,0.112960259,
-United Kingdom,stroke,0.061238795,
-United Kingdom,animal encounter,4.17E-05,
-United Kingdom,colon and rectum cancer,0.029292661,
-United Kingdom,pancreatic cancer,0.014599833,
-United Kingdom,foreign body,0.00082293,
-United Kingdom,pneumoconiosis,0.000605999,
-United Kingdom,thyroid cancer,0.000603716,
-United Kingdom,sexually transmitted infections excluding HIV,0.000121698,
-United Kingdom,tetanus,5.52E-07,
-United Kingdom,ebola,0,
-United Kingdom,prostate cancer,0.019312471,
-United Kingdom,upper respiratory infections,2.91E-05,
-United Kingdom,chronic obstructive pulmonary disease,0.05314906,
-United Kingdom,diphtheria,2.15E-07,
-United Kingdom,Alzheimer's disease and other dementias,0.03921636,
-United Kingdom,measles,1.12E-06,
-United Kingdom,typhoid or paratyphoid,2.14E-07,
-United Kingdom,rabies,4.31E-07,
-United Kingdom,upper digestive system diseases,0.004085427,
-United Kingdom,intestinal obstruction and paralytic ileus,0.004015245,
-China,stroke,0.117450624,
-China,chronic obstructive pulmonary disease,0.055661205,
-China,appendicitis,8.40E-05,
-China,stomach cancer,0.022615843,
-China,colon and rectum cancer,0.014044481,
-China,foreign body,0.000805281,
-China,myeloma,0.000720068,
-China,protein-energy malnutrition,0.000702745,
-China,"inguinal, femoral, and abdominal hernia",8.72E-05,
-China,dengue,7.03E-07,
-China,ebola,0,
-China,Alzheimer's disease and other dementias,0.017206561,
-China,coronary heart disease,0.100541656,
-China,multiple sclerosis,9.68E-05,
-China,cysticercosis,1.50E-06,
-China,"tracheal, bronchus, and lung cancer",0.040622717,
-China,diphtheria,6.54E-07,
-China,rabies,3.86E-05,
-China,conflict and terrorism,2.00E-09,
-China,Parkinson's disease,0.004130583,
-India,coronary heart disease,0.00647358,
-India,chronic obstructive pulmonary disease,0.045241798,
-India,leishmaniasis,6.08E-05,
-India,tuberculosis,0.021282012,
-India,diabetes,0.013751566,
-India,protein-energy malnutrition,0.000673968,
-India,bladder cancer,0.000730488,
-India,rheumatoid arthritis,0.000622394,
-India,motor neuron disease,8.05E-05,
-India,pressure ulcer,6.86E-05,
-India,eating disorders,1.01E-06,
-India,lower respiratory infections,0.021837287,
-India,malignant skin melanoma,9.39E-05,
-India,stroke,0.035202556,
-India,ebola,0,
-India,conflict and terrorism,3.46E-05,
-India,yellow fever,0,
-India,zika virus,0,
-India,upper digestive system diseases,0.003656236,
-India,typhoid and paratyphoid,0.003344536,
-Russia,stroke,0.161263606,
-Russia,"tracheal, bronchus, and lung cancer",0.02662743,
-Russia,pressure ulcer,7.16E-05,
-Russia,colon and rectum cancer,0.021067244,
-Russia,alcohol use disorders,0.013997657,
-Russia,"inguinal, femoral, and abdominal hernia",0.000655526,
-Russia,"endocrine, metabolic, blood, and immune disorders",0.000800938,
-Russia,adverse effects of medical treatment,0.000805606,
-Russia,upper respiratory infections,8.64E-05,
-Russia,cysticercosis,6.51E-07,
-Russia,ebola,0,
-Russia,cirrhosis and other chronic liver diseases,0.022674222,
-Russia,sexually transmitted infections excluding HIV,8.83E-05,
-Russia,Alzheimer's disease and other dementias,0.023822866,
-Russia,"tracheal, bronchus, and lung cancer",0.02662743,
-Russia,whooping cough,1.21E-06,
-Russia,acute hepatitis,2.81E-05,
-Russia,measles,2.20E-07,
-Russia,typhoid and paratyphoid,1.55E-06,
-Russia,leukemia,0.003652652,
-Russia,brain and central nervous system cancer,0.003526807,
-Afghanistan,coronary heart disease,0.048172632,
-Afghanistan,conflict and terrorism,0.033797953,
-Afghanistan,diphtheria,3.53E-05,
-Afghanistan,road injuries,0.011481953,
-Afghanistan,hypertensive heart disease,0.009521805,
-Afghanistan,sexually transmitted infections excluding HIV,0.000534849,
-Afghanistan,cardiomyopathy and myocarditis,0.000550466,
-Afghanistan,drug use disorders,0.000565212,
-Afghanistan,non-melanoma skin cancer,7.22E-05,
-Afghanistan,dengue,1.62E-07,
-Afghanistan,ebola,0,
-Afghanistan,stroke,0.023393915,
-Afghanistan,intestinal nematode (roundworm) infections,3.26E-05,
-Afghanistan,lower respiratory infections,0.026009878,
-Afghanistan,eating disorders,8.42E-08,
-Afghanistan,mesothelioma cancer,2.48E-05,
-Afghanistan,Chagas disease,0,
-Afghanistan,acute hepatitis,0.002699332,
-Afghanistan,non-Hodgkin lymphoma,0.002779813,
-Australia,coronary heart disease,0.089857575,
-Australia,stroke,0.043060846,
-Australia,animal encounter,6.96E-05,
-Australia,colon and rectum cancer,0.022720874,
-Australia,chronic kidney disease,0.01756922,
-Australia,rheumatoid arthritis,0.000826396,
-Australia,foreign body,0.000810347,
-Australia,larynx cancer,0.000866158,
-Australia,appendicitis,0.000117853,
-Australia,measles,3.07E-07,
-Australia,ebola,0,
-Australia,chronic obstructive pulmonary disease,0.031352729,
-Australia,environmental heat and cold exposure,0.000124843,
-Australia,Alzheimer's disease and other dementias,0.037923281,
-Australia,peripheral artery disease,0.00424643,
-Australia,hypertensive heart disease,0.004193706,
-Australia,tetanus,1.47E-06,
-Australia,dengue,2.37E-07,
-Australia,acute hepatitis,3.30E-05,
-Australia,typhoid and paratyphoid,2.58E-07,
-Brazil,heart disease,0.059262279,
-Brazil,stroke,0.045336881,
-Brazil,acute hepatitis,8.20E-05,
-Brazil,diabetes,0.022620886,
-Brazil,chronic kidney disease,0.014651098,
-Brazil,meningitis,0.000694833,
-Brazil,malignant skin melanoma,0.000854686,
-Brazil,"inguinal, femoral, and abdominal hernia",0.000861171,
-Brazil,poisonings,6.59E-05,
-Brazil,rabies,5.04E-07,
-Brazil,ebola,0,
-Brazil,interpersonal violence,0.022808156,
-Brazil,shingles or chickenpox,9.74E-05,
-Brazil,lower respiratory infections,0.030675352,
-Brazil,diphtheria,4.83E-07,
-Brazil,tetanus,3.82E-05,
-Brazil,measles,1.44E-07,
-Brazil,Zika virus,4.11E-07,
-Brazil,brain and central nervous system cancer,0.003653143,
-Brazil,"endocrine, metabolic, blood, and immune disorders",0.003438791,
-Nigeria,ebola,0,
-Nigeria,malaria,0.054149627,
-Nigeria,diarrheal diseases,0.051325272,
-Nigeria,upper respiratory infections,6.10E-05,
-Nigeria,stroke,0.017973275,
-Nigeria,meningitis,0.012726222,
-Nigeria,foreign body,0.000640069,
-Nigeria,brain and central nervous system cancer,0.000651124,
-Nigeria,non-Hodgkin lymphoma,0.000566084,
-Nigeria,multiple sclerosis,5.82E-05,
-Nigeria,eating disorders,6.34E-07,
-Nigeria,heart disease,0.019715814,
-Nigeria,thyroid cancer,5.10E-05,
-Nigeria,lower respiratory infections,0.04901317,
-Nigeria,HIV/AIDS,0.023310944,
-Nigeria,ear infection,7.92E-07,
-Nigeria,mesothelioma cancer,2.18E-05,
-Nigeria,dengue,3.81E-07,
-Nigeria,hypertensive heart disease,0.003303862,
-Nigeria,Alzheimer's disease and other dementias,0.003432313,
-,,,
-,,,
-China,brain and central nervous system cancer,0.003408265,
-China,ear infection,8.71E-07,
+United Kingdom,coronary heart disease,0.112960259,1heart.png
+United Kingdom,stroke,0.061238795,1heart.png
+United Kingdom,animal encounter,4.17E-05,1heart.png
+United Kingdom,colon and rectum cancer,0.029292661,1heart.png
+United Kingdom,pancreatic cancer,0.014599833,1heart.png
+United Kingdom,foreign body,0.00082293,1heart.png
+United Kingdom,pneumoconiosis,0.000605999,1heart.png
+United Kingdom,thyroid cancer,0.000603716,1heart.png
+United Kingdom,sexually transmitted infections excluding HIV,0.000121698,1heart.png
+United Kingdom,tetanus,5.52E-07,1heart.png
+United Kingdom,ebola,0,1heart.png
+United Kingdom,prostate cancer,0.019312471,1heart.png
+United Kingdom,upper respiratory infections,2.91E-05,1heart.png
+United Kingdom,chronic obstructive pulmonary disease,0.05314906,1heart.png
+United Kingdom,diphtheria,2.15E-07,1heart.png
+United Kingdom,Alzheimer's disease and other dementias,0.03921636,1heart.png
+United Kingdom,measles,1.12E-06,1heart.png
+United Kingdom,typhoid or paratyphoid,2.14E-07,1heart.png
+United Kingdom,rabies,4.31E-07,1heart.png
+United Kingdom,upper digestive system diseases,0.004085427,1heart.png
+United Kingdom,intestinal obstruction and paralytic ileus,0.004015245,1heart.png
+China,stroke,0.117450624,1lungs.png
+China,chronic obstructive pulmonary disease,0.055661205,1lungs.png
+China,appendicitis,8.40E-05,1lungs.png
+China,stomach cancer,0.022615843,1lungs.png
+China,colon and rectum cancer,0.014044481,1lungs.png
+China,foreign body,0.000805281,1lungs.png
+China,myeloma,0.000720068,1lungs.png
+China,protein-energy malnutrition,0.000702745,1lungs.png
+China,"inguinal, femoral, and abdominal hernia",8.72E-05,1lungs.png
+China,dengue,7.03E-07,1lungs.png
+China,ebola,0,1lungs.png
+China,Alzheimer's disease and other dementias,0.017206561,1lungs.png
+China,coronary heart disease,0.100541656,1lungs.png
+China,multiple sclerosis,9.68E-05,1lungs.png
+China,cysticercosis,1.50E-06,1lungs.png
+China,"tracheal, bronchus, and lung cancer",0.040622717,1lungs.png
+China,diphtheria,6.54E-07,1lungs.png
+China,rabies,3.86E-05,1lungs.png
+China,conflict and terrorism,2.00E-09,1lungs.png
+China,Parkinson's disease,0.004130583,1lungs.png
+India,coronary heart disease,0.00647358,1heart.png
+India,chronic obstructive pulmonary disease,0.045241798,1heart.png
+India,leishmaniasis,6.08E-05,1heart.png
+India,tuberculosis,0.021282012,1heart.png
+India,diabetes,0.013751566,1heart.png
+India,protein-energy malnutrition,0.000673968,1heart.png
+India,bladder cancer,0.000730488,1heart.png
+India,rheumatoid arthritis,0.000622394,1heart.png
+India,motor neuron disease,8.05E-05,1heart.png
+India,pressure ulcer,6.86E-05,1heart.png
+India,eating disorders,1.01E-06,1heart.png
+India,lower respiratory infections,0.021837287,1heart.png
+India,malignant skin melanoma,9.39E-05,1heart.png
+India,stroke,0.035202556,1heart.png
+India,ebola,0,1heart.png
+India,conflict and terrorism,3.46E-05,1heart.png
+India,yellow fever,0,1heart.png
+India,zika virus,0,1heart.png
+India,upper digestive system diseases,0.003656236,1heart.png
+India,typhoid and paratyphoid,0.003344536,1heart.png
+Russia,stroke,0.161263606,1lungs.png
+Russia,"tracheal, bronchus, and lung cancer",0.02662743,1lungs.png
+Russia,pressure ulcer,7.16E-05,1lungs.png
+Russia,colon and rectum cancer,0.021067244,1lungs.png
+Russia,alcohol use disorders,0.013997657,1lungs.png
+Russia,"inguinal, femoral, and abdominal hernia",0.000655526,1lungs.png
+Russia,"endocrine, metabolic, blood, and immune disorders",0.000800938,1lungs.png
+Russia,adverse effects of medical treatment,0.000805606,1lungs.png
+Russia,upper respiratory infections,8.64E-05,1lungs.png
+Russia,cysticercosis,6.51E-07,1lungs.png
+Russia,ebola,0,1lungs.png
+Russia,cirrhosis and other chronic liver diseases,0.022674222,1lungs.png
+Russia,sexually transmitted infections excluding HIV,8.83E-05,1lungs.png
+Russia,Alzheimer's disease and other dementias,0.023822866,1lungs.png
+Russia,"tracheal, bronchus, and lung cancer",0.02662743,1lungs.png
+Russia,whooping cough,1.21E-06,1lungs.png
+Russia,acute hepatitis,2.81E-05,1lungs.png
+Russia,measles,2.20E-07,1lungs.png
+Russia,typhoid and paratyphoid,1.55E-06,1lungs.png
+Russia,leukemia,0.003652652,1lungs.png
+Russia,brain and central nervous system cancer,0.003526807,1lungs.png
+Afghanistan,coronary heart disease,0.048172632,1heart.png
+Afghanistan,conflict and terrorism,0.033797953,1heart.png
+Afghanistan,diphtheria,3.53E-05,1heart.png
+Afghanistan,road injuries,0.011481953,1heart.png
+Afghanistan,hypertensive heart disease,0.009521805,1heart.png
+Afghanistan,sexually transmitted infections excluding HIV,0.000534849,1heart.png
+Afghanistan,cardiomyopathy and myocarditis,0.000550466,1heart.png
+Afghanistan,drug use disorders,0.000565212,1heart.png
+Afghanistan,non-melanoma skin cancer,7.22E-05,1heart.png
+Afghanistan,dengue,1.62E-07,1heart.png
+Afghanistan,ebola,0,1heart.png
+Afghanistan,stroke,0.023393915,1heart.png
+Afghanistan,intestinal nematode (roundworm) infections,3.26E-05,1heart.png
+Afghanistan,lower respiratory infections,0.026009878,1heart.png
+Afghanistan,eating disorders,8.42E-08,1heart.png
+Afghanistan,mesothelioma cancer,2.48E-05,1heart.png
+Afghanistan,Chagas disease,0,1heart.png
+Afghanistan,acute hepatitis,0.002699332,1heart.png
+Afghanistan,non-Hodgkin lymphoma,0.002779813,1heart.png
+Australia,coronary heart disease,0.089857575,1lungs.png
+Australia,stroke,0.043060846,1lungs.png
+Australia,animal encounter,6.96E-05,1lungs.png
+Australia,colon and rectum cancer,0.022720874,1lungs.png
+Australia,chronic kidney disease,0.01756922,1lungs.png
+Australia,rheumatoid arthritis,0.000826396,1lungs.png
+Australia,foreign body,0.000810347,1lungs.png
+Australia,larynx cancer,0.000866158,1lungs.png
+Australia,appendicitis,0.000117853,1lungs.png
+Australia,measles,3.07E-07,1lungs.png
+Australia,ebola,0,1lungs.png
+Australia,chronic obstructive pulmonary disease,0.031352729,1lungs.png
+Australia,environmental heat and cold exposure,0.000124843,1lungs.png
+Australia,Alzheimer's disease and other dementias,0.037923281,1lungs.png
+Australia,peripheral artery disease,0.00424643,1lungs.png
+Australia,hypertensive heart disease,0.004193706,1lungs.png
+Australia,tetanus,1.47E-06,1lungs.png
+Australia,dengue,2.37E-07,1lungs.png
+Australia,acute hepatitis,3.30E-05,1lungs.png
+Australia,typhoid and paratyphoid,2.58E-07,1lungs.png
+Brazil,heart disease,0.059262279,1heart.png
+Brazil,stroke,0.045336881,1heart.png
+Brazil,acute hepatitis,8.20E-05,1heart.png
+Brazil,diabetes,0.022620886,1heart.png
+Brazil,chronic kidney disease,0.014651098,1heart.png
+Brazil,meningitis,0.000694833,1heart.png
+Brazil,malignant skin melanoma,0.000854686,1heart.png
+Brazil,"inguinal, femoral, and abdominal hernia",0.000861171,1heart.png
+Brazil,poisonings,6.59E-05,1heart.png
+Brazil,rabies,5.04E-07,1heart.png
+Brazil,ebola,0,1heart.png
+Brazil,interpersonal violence,0.022808156,1heart.png
+Brazil,shingles or chickenpox,9.74E-05,1heart.png
+Brazil,lower respiratory infections,0.030675352,1heart.png
+Brazil,diphtheria,4.83E-07,1heart.png
+Brazil,tetanus,3.82E-05,1heart.png
+Brazil,measles,1.44E-07,1heart.png
+Brazil,Zika virus,4.11E-07,1heart.png
+Brazil,brain and central nervous system cancer,0.003653143,1heart.png
+Brazil,"endocrine, metabolic, blood, and immune disorders",0.003438791,1heart.png
+Nigeria,ebola,0,1lungs.png
+Nigeria,malaria,0.054149627,1lungs.png
+Nigeria,diarrheal diseases,0.051325272,1lungs.png
+Nigeria,upper respiratory infections,6.10E-05,1lungs.png
+Nigeria,stroke,0.017973275,1lungs.png
+Nigeria,meningitis,0.012726222,1lungs.png
+Nigeria,foreign body,0.000640069,1lungs.png
+Nigeria,brain and central nervous system cancer,0.000651124,1lungs.png
+Nigeria,non-Hodgkin lymphoma,0.000566084,1lungs.png
+Nigeria,multiple sclerosis,5.82E-05,1lungs.png
+Nigeria,eating disorders,6.34E-07,1lungs.png
+Nigeria,heart disease,0.019715814,1lungs.png
+Nigeria,thyroid cancer,5.10E-05,1lungs.png
+Nigeria,lower respiratory infections,0.04901317,1lungs.png
+Nigeria,HIV/AIDS,0.023310944,1lungs.png
+Nigeria,ear infection,7.92E-07,1lungs.png
+Nigeria,mesothelioma cancer,2.18E-05,1lungs.png
+Nigeria,dengue,3.81E-07,1lungs.png
+Nigeria,hypertensive heart disease,0.003303862,1lungs.png
+Nigeria,Alzheimer's disease and other dementias,0.003432313,1lungs.png
+China,brain and central nervous system cancer,0.003408265,1lungs.png
+China,ear infection,8.71E-07,1lungs.png
