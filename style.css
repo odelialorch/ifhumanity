@@ -261,8 +261,27 @@ span:focus, span:hover, span:active {
   	margin-right: auto;
 }
 
+/*----------------------------------------RISKS.HTML----------------------------------------*/
+
 #bubble_chart {
 	margin-left: 150px;
+}
+
+.node {
+	pointer-events: all;
+}
+
+.intro_note {
+	position: absolute;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	font-weight: bold;
+	font-style: italic;
+	top: 200px;
+	margin-right: 150px;
+	left: 800px;
+	z-index: 10;
+	color: white;
+	opacity: 0.7;
 }
 
 #risk, #xrisk, #hrisk, #prob {

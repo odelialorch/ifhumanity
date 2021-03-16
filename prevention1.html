@@ -22,6 +22,12 @@
 <div class = "risks row">
 	<div class = "column3">
 		<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
+
+		<div>misaligned AI     nuclear war     pandemic     climate change     natural risks<br><br></div>
+		<select id="researcher">
+				<option value="ID001" selected>Toby Ord</option>
+				<option value="ID002">Pamlin & Armstrong</option>
+			</select>
 	</div>
 
 	<div class = "column3">
@@ -30,26 +36,13 @@
 	</div>
 
 	<div class = "column3">
-		<div class = "intro_note">What exactly are the risks we must come to terms with in our adolescence? <br><br><br>Scroll over the bubble chart on the left to explore mortality and extinction risk factors.</div>
+		<div class = "intro_note">We take pills to ward off _____.<br><br>We get vaccinated to avoid deadly viruses.<br><br><br>What can we do to prevent humanity's extinction? Click on an existential risk on the left to explore.</div>
 
 		<span id = "risk"></span>
 		<span id = "hrisk"></span>
 		<span id = "xrisk"></span>
 
-		<div id="buttons">
-
-			<select id="country">
-				<option value="ID001">China</option>
-				<option value="ID002" selected>Denmark</option>
-				<option value="ID003">Malaysia</option>
-			</select>
-
-			<select id="researcher">
-				<option value="ID001" selected>Toby Ord</option>
-				<option value="ID002">Pamlin & Armstrong</option>
-			</select>
-
-		</div>
+		
 	</div>
 	
 </div>
@@ -59,33 +52,21 @@
 
 <script type="text/javascript">
 
-// d3.select("#risk").text("What exactly are the risks we must come to terms with in our adolescence?").style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-// 	.style("color", "white")
-// 	.style("font-weight", "bold")
-// 	.style("font-style", "italic")
-// 	.style("size", 5);
-
-// d3.select("#hrisk").text("Scroll over the bubble chart on the left to explore mortality risks and risk factors.").style("font-family", "Trebuchet MS", "Helvetica", "sans-serif")
-// 	.style("color", "white")
-// 	.style("font-weight", "bold")
-// 	.style("font-style", "italic")
-// 	.style("size", 20);
-
 //SCROLLDOWN OPTIONS 
 
-	// function GetSelectedValue(){
-	// 	var e = document.getElementById("country");
-	// 	var result = e.options[e.selectedIndex].value;
+	function GetSelectedValue(){
+		var e = document.getElementById("country");
+		var result = e.options[e.selectedIndex].value;
 
-	// 	document.getElementById("result").innerHTML = result;
-	// }
+		document.getElementById("result").innerHTML = result;
+	}
 
-	// function GetSelectedText(){
-	// 	var e = document.getElementById("country");
-	// 	var result = e.options[e.selectedIndex].text;
+	function GetSelectedText(){
+		var e = document.getElementById("country");
+		var result = e.options[e.selectedIndex].text;
 
-	// 	document.getElementById("result").innerHTML = result;
-	// }
+		document.getElementById("result").innerHTML = result;
+	}
 
 //BUBBLE CHART
 
@@ -96,8 +77,9 @@ let format = d3.format(",d")
 //let data = d3.csvParse("test.csv", ({hrisk, himg, xrisk, ximg, value}) => ({hrisk, himg, xrisk, ximg, value: +value}))
 
 let data =
-	[{"hrisk": "ischemic heart disease", "himg": "1heart.png", "xrisk": "total existential risk", "ximg": "1x.png", "value": 7},
-	{"hrisk": "self-harm", "himg": "1selfharm.png", "xrisk": "unaligned artificial intelligence", "ximg": "1ai.png", "value": 4},
+	//{"hrisk": "ischemic heart disease", "himg": "1heart.png", "xrisk": "total existential risk", "ximg": "1x.png", "value": 7},
+
+	[{"hrisk": "self-harm", "himg": "1selfharm.png", "xrisk": "unaligned artificial intelligence", "ximg": "1ai.png", "value": 4},
 	{"hrisk": "maternal disorders", "himg": "1pregnancy.png", "xrisk": "'naturally' arising pandemics", "ximg": "1naturalpandemic.png", "value": 0.004},
 	{"hrisk": "substance abuse disorders", "himg": "1drugs.png", "xrisk": "engineered pandemics", "ximg": "1engpandemic.png", "value": 1},
 	{"hrisk": "chronic liver diseases", "himg": "1liver.png", "xrisk": "other anthropogenic risks", "ximg": "1anthro.png", "value": 0.9},
@@ -175,19 +157,18 @@ let pack = d3.pack()
  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
       .attr('width', function(d) { return d.r*2; })
       .attr('height', function(d) { return d.r*2; })
-      .attr('xlink:href', function(d) { return d.data.himg; })
+      .attr('xlink:href', function(d) { return d.data.ximg; })
       .attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
     .on("mouseover", function(d){    //switches to x-risk image on mouseover
         d3.select(this)
            .attr('xlink:href', function(d) { return d.data.ximg; });
-        d3.selectAll(".intro_note").text("");
         d3.select("#risk").text("~" + d.value + "% chance");
         d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
         d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
         })
     .on("mouseout", function(){     //switches back
         d3.select(this)
-           .attr('xlink:href', function(d) { return d.data.himg; });
+           .attr('xlink:href', function(d) { return d.data.ximg; });
         d3.select("#risk").text("");
         d3.select("#hrisk").text("");
         d3.select("#xrisk").text("");

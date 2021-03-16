@@ -156,83 +156,7 @@ researchers.set("Pamlin & Armstrong", pamlin);
 // 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
 // 	{}]
 
-
-
-d3.csv("data.csv").then(function(data) {
- 	var hrisks = [];
- 	data.forEach(function(d) {
-    	d.risk = d.risk;
-    	d.value = +d.value;
-   		d.img = d.img;
-   		hrisks.push(d);
-   	});
-
-   	console.log(hrisks);
-
-   	console.log(data[0]);
-  	console.log(hrisks[0]);
-
-  	function riskMatching() {
-  		var finalData = [];
-		var finalfinalData = [];
-
-  		hrisks = data.filter(function(d) {
-  	  		return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
-  		});
-
-  		console.log(hrisks);
-		console.log(hrisks[0]);
-
-		let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
-	// console.log(data2);
-
-		console.log(xrisks);
-
-		finalData = xrisks.map(function(x) {
-			var match = {}
-			match.xrisk = x.risk;
-			match.ximg = x.img;
-		
-			var value = parseFloat(x.value) * parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value) / 100; // x-risk scaled to life expectancy, multiplied by years of life expectancy / 100 years
-
-			console.log(value);
-
-			var closest = hrisks[0];
-
-			console.log(closest);
-
-			hrisks.forEach(function(n) { 
-				console.log(n);
-				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
-					console.log(n);
-					console.log(n.risk);
-					closest = {"risk": n.risk, "value": +n.value, "img": n.img};
-					console.log(closest);
-				};
-			});
-			match.hrisk = closest.risk;
-			match.himg = closest.img;
-			match.hvalue = closest.value;
-			match.xvalue = value;
-			match.value = parseFloat(value);
-			//hrisks = hrisks. //delete closest;
-			console.log(match);
-			finalfinalData.push(match);
-			console.log("length " + hrisks.length);
-			for( var i = 0; i < hrisks.length; i++){ 
-				if ( hrisks[i].risk.localeCompare(closest.risk) == 0) { 
-					hrisks.splice(i, 1); 
-				};
-			};
-			console.log("length " + hrisks.length);
-			return match;
-		});
-		console.log(finalData);
-		console.log(finalfinalData);
-		return finalData;
-  	}
-
- 	function bubbleChart(data) {
+ 	function bubbleChart(researcher) {
  		// d3.select("body").append("p").data(data).text(function(d) {
  		// 	return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
  		// });
@@ -244,59 +168,73 @@ d3.csv("data.csv").then(function(data) {
  			height = +svg.attr("height");
 
  		let pack = d3.pack()
- 			.size([width - 2, height - 2])
- 			.padding(3);
+	    .size([width - 2, height - 2])
+	    .padding(3);
 
-	 		const root = d3.hierarchy({children: data})
-	 			.sum(function(d) {return d.value; });
+	// data = d3.csv("test.csv").then(function(data) {
+	//  data.forEach(function(d) {
+	//    d.value = +d.value;
+	//  });
+	//  console.log(data[0]);
+	// });
 
-	 		const node = svg.selectAll(".node")
-	    	.data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
-	    	.enter().append("g")
-	   			.attr("class", "node")
-	      		.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
+	// d3.csv("test.csv", function(d) {
+	//    d.value = +d.value;
+	// }, function(error, data) {
+	// 	if (error) throw error;
 
-	      	node.append("circle")
-	      	   .attr("id", function(d) {return d.id; })
-	      		.attr("r", function(d) {return d.r; })       // radius?
-	      		.attr("fill-opacity", 0.0);
+		const root = d3.hierarchy({children: researchers.get(researcher)})
+	    .sum(function(d) {return d.value; });
 
-	      	node.append("clipPath")
-	      		.attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
-	      	.append("use")
-	      		.attr("xlink:href", function(d) { return "#" + d.id; });
+		const node = svg.selectAll(".node")
+	    .data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
+	    .enter().append("g")
+	      .attr("class", "node")
+	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
 
-	      	node.append('image')
+	    node.append("circle")
+	     .attr("id", function(d) {return d.id; })
+	      .attr("r", function(d) {return d.r; })       // radius?
+	      .attr("fill-opacity", 0.0);
+	    // .on("mouseover", function(d){    //switches to x-risk image on mouseover
+	        
+	    // .on("mouseout", function(){     //switches back
+	        
+	    //     });
+
+	    node.append("clipPath")
+	      .attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
+	    .append("use")
+	      .attr("xlink:href", function(d) { return "#" + d.id; });
+
+	    node.append('image')
 	 //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
-	 			.attr('width', function(d) { return d.r*2; })
-	 			.attr('height', function(d) { return d.r*2; })
-	 			.attr('xlink:href', function(d) { return d.data.himg; })
-	 			.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
-	   		.on("mouseover", function(d){    //switches to x-risk image on mouseover
-	    		d3.select(this)
-	    			.attr("xlink:href", function(d) { return d.data.ximg; });
-	    		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.data.value) + " chance");
-	    		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-	    		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-	    		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
-	    		})
-	    	.on("mouseout", function(d){     //switches back
-	    		d3.select(this)
-	    			.attr("xlink:href", function(d) { return d.data.himg; });
-	    		d3.select("#risk").text("");
-	    		d3.select("#hrisk").text("");
-	    		d3.select("#xrisk").text("");
-	    		d3.select("#prob").text("");
-	    		});
+	      .attr('width', function(d) { return d.r*2; })
+	      .attr('height', function(d) { return d.r*2; })
+	      .attr('xlink:href', function(d) { return d.data.img; })
+	      .attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
+	    .on("mouseover", function(d){    //switches to x-risk image on mouseover
+	        d3.select(this)
+	           .attr('xlink:href', function(d) { return d.data.img; });
+	        d3.select("#risk").text("~" + d.value + "% chance");
+	        d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
+	        d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
+	        })
+	    .on("mouseout", function(){     //switches back
+	        d3.select(this)
+	           .attr('xlink:href', function(d) { return d.data.img; });
+	        d3.select("#risk").text("");
+	        d3.select("#hrisk").text("");
+	        d3.select("#xrisk").text("");
+	 		});
 
-    	node.append("title")
-    	.text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.data.value)}`);
-	}
+	};
 
-	bubbleChart(riskMatching());
+
+	bubbleChart(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
 
 	function update() {
-		let updata = riskMatching();
+		let updatedName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text;
 		console.log(updata);
 
  		svg = d3.select("body").select("#bubble_chart"),
@@ -305,12 +243,12 @@ d3.csv("data.csv").then(function(data) {
 
  		svg.selectAll("*").remove();
 
- 		bubbleChart(updata);
+ 		bubbleChart(updatedName);
 	}
 
 	d3.select("body").select("svg").selectAll(".node").on("mouseover", function(d){
 		d3.select(this)
-			.attr("xlink:href", function(d) { return d.data.ximg; });
+			.attr('xlink:href', function(d) { return d.data.ximg; });
 		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
 		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
 		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
@@ -319,7 +257,7 @@ d3.csv("data.csv").then(function(data) {
 
 	d3.select("body").select("svg").selectAll(".node").on("mouseout", function(){     //switches back
 		d3.select(this)
-			.attr("xlink:href", function(d) { return d.data.himg; });
+			.attr('xlink:href', function(d) { return d.data.himg; });
 		d3.select("#risk").text("");
 		d3.select("#hrisk").text("");
 		d3.select("#xrisk").text("");
@@ -329,7 +267,6 @@ d3.csv("data.csv").then(function(data) {
 	document.getElementById("country").addEventListener("change", update);
 	document.getElementById("researcher").addEventListener("change", update);
 
-});
 
 // window.onbeforeunload = function(e){
 //     document.getElementById('human').className = 'humanRisksToRoom';
