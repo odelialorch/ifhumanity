@@ -315,12 +315,7 @@ d3.csv("data.csv").then(function(data) {
 	}
 
 	d3.select("body").select("svg").selectAll(".bubble").on("mouseenter", function(d){
-		d3.select(this)
-			.attr("xlink:href", function(d) { return d.data.ximg; });
-		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
-		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
+		d3.select("body").append("p").data(data).text("fuck this shitttt");
 		});
 
 	d3.select("body").select("svg").selectAll(".bubble").on("mouseleave", function(){     //switches back
