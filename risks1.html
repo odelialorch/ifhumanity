@@ -166,10 +166,10 @@ let pack = d3.pack()
         
     //     });
 
-    // node.append("clipPath")
-    //   .attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
-    // .append("use")
-    //   .attr("xlink:href", function(d) { return "#" + d.id; });
+    node.append("clipPath")
+      .attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
+    .append("use")
+      .attr("xlink:href", function(d) { return "#" + d.id; });
 
     node.append('image')
  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
