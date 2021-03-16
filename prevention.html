@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Mortality Risks</title>
+	<title>Existential Risks</title>
 	<link href="style.css" type="text/css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
@@ -17,7 +17,7 @@
 
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
 
-	<span onclick="window.location.href='adolescence.html'" class="navigate left every_page">&#8249;</span>
+	<span onclick="window.location.href='risks.html'" class="navigate left every_page">&#8249;</span>
 	<span onclick="window.location.href='acknowledgments.html'" class="navigate right every_page">&#8250;</span>
 
 	
@@ -26,23 +26,47 @@
 	<div class = "risks row">
 		<div class = "column3">
 			<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
-		</div>
 
-		<div class = "column3">
-			<h1 class = "title">Mortality Risks</h1>
-
-			<div class = "entrance">
- 				<svg id="human" width="183.3" height="600" text-anchor="middle" display="inline-block" margin="auto" position="relative" left="50%"></svg>
+			<div class="x-risks">
+				<span id = "ai" class="x-risk">unaligned AI</span>
+				<span id = "nuclear" class="x-risk">nuclear threat</span>
+				<span id = "pandemic" class="x-risk">pandemic</span>
+				<span id = "climate" class="x-risk">climate</span>
 			</div>
+
+			<select id="researcher">
+					<option value="ID001" selected>Toby Ord</option>
+					<option value="ID002">Pamlin & Armstrong</option>
+			</select>
 		</div>
 
 		<div class = "column3">
+			<h1 class = "title">Existential Risks</h1>
+ 			<svg id="human" width="183.3" height="600" text-anchor="middle" display="inline-block" margin="auto" position="relative" left="50%"></svg>
+		</div>
+
+		<div class = "column3">
+			<div class = "intro_note">We wear safety belts to avoid fatal accidents.</div>
+			<div class = "intro_note"><br><br><br><br>We get vaccinated to prevent deadly viruses.</div>
+			<div class = "intro_note"><br><br><br><br><br><br><br><br>What can we do to prevent humanity's extinction? Click on an existential risk to explore some possibilities.</div>
+
 			<span id = "risk"></span>
 			<span id = "hrisk"></span>
 			<span id = "xrisk"></span>
 			<span id = "prob"></span>
 
-			<div id="buttons">
+			<div id = "prevent_ai">
+				<span class = "intervention">Intervention1</span>
+					<span class = "resources">
+						<a href="risks.html">learn more &#8250;</a>
+						<a href="risks.html">take action &#8250;</a>
+					</span>
+				<span class = "intervention">Intervention2</span>
+				<span class = "intervention">Intervention3</span>
+				<span class = "intervention">Intervention4</span>
+			</div>
+
+<!-- 			<div id="buttons">
 
 				<select id="country">
 					<option value="53.25">Afghanistan</option>
@@ -58,12 +82,7 @@
 					<option value="80.43" selected>United States of America</option>
 				</select>
 
-				<select id="researcher">
-					<option value="ID001" selected>Toby Ord</option>
-					<option value="ID002">Pamlin & Armstrong</option>
-				</select>
-
-			</div>
+			</div> -->
 			
 		</div>
 		
@@ -91,11 +110,11 @@ var svg1 = d3.select("body").select("#human"),
  	height = +svg1.attr("height");
 
 var longLineLength = 1000;
-var bottomLineY = 550;
+var bottomLineY = 450;
 
 var humanityhuman = svg1.append("image")
   	.attr("x", width / 2 - 225 / 2 + 24)
-  	.attr("y", 115)
+  	.attr("y", 15)
   	.attr("xlink:href", "crowd_human.png")
   	.attr("width", 1100/6)
   	.attr("opacity", 1);
@@ -112,30 +131,43 @@ var title = d3.select("body").select("h1")
 
 title.transition().style("opacity", 1).duration(1000).delay(0);
 
+var intro_notes = d3.select("body").selectAll(".intro_note")
+	.style("opacity", 0);
+
+intro_notes.transition()
+	.style("opacity", 1)
+	.duration(1000).delay((d, i) => 1000 + 1500 * i);
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-let probExamples = [{"value": 6, "example": " roll a 2 with any die"}, {"value": 7, "example": "r friend was born on a Tuesday"}, {"value": 8, "example": " flip a coin Tails three times in a row"}]
+let tobyord = [{"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png", "emphasis_img": "3ai.png", "category": "#ai"},
+{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#pandemic"}, 
+{"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png", "emphasis_img": "3engpandemic.png", "category": "#pandemic"},
+{"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png", "emphasis_img": "1anthro.png", "category": ""}, 
+{"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png", "emphasis_img": "3nuclear.png", "category": "#nuclear"},
+{"risk": "climate change", "value": 0.001, "img": "1climate.png", "emphasis_img": "3climate.png", "category": "#climate"}, 
+{"risk": "supervolcanic eruption", "value": 0.0001, "img": "1supervolcano.png", "emphasis_img": "1supervolcano.png", "category": ""},
+{"risk": "asteroid or comet impact", "value": 0.000001, "img": "1asteroid.png", "emphasis_img": "1asteroid.png", "category": ""}, 
+{"risk": "stellar explosion", "value": 0.000000001, "img": "1stellar.png", "emphasis_img": "1stellar.png", "category": ""},
+{"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1enviro.png", "emphasis_img": "1enviro.png", "category": ""},
+//{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png", "emphasis_img": "1x.png", "category": ""},
+//{"risk": "total anthropogenic existential risk", "value": 0.17, "img": "1x.png", "emphasis_img": "1x.png", "category": ""},
+//{"risk": "total existential risk", "value": 0.167, "img": "1x.png", "emphasis_img": "1x.png", "category": ""},
+{"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1uncertain.png", "emphasis_img": "1uncertain.png", "category": ""}] 
 
-let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
-{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
-{"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png"}, {"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png"},
-{"risk": "climate change", "value": 0.001, "img": "1climate.png"}, 
-{"risk": "supervolcanic eruption", "value": 0.0001, "img": "1supervolcano.png"},
-{"risk": "asteroid or comet impact", "value": 0.000001, "img": "1asteroid.png"}, {"risk": "stellar explosion", "value": 0.000000001, "img": "1stellar.png"},
-{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png"}] 
 
-//imgs: add for other enviro damage! add for unforseen anthro! add for total natural! add for total anthro!
-
-//{"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1x.png"}, {"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1x.png"}, {"risk": "total anthropogenic existential risk", "value": 0.17, "img": "1x.png"}
-
-let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, {"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},  
-{"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png"}, {"risk": "climate change", "value": 0.0001, "img": "1climate.png"}, 
-{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png"}, {"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png"}]
-
-//imgs: add for synthetic biology! add for nanotechnology! add for ecological catastrophe! add for uncertain risks!
-//{"risk": "synthetic biology", "value": 0.000001, "img": "1x.png"}, {"risk": "nanotechnology", "value": 0.0001, "img": "1x.png"}, {"risk": "ecological catastrophe", "value": 0.005, "img": "1x.png"}, {"risk": "uncertain risk", "value": 0.005, "img": "1x.png"}
+let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png", "emphasis_img": "3ai.png", "category": "#ai"}, 
+{"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#pandemic"},  
+{"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png", "emphasis_img": "3nuclear.png", "category": "#nuclear"}, 
+{"risk": "climate change", "value": 0.0001, "img": "1climate.png", "emphasis_img": "3climate.png", "category": "#climate"}, 
+{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png", "emphasis_img": "1supervolcano.png", "category": ""}, 
+{"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png", "emphasis_img": "1asteroid.png", "category": ""},
+{"risk": "synthetic biology", "value": 0.000001, "img": "1syntheticbio.png", "emphasis_img": "1syntheticbio.png", "category": ""}, 
+{"risk": "nanotechnology", "value": 0.0001, "img": "1nanotech.png", "emphasis_img": "1nanotech.png", "category": ""}, 
+{"risk": "ecological catastrophe", "value": 0.005, "img": "1enviro.png", "emphasis_img": "1enviro.png", "category": ""}, 
+{"risk": "uncertain risk", "value": 0.005, "img": "1uncertain.png", "emphasis_img": "1uncertain.png", "category": ""}]
 
 let researchers = new Map();
 researchers.set("Toby Ord", tobyord);
@@ -173,18 +205,6 @@ researchers.set("Pamlin & Armstrong", pamlin);
 	    .size([width - 2, height - 2])
 	    .padding(3);
 
-	// data = d3.csv("test.csv").then(function(data) {
-	//  data.forEach(function(d) {
-	//    d.value = +d.value;
-	//  });
-	//  console.log(data[0]);
-	// });
-
-	// d3.csv("test.csv", function(d) {
-	//    d.value = +d.value;
-	// }, function(error, data) {
-	// 	if (error) throw error;
-
 		const root = d3.hierarchy({children: data})
 	    .sum(function(d) {return d.value; });
 
@@ -198,11 +218,6 @@ researchers.set("Pamlin & Armstrong", pamlin);
 	     .attr("id", function(d) {return d.id; })
 	      .attr("r", function(d) {return d.r; })       // radius?
 	      .attr("fill-opacity", 0.0);
-	    // .on("mouseover", function(d){    //switches to x-risk image on mouseover
-	        
-	    // .on("mouseout", function(){     //switches back
-	        
-	    //     });
 
 	    node.append("clipPath")
 	      .attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
@@ -216,28 +231,39 @@ researchers.set("Pamlin & Armstrong", pamlin);
 	      .attr('xlink:href', function(d) { return d.data.img; })
 	      .attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
 	    .on("mouseover", function(d){    //switches to x-risk image on mouseover
+	        d3.selectAll(".intro_note").text("");
 	        d3.select(this)
-	           .attr('xlink:href', function(d) { return d.data.img; });
+	           .attr('xlink:href', function(d) { return d.data.emphasis_img; });
 	        d3.select("#risk").text("~" + d.value + "% chance");
-	        d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-	        d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
+	        d3.select("#hrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in the coming century, if...");
+	        if (d.data.category != "") {
+	        	d3.select(d.data.category).style("color", "#006d77");
+	        }
 	        })
 	    .on("mouseout", function(){     //switches back
 	        d3.select(this)
 	           .attr('xlink:href', function(d) { return d.data.img; });
 	        d3.select("#risk").text("");
 	        d3.select("#hrisk").text("");
-	        d3.select("#xrisk").text("");
-	 		});
-
+	        d3.selectAll(".x-risk").style("color", "white");
+	 		})
+	    .on("click", function(d){  
+	        d3.select(this)
+	           .attr('xlink:href', function(d) { return d.data.emphasis_img; });
+	        d3.select("#risk").text("~" + d.value + "% chance");
+	        d3.select("#hrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in the coming century, if...");
+	        if (d.data.category != "") {
+	        	d3.select(d.data.category).style("color", "#006d77");
+	        }
+	        });
 	};
 
-
-	bubbleChart(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
+	let researcherName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text
+	bubbleChart(researcherName);
 
 	function update() {
 		let updatedName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text;
-		console.log(updata);
+		console.log(updatedName);
 
  		svg = d3.select("body").select("#bubble_chart"),
  		width = +svg.attr("width"),
@@ -248,420 +274,10 @@ researchers.set("Pamlin & Armstrong", pamlin);
  		bubbleChart(updatedName);
 	}
 
-	d3.select("body").select("svg").selectAll(".node").on("mouseover", function(d){
-		d3.select(this)
-			.attr('xlink:href', function(d) { return d.data.ximg; });
-		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.value) + " chance");
-		d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
-		});
 
-	d3.select("body").select("svg").selectAll(".node").on("mouseout", function(){     //switches back
-		d3.select(this)
-			.attr('xlink:href', function(d) { return d.data.himg; });
-		d3.select("#risk").text("");
-		d3.select("#hrisk").text("");
-		d3.select("#xrisk").text("");
-		d3.select("#prob").text("");
-		});
 
 	document.getElementById("country").addEventListener("change", update);
 	document.getElementById("researcher").addEventListener("change", update);
-
-
-// window.onbeforeunload = function(e){
-//     document.getElementById('human').className = 'humanRisksToRoom';
-//     document.getElementById('risks').className = 'fadeOut';
-// }
-
-// makeBubbleChart();
-// document.getElementById("country").addEventListener("change", makeBubbleChart);
-// document.getElementById("researcher").addEventListener("change", makeBubbleChart);
-
-
-
-
-
-// function riskMatching() {
-// 	var hrisks = [];
-// 	console.log(hrisks);
-
-// 	var finalData = [];
-// 	var finalfinalData = [];
-
-// 	return d3.csv("test.csv").then(function(data) {
-//  		data.forEach(function(d) {
-//     		d.risk = d.risk;
-//     		d.value = +d.value;
-//    			d.img = d.img;
-//    			hrisks.push(d);
-//   		});
-//   		console.log(data[0]);
-//   		console.log(hrisks[0]);
-
-//   		hrisks = data.filter(function(d) {
-//   	  		return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
-//   		});
-
-//   		console.log(hrisks);
-// 		console.log(hrisks[0]);
-
-// 		let xrisks = researchers.get(document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text);
-// 	// console.log(data2);
-
-// 		console.log(xrisks);
-
-// 		finalData = xrisks.map(function(x) {
-// 			var match = {}
-// 			match.xrisk = x.risk;
-// 			match.ximg = x.img;
-		
-// 			var value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
-
-// 			console.log(value);
-
-// 			var closest = hrisks[0];
-
-// 			console.log(closest);
-
-// 			hrisks.forEach(function(n) { 
-// 				console.log(n);
-// 				if (Math.abs(parseFloat(value) - parseFloat(n.value)) < Math.abs(parseFloat(value) - parseFloat(closest.value))) {
-// 					console.log(n);
-// 					console.log(n.risk);
-// 					closest = {"risk": n.risk, "value": +n.value, "img": n.img};
-// 					console.log(closest);
-// 				};
-// 			});
-// 			match.hrisk = closest.risk;
-// 			match.himg = closest.img;
-// 			match.value = (parseFloat(value) + parseFloat(closest.value)) / 2;
-// 			//hrisks = hrisks. //delete closest;
-// 			console.log(match);
-// 			finalfinalData.push(match);
-// 			return match;
-// 		});
-// 		console.log(finalData);
-// 		console.log(finalfinalData);
-// 		return finalData;
-// 	});
-// };
-	// let data = d3.csv("test.csv");
- //  	console.log(data);
- //  	var hrisks1 = data.filter(function(d) {
- //  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
- //  	});
- //  	var hrisks2 = hrisks.filter(function(d) {
- //  	  return d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0;
- //  	});
- //  	console.log(hrisks1);
- //  	console.log(hrisks);
-  	  // data.forEach(function(d) {
-    	// console.log(d);
-    	// console.log(d.country);
-    	// console.log(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
-    	// if (d.country.localeCompare(document.getElementById("country").options[document.getElementById("country").selectedIndex].text) == 0) {
-    	// 	console.log("length " + hrisks.length);
-    	// 	hrisks.push({country: d.country, risk: d.risk, value: d.value, img: d.img});
-    	// }
-  	  // });
-  	// console.log("hrisks1[0] " + hrisks1[0]);
-  	// console.log("hrisks[0] " + hrisks[0]);
-
-  	//let finalData = [];
-  	//console.log("finalData" + finalData);
-	
-	// console.log(xrisks);
-	// xrisks.forEach(function match(x) {
-	// 	//console.log("xrisk before math" + x.value);
-	// 	x.value = parseFloat(x.value) * 1000 / parseFloat(document.getElementById("country").options[document.getElementById("country").selectedIndex].value);
-	// 	//console.log("xrisk after math" + x.value);
-	// 	//console.log("hrisks[0] " + hrisks[0]);
-	// 	let closest = hrisks[0];
-	// 	//console.log("closest1 " + closest);
-	// 	hrisks.forEach(function findClosest(n) { 
-	// 		if (Math.abs(parseFloat(x.value) - parseFloat(n.value)) < Math.abs(parseFloat(x.value) - parseFloat(closest.value))) {
-	// 			closest = n;
-	// 			console.log("closest " + closest);
-	// 		};
-	// 	});
-	// 	delete hrisks[hrisks.indexOf(closest)];
-	// 	//console.log(closest);
-	// 	let match = {
-	// 		xrisk: x.risk,
-	// 		ximg: x.img,
-	// 		hrisk: closest.risk,
-	// 		himg: closest.img,
-	// 		value: (parseFloat(x.value) + parseFloat(closest.value)) / 2
-	// 	};
-	// 	console.log("match" + match);
-	// 	finalData[finalData.length] = match;
-	// });
-
-	//return finalfinalfinalData;
-
-
-
-// function bubbleChart() {
-// 	let data = riskMatching();
-
-// 	console.log(data);
-
-// 	d3.select("body").append("p").data(data).text(function(d) {
-// 			return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
-// 		});
-
-// 	let format = d3.format(",d");
-
-// 	var svg = d3.select("body").select("svg"),
-//     	width = +svg.attr("width"),
-//     	height = +svg.attr("height");
-
-// 	let pack = d3.pack()
-//     	.size([width - 2, height - 2])
-//     	.padding(3);
-
-//     const root = d3.hierarchy({children: data})
-//     .sum(function(d) {return d.value; });
-
-// 	const node = svg.selectAll(".node")
-//     .data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
-//     .enter().append("g")
-//       .attr("class", "node")
-//       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
-
-//     node.append("circle")
-//      .attr("id", function(d) {return d.id; })
-//       .attr("r", function(d) {return d.r; })       // radius?
-//       .attr("fill-opacity", 0.0);
-
-//     node.append("clipPath")
-//       .attr("id", function(d) { return "clip-" + d.id; })  //give each data point a clipUid?
-//     .append("use")
-//       .attr("xlink:href", function(d) { return "#" + d.id; });
-
-//     node.append('image')
-//  //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
-//       .attr('width', function(d) { return d.r*2; })
-//       .attr('height', function(d) { return d.r*2; })
-//       .attr('xlink:href', function(d) { return d.data.himg; })
-//       .attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
-//     .on("mouseover", function(d){    //switches to x-risk image on mouseover
-//         d3.select(this)
-//            .attr('xlink:href', function(d) { return d.data.ximg; });
-//         d3.select("#risk").text("~" + d.value + "% chance");
-//         d3.select("#hrisk").text("A person in " + document.getElementById("country").options[document.getElementById("country").selectedIndex].text + " will die of " + d.data.hrisk + ".");
-//         d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-//         })
-//     .on("mouseout", function(){     //switches back
-//         d3.select(this)
-//            .attr('xlink:href', function(d) { return d.data.himg; });
-//         d3.select("#risk").text("");
-//         d3.select("#hrisk").text("");
-//         d3.select("#xrisk").text("");
-//  		});
-
-//     node.append("title")
-//      .text(d => `${d.data.hrisk === undefined ? "" : `${d.data.hrisk}`}${format(d.value)}`);
-
-// }
-
-
-// bubbleChart();
-// document.getElementById("country").addEventListener("change", bubbleChart);
-// document.getElementById("researcher").addEventListener("change", bubbleChart);
-
-
-
-// var values = ["dog", "cat", "parrot", "rabbit"];
-
-// var select = document.createElement("select");
-//   select.name = "pets";
-//   select.id = "pets"
-
-// for (const val of values) {
-//     var option = document.createElement("option");
-//     option.value = val;
-//     option.text = val.charAt(0).toUpperCase() + val.slice(1);
-//     select.appendChild(option);
-// }
-
-
-// document.getElementById("container").appendChild(select);
-
-// hi();
-// document.getElementById("country").addEventListener("change", hi);
-// function hi () {
-// 	d3.select("body").append("p").text(document.getElementById("country").options[document.getElementById("country").selectedIndex].text);
-// }
-
-
-//let d3 = require("d3@5")
-
-//let data = d3.csvParse("test.csv", ({hrisk, himg, xrisk, ximg, value}) => ({hrisk, himg, xrisk, ximg, value: +value}))
-
-//SCROLLDOWN OPTIONS 
-
-// function GetSelectedValue(){
-// 	var e = document.getElementById("country");
-// 	var result = e.options[e.selectedIndex].value;
-
-// 	document.getElementById("country").innerHTML = result;
-// }
-
-// function GetSelectedText(){
-// 	var e = document.getElementById("country");
-// 	var result = e.options[e.selectedIndex].text;
-
-// 	document.getElementById("country").innerHTML = result;
-// }
-
-// let hrisks = [];
-
-// function hrisksByCountry(data1) {
-// 	hrisks = [];
-// 	data1.forEach(function(d) {
-//     if (d.country == GetSelectedText()) {
-//     	hrisks.push(d);
-//     }
-//   });
-// }
-
-// function closestRisk(xrisk) {
-// 	let closest = hrisks[0];
-// 	hrisks.forEach(function(d) {
-// 		if (abs(+xrisk.risk - +d.risk) < abs(+xrisk.risk - +closest.risk)) {
-// 			closest = d;
-// 		}
-// 	});
-// 	delete hrisks[hrisks.indexOf(closest)];
-// 	return closest;
-// }
-
-// let finalData = [];
-// let hrisks = [];
-
-// let data1 = d3.csv("test.csv"); 
-// data1.forEach(function(d) {
-//     if (d.country == GetSelectedText()) {
-//     	hrisks.push(d);
-//     }
-// });
-
-// xrisks.forEach(function(x) {
-// 	x.risk *= 1000 / GetSelectedValue();
-// 	let h = closestRisk(x);
-// 	let match = {
-// 		xrisk: x.name;
-// 		ximg: x.img;
-// 		hrisk: h.name;
-// 		himg: h.img;
-// 		value: (x.risk + h.risk) / 2;
-// 	}
-// 	finalData.push(match);
-// });
-
-
-// let pack = function(data) { d3.pack()
-//     .size([width - 2, height - 2])
-//     .padding(3)
-//   (d3.hierarchy({children: data})
-//     .sum(function(d) {return d.value; }))};
-
-
-// await FileAttachment("test@1.csv").text()
-
-// let width = 400;
-// let height = width;
-  
-// const svg = d3.select("#bubble_chart").append("svg")
-//       .attr("viewBox", [0, 0, width, height])
-//       .attr("font-size", 10)
-//       .attr("font-family", "sans-serif")
-//       .attr("text-anchor", "middle");
-
-
-
-// data = d3.csv("test.csv").then(function(data) {
-//  data.forEach(function(d) {
-//    d.value = +d.value;
-//  });
-//  console.log(data[0]);
-// });
-
-// d3.csv("test.csv", function(d) {
-//    d.value = +d.value;
-// }, function(error, data) {
-// 	if (error) throw error;
-
-	
-    // .on("mouseover", function(d){    //switches to x-risk image on mouseover
-        
-    // .on("mouseout", function(){     //switches back
-        
-    //     });
-
-    
-
-
-
-// const leaf = svg.selectAll(".node")
-//     .data(root.leaves())              //returns array of descendant nodes of "root" that don't have children
-//     .enter().append("g")
-//       .attr("class", "node")
-//       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
-
-
-
-
-// leaf.append("circle")
-//       .attr("id", function(d) {(d.leafUid = DOM.uid("leaf")).id})
-//       .attr("r", function(d) {return d.r})       // radius?
-//       .attr("fill-opacity", 0.0);
-// //      .attr("fill", d => color(d.data.group));    //fill with color
-
-// leaf.append("clipPath")
-//       .attr("id", d => (d.clipUid = DOM.uid("clip")).id)  //give each data point a clipUid?
-//     .append("use")
-//       .attr("xlink:href", function(d) {return d.leafUid.href});
-
-//could probably get rid of this
-  
-//  leaf.append("text")
-//      .attr("clip-path", d => d.clipUid)
-//    .selectAll("tspan")
-//    .data(d => d.data.name.split(/(?=[A-Z][a-z])|\s+/g))    // format name
-//    .join("tspan")        //group as a tspan (https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan)
-//      .attr("x", 0)       //x-coordinate of starting point of text 
-//      .attr("y", (d, i, nodes) => `${i - nodes.length / 2 + 0.8}em`)
-//      .text(d => d);      //name formatted in data function (4 lines up)
-
-
-
-// leaf.append('image')
-//     .attr('clip-path', d => d.clipUid)
-//     .attr('width',d => d.r*2)
-//     .attr('height',d => d.r*2)
-//     .attr('xlink:href', d.data.himg))
-//     .on("mouseover", function(d){    //switches to x-risk image on mouseover
-//         d3.select(this)
-//            .attr('xlink:href',"file:///Users/odelialorch/Desktop/risk%20icons/1x.png");
-//         d3.select("#risk").enter().append('div').text(d.data.value "% chance");
-//         d3.select("#hrisk").enter().append('div').text("A person in " + country + "will die of" + d.data.hrisk);
-//         d3.select("#xrisk").enter().append('div').text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
-//         })
-//     		.function
-//     .on("mouseout", function(){     //switches back
-//         d3.select(this)
-//            .attr('xlink:href',d => d.data.himg);
-//         d3.select("#risk").selectAll('div').remove();
-//         d3.select("#hrisk").selectAll('div').remove();
-//         d3.select("#xrisk").selectAll('div').remove();
-//         });
-//       //.attr('transform','translate('+parseInt(d.posx+config.avatar_size/2)+','+parseInt(d.posy+config.avatar_size/2)+')')
-// //});
-    
 
 
 

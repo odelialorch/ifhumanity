@@ -18,7 +18,7 @@
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
 
 	<span onclick="window.location.href='adolescence.html'" class="navigate left every_page">&#8249;</span>
-	<span onclick="window.location.href='acknowledgments.html'" class="navigate right every_page">&#8250;</span>
+	<span onclick="window.location.href='prevention.html'" class="navigate right every_page">&#8250;</span>
 
 	
 
@@ -35,7 +35,8 @@
 		</div>
 
 		<div class = "column3">
-			<div class = "intro_note">HiWhat exactly are the risks we must come to terms with in our adolescence? <br><br><br>Scroll over the bubble chart on the left to explore mortality and extinction risk factors.</div>
+			<div class = "intro_note">What exactly are the risks we must come to terms with in our adolescence?</div> 
+			<div class = "intro_note"><br><br><br><br><br>Scroll over the bubble chart on the left to explore mortality and extinction risk factors.</div>
 
 			<span id = "risk"></span>
 			<span id = "hrisk"></span>
@@ -112,27 +113,47 @@ var title = d3.select("body").select("h1")
 
 title.transition().style("opacity", 1).duration(1000).delay(0);
 
+var intro_notes = d3.select("body").selectAll(".intro_note")
+	.style("opacity", 0);
+
+intro_notes.transition()
+	.style("opacity", 1)
+	.duration(1000).delay((d, i) => 1000 + 1500 * i);
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 let probExamples = [{"value": 6, "example": " roll a 2 with any die"}, {"value": 7, "example": "r friend was born on a Tuesday"}, {"value": 8, "example": " flip a coin Tails three times in a row"}]
 
-let tobyord = [{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, {"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
-{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, {"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
-{"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png"}, {"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png"},
+let tobyord = [//{"risk": "total existential risk", "value": 0.167, "img": "1x.png"}, 
+{"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png"},
+{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png"}, 
+{"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png"},
+{"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png"}, 
+{"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png"},
 {"risk": "climate change", "value": 0.001, "img": "1climate.png"}, 
 {"risk": "supervolcanic eruption", "value": 0.0001, "img": "1supervolcano.png"},
-{"risk": "asteroid or comet impact", "value": 0.000001, "img": "1asteroid.png"}, {"risk": "stellar explosion", "value": 0.000000001, "img": "1stellar.png"},
-{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png"}] 
+{"risk": "asteroid or comet impact", "value": 0.000001, "img": "1asteroid.png"}, 
+{"risk": "stellar explosion", "value": 0.000000001, "img": "1stellar.png"},
+{"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1enviro.png"},
+//{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png"}
+{"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1uncertain.png"}] 
 
 //imgs: add for other enviro damage! add for unforseen anthro! add for total natural! add for total anthro!
 
 //{"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1x.png"}, {"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1x.png"}, {"risk": "total anthropogenic existential risk", "value": 0.17, "img": "1x.png"}
 
-let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, {"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},  
-{"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png"}, {"risk": "climate change", "value": 0.0001, "img": "1climate.png"}, 
-{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png"}, {"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png"}]
+let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png"}, 
+{"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png"},  
+{"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png"}, 
+{"risk": "climate change", "value": 0.0001, "img": "1climate.png"}, 
+{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png"}, 
+{"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png"},
+{"risk": "synthetic biology", "value": 0.000001, "img": "1syntheticbio.png"}, 
+{"risk": "nanotechnology", "value": 0.0001, "img": "1nanotech.png"}, 
+{"risk": "ecological catastrophe", "value": 0.005, "img": "1enviro.png"}, 
+{"risk": "uncertain risk", "value": 0.005, "img": "1uncertain.png"}]
 
 //imgs: add for synthetic biology! add for nanotechnology! add for ecological catastrophe! add for uncertain risks!
 //{"risk": "synthetic biology", "value": 0.000001, "img": "1x.png"}, {"risk": "nanotechnology", "value": 0.0001, "img": "1x.png"}, {"risk": "ecological catastrophe", "value": 0.005, "img": "1x.png"}, {"risk": "uncertain risk", "value": 0.005, "img": "1x.png"}
@@ -276,7 +297,8 @@ d3.csv("data.csv").then(function(data) {
 	 			.attr('height', function(d) { return d.r*2; })
 	 			.attr('xlink:href', function(d) { return d.data.himg; })
 	 			.attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
-		   		.on("mouseenter", function(d){    //switches to x-risk image on mouseover
+		   		.on("mouseover", function(d){    //switches to x-risk image on mouseover
+		    		d3.select(".intro_note").text("");
 		    		d3.select(this)
 		    			.attr("xlink:href", function(d) { return d.data.ximg; });
 		    		d3.select("#risk").text("~1 in " + Math.round(1.0 / d.data.value) + " chance");
@@ -284,7 +306,7 @@ d3.csv("data.csv").then(function(data) {
 		    		d3.select("#xrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in that person's lifetime.");
 		    		d3.select("#prob").text("This is the same as the chance you" + probExamples.find(function (n) { return n.value === Math.round(1.0 / d.value); }).example + ".");
 		    		})
-		    	.on("mouseleave", function(d){     //switches back
+		    	.on("mouseout", function(d){     //switches back
 		    		d3.select(this)
 		    			.attr("xlink:href", function(d) { return d.data.himg; });
 		    		d3.select("#risk").text("");
@@ -311,19 +333,6 @@ d3.csv("data.csv").then(function(data) {
 
  		bubbleChart(updata);
 	}
-
-	d3.select("body").select("svg").selectAll(".bubble").on("mouseenter", function(d){
-		d3.select("body").append("p").data(data).text("fuck this shitttt");
-		});
-
-	d3.select("body").select("svg").selectAll(".bubble").on("mouseleave", function(){     //switches back
-		d3.select(this)
-			.attr("xlink:href", function(d) { return d.data.himg; });
-		d3.select("#risk").text("");
-		d3.select("#hrisk").text("");
-		d3.select("#xrisk").text("");
-		d3.select("#prob").text("");
-		});
 
 	document.getElementById("country").addEventListener("change", update);
 	document.getElementById("researcher").addEventListener("change", update);

@@ -267,11 +267,6 @@ span:focus, span:hover, span:active {
 	margin-left: 150px;
 }
 
-.bubble {
-	pointer-events: all;
-	cursor: pointer;
-}
-
 .node {
 	cursor: pointer;
 	pointer-events: all;
@@ -282,7 +277,7 @@ span:focus, span:hover, span:active {
 	font-family: Trebuchet MS, Helvetica, sans-serif;
 	font-weight: bold;
 	font-style: italic;
-	top: 200px;
+	top: 150px;
 	margin-right: 150px;
 	left: 800px;
 	z-index: 10;
@@ -299,6 +294,7 @@ span:focus, span:hover, span:active {
 }
 
 #risk {
+	left: 840px;
 	top: 200px;
 	font-size: 30px;
 	color: #006d77;
@@ -343,6 +339,13 @@ select {
   	opacity: 0.5;
   	/*-webkit-appearance: none;*/
 }
+
+/*----------------------------------------PREVENTION.HTML----------------------------------------*/
+
+#prevent_ai {
+	opacity: 0;
+}
+
 
 .adolescence p {
 	color: #a2999e;
