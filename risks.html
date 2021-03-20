@@ -67,8 +67,39 @@
 			</div>
 			
 		</div>
+
 		
 	</div>
+
+	<!-- Trigger/Open The Modal -->
+	<div class = "uncertaintyButton" id = "myBtn"><h3 class = "uncertaintySentence">&#9650; the data in this visualization have high uncertainty.</h3></div>
+
+	<!-- down caret: &#9660; -->
+
+	<!-- The Modal -->
+	<div id="uncertaintyModal" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+	    <div class="modal-body">
+		    <h3>uncertainty</h3>
+
+		    <p>The forecast data in this visualization have high uncertainty.</p>
+
+			<p>The existential risk (x-risk) forecasts for the coming century come from two sources: Toby Ord’s <a style = "font-style: italic;"href = "https://theprecipice.com/">The Precipice</a> and Dennis Pamlin and Stuart Armstrong's "<a href = "https://www.researchgate.net/publication/291086909_12_Risks_that_threaten_human_civilisation_The_case_for_a_new_risk_category">Global Challenges: 12 Risks that Threaten Human Civilisation, Global Challenges Foundation</a>." If you click between researchers in the dropdown option, you’ll see how different their forecasts are.</p> 
+
+			<!-- <p class="uncertainty-quote">“[quote about level of uncertainty]” (Ord p)</p> 
+
+			<p class="uncertainty-quote">“[quote about level of uncertainty]” (Pamlin and Armstrong p)</p>  -->
+
+			<p>To view x-risk predictions and their probability distributions, and even contribute your own forecasts, check out this <a href="https://www.lesswrong.com/posts/6x9rJbx9bmGsxXWEj/forecasting-thread-existential-risk-1">Forecasting Thread</a>.</p> 
+
+			<p>The estimates for the percentages by which various preventive measures reduce existential risk forecasts come from a survey of experts from the Future of Humanity Institute, the Center for Human-Compatible AI, and other affiliations. Each expert was given under 10 minutes to come up with these values. Unquestionably, these estimates are also quite uncertain.</p>  
+
+			<p>If everything's uncertain, what's the point? Although all forecasts are inherently subject to a high degree of error, it is still important to attempt to forecast these risks and how various preventive measures may reduce them, so as A) to highlight priority areas and cases where the research community disagrees and B) to underline the urgency of starting to take action to mitigate them. The point is to act now, because the consequences of inaction are catastrophic.</p>  
+	 	</div>
+	  </div>
 
 
 <!-- 	<div id="container"></div> -->
@@ -87,6 +118,36 @@ $("body").keydown(function(e) {
   }
 });
 
+
+//-----------------uncertainty modal-----------------
+
+// Get the modal
+var modal = document.getElementById("uncertaintyModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
 var svg1 = d3.select("body").select("#human"), 
 	width = +svg1.attr("width");
  	height = +svg1.attr("height");
@@ -94,19 +155,19 @@ var svg1 = d3.select("body").select("#human"),
 var longLineLength = 1000;
 var bottomLineY = 450;  // 550 - 100 = 450
 
-var humanityhuman = svg1.append("image")
-  	.attr("x", width / 2 - 225 / 2 + 24)
-  	.attr("y", 15) // 115 - 100 = 15
-  	.attr("xlink:href", "crowd_human.png")
-  	.attr("width", 1100/6)
-  	.attr("opacity", 1);
-
 var longline = svg1.append("line")
     .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
 		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
 		.attr("y1", bottomLineY).attr("y2", bottomLineY)
     .attr("stroke-width", 2)
     .attr("stroke", "#353b3c");
+
+var humanityhuman = svg1.append("image")
+  	.attr("x", width / 2 - 225 / 2 + 24)
+  	.attr("y", 15) // 115 - 100 = 15
+  	.attr("xlink:href", "crowd_human.png")
+  	.attr("width", 1100/6)
+  	.attr("opacity", 1);
 
 var title = d3.select("body").select("h1")
 	.style("opacity", 0);

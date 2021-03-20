@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Existential Risks</title>
+	<title>Preventive Measures</title>
 	<link href="style.css" type="text/css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
@@ -28,43 +28,157 @@
 			<svg id = "bubble_chart" width="350" height="500" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
 
 			<div class="x-risks">
-				<span id = "ai" class="x-risk">unaligned AI</span>
-				<span id = "nuclear" class="x-risk">nuclear threat</span>
-				<span id = "pandemic" class="x-risk">pandemic</span>
+				<span id = "ai" class="x-risk">AI</span>
+				<span id = "biorisk" class="x-risk">biorisk</span>
 				<span id = "climate" class="x-risk">climate</span>
+				<span id = "nuclear" class="x-risk">nuclear</span>
 			</div>
 
-			<select id="researcher">
+			<select id="researcher" style = "left: 120px;">
 					<option value="ID001" selected>Toby Ord</option>
 					<option value="ID002">Pamlin & Armstrong</option>
 			</select>
 		</div>
 
 		<div class = "column3">
-			<h1 class = "title">Existential Risks</h1>
+			<h1 class = "title">Preventive Measures</h1>
  			<svg id="human" width="183.3" height="600" text-anchor="middle" display="inline-block" margin="auto" position="relative" left="50%"></svg>
 		</div>
 
 		<div class = "column3">
 			<div class = "intro_note">We wear safety belts to avoid fatal accidents.</div>
 			<div class = "intro_note"><br><br><br><br>We get vaccinated to prevent deadly viruses.</div>
-			<div class = "intro_note"><br><br><br><br><br><br><br><br>What can we do to prevent humanity's extinction? Click on an existential risk to explore some possibilities.</div>
+			<div class = "intro_note"><br><br><br><br><br><br><br><br>What can we do to prevent humanity's extinction?</div> 
+			<!-- Click on an existential risk to explore some possibilities. -->
 
-			<span id = "risk"></span>
-			<span id = "hrisk"></span>
-			<span id = "xrisk"></span>
-			<span id = "prob"></span>
+			<span id = "risk_pr"></span> 
+			<span id = "xrisk_pr"></span>
 
-			<div id = "prevent_ai">
-				<span class = "intervention">Intervention1</span>
-					<span class = "resources">
-						<a href="risks.html">learn more &#8250;</a>
-						<a href="risks.html">take action &#8250;</a>
-					</span>
-				<span class = "intervention">Intervention2</span>
-				<span class = "intervention">Intervention3</span>
-				<span class = "intervention">Intervention4</span>
-			</div>
+			<ul id = "ai_prevent" class = "preventive_measures">
+<!-- 				<li id = "AI1" class = "intervention">The number of people who work on AI safety  
+					<select style = "width: 80px;">
+						<option id = "AI11" value="ID001" selected>right now</option>
+						<option id = "AI12" value="ID002">ever</option>
+					</select>
+					 is doubled.
+				</li>	 Paul Christiano --> 
+
+				<li id = "AI10" class = "intervention">A lab of 10 people works for the next 5 years on algorithmic approaches to alignment.</li> <!-- Paul Christiano -->
+
+<!-- 				<li id = "AI40" class = "intervention">1000 people for 20 years do direct research on AI alignment.</li>  Daniel Filan -->
+
+				<li id = "AI2" class = "intervention">Research on 
+					<select style = "width: 220px;">
+						<option id = "AI21" value="ID001">specification learning</option> <!-- Rohin Shah -->
+						<option id = "AI22" value="ID002">interpretability</option> <!-- Rohin Shah -->
+						<option id = "AI23" value="ID004" selected>imitation learning</option> <!-- Adam Gleave -->
+						<option id = "AI24" value="ID004">mechanism design for coordinating diverse AI systems</option> <!-- Adam Gleave -->
+						<option id = "AI25" value="ID003">other robustness topics</option> <!-- Rohin Shah -->
+						<option id = "AI26" value="ID004">yet unknown topics</option> <!-- Rohin Shah -->
+					</select>
+					 is done well.
+				</li>
+
+<!-- 				<li id = "AI3" class = "intervention">
+					<select style = "width: 50px;">
+						<option id = "AI31" value="ID001" selected>Every</option>
+						<option id = "AI32" value="ID002">Most</option>
+					</select>
+					 possible risk/s is/are publicly described and recognized.  Adam Gleave
+				</li> -->
+
+<!-- 				<li id = "AI3" class = "intervention">
+					<select style = "width: 50px;">
+						<option id = "AI31" value="ID001" selected>All</option>
+						<option id = "AI32" value="ID002">Most</option>
+					</select>
+					 machine learning researchers were to care as much as AI safety researchers do. Paul Christiano 
+				</li> -->
+
+				<li id = "AI30" class = "intervention">There is a safety culture within the AI community - a broader acceptance of and agreement on what the goals of AI research should be.</li> <!-- Adam Gleave -->
+
+				<li id = "AI40" class = "intervention">A leading morally-neutral AI lab is replaced with one that cares optimally about AI alignment and ensuring a good future.</li> <!-- Paul Christiano -->
+
+				<li id = "AI50" class = "intervention">There is mutual trust and shared norms between Western and Chinese AI labs to prevent a race to the bottom on AI safety.</li> <!-- Paul Christiano -->
+<!-- 
+				<li id = "AI40" class = "intervention">A U.S. president is elected who made mutual trust and shared norms between Western and Chinese AI labs a major policy goal in 8 years.</li>  Paul Christiano --> 
+
+				<li id = "AI60" class = "intervention">Consumer demand and political pressure cause all recommendation systems to take into account human values.</li> <!-- Adam Gleave -->
+
+<!-- 				<li id = "AI40" class = "intervention">There is good oversight and information about the status of AI projects.</li> Adam Gleave --> 
+				
+				<div class = "resources intervention">
+					<a href="https://docs.google.com/document/d/1CVNiESpYOGc12AR2YH_HRUGOD_uRpAsQIqttoGr-rqY/edit?usp=sharing" target="_blank">learn more & take action &#8250;</a>
+				</div>
+			</ul>
+
+			<ul id = "climate_prevent" class = "preventive_measures">
+				
+				<!-- John Halstead -->
+
+<!-- 				<li id = "CL10" class = "intervention">There is U.S.-Europe nuclear energy cooperation.</li>
+
+				<li id = "BI20" class = "intervention">The U.S. builds a bunch of nuclear power.</li>
+
+				<li id = "AI2" class = "intervention"> In
+					<select style = "width: 100px;">
+						<option id = "AI22" value="ID002">the global economy</option>
+						<option id = "AI21" value="ID001" selected>the U.S.</option>
+						<option value="53.25">Afghanistan</option>
+						<option value="82.89">Australia</option>
+						<option value="74.98">Brazil</option>
+						<option value="76.31">China</option>
+						<option value="79.5">Denmark</option>
+						<option value="70.03">India</option>
+						<option value="75.2">Malaysia</option>
+						<option value="60.87">Nigeria</option>
+						<option value="72.16">Russia</option>
+						<option value="81.3">the United Kingdom</option>
+						</select>
+					, electric cars outplay petrol in performance and cost.
+				</li>
+
+				<li id = "AI2" class = "intervention">
+					<select style = "width: 120px;">
+						<option id = "AI22" value="ID002" selected>All countries</option>
+						<option id = "AI21" value="ID001">The U.S., China, Europe, and India</option>
+						<option id = "AI21" value="ID001">The U.S.</option>
+						<option value="53.25">Afghanistan</option>
+						<option value="82.89">Australia</option>
+						<option value="74.98">Brazil</option>
+						<option value="76.31">China</option>
+						<option value="79.5">Denmark</option>
+						<option value="70.03">India</option>
+						<option value="75.2">Malaysia</option>
+						<option value="60.87">Nigeria</option>
+						<option value="72.16">Russia</option>
+						<option value="81.3">the United Kingdom</option>
+						</select>
+					adopt/s clean energy standards.
+				</li>
+	
+				
+				<div class = "resources intervention">
+					<a href="risks.html">learn more &#8250;</a>
+					<a href="risks.html">take action &#8250;</a>
+				</div> -->
+			</ul>
+
+			<ul id = "biorisk_prevent" class = "preventive_measures">
+				
+				<!-- Gregory Lewis -->
+<!-- 				<li id = "BI10" class = "intervention">A code of conduct for the life sciences is adopted.</li>
+				<li id = "BI20" class = "intervention">Metagenomic sequencing is integrated.</li>
+				<li id = "BI30" class = "intervention">Environmental biosurveillance is implemented.</li>
+				<li id = "BI40" class = "intervention">Platform vaccine technologies are safely developed.</li>
+				<li id = "BI50" class = "intervention">The Biological Weapons Convention is properly funded.</li>
+				<li id = "BI60" class = "intervention">National institutes for biosecurity (such as NIBS, the UK National Institute for Biological Security) are created in various countries.</li>
+				
+				<div class = "resources intervention">
+					<a href="risks.html">learn more &#8250;</a>
+					<a href="risks.html">take action &#8250;</a>
+				</div> -->
+			</ul>
 
 <!-- 			<div id="buttons">
 
@@ -88,13 +202,44 @@
 		
 	</div>
 
+	<!-- Trigger/Open The Modal -->
+	<div class = "uncertaintyButton" id = "myBtn"><h3 class = "uncertaintySentence">&#9650; the data in this visualization have high uncertainty.</h3></div>
 
-	<div id="container"></div>
+	<!-- down caret: &#9660; -->
+
+	<!-- The Modal -->
+	<div id="uncertaintyModal" class="modal secondModal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+	    <div class="modal-body">
+		    <h3>uncertainty</h3>
+
+		    <p>The forecast data in this visualization have high uncertainty.</p>
+
+			<p>The existential risk (x-risk) forecasts for the coming century come from two sources: Toby Ord’s <a style = "font-style: italic;"href = "https://theprecipice.com/" target="_blank">The Precipice</a> and Dennis Pamlin and Stuart Armstrong's "<a href = "https://www.researchgate.net/publication/291086909_12_Risks_that_threaten_human_civilisation_The_case_for_a_new_risk_category" target="_blank">Global Challenges: 12 Risks that Threaten Human Civilisation, Global Challenges Foundation</a>." If you click between researchers in the dropdown option, you’ll see how different their forecasts are.</p> 
+
+			<!-- <p class="uncertainty-quote">“[quote about level of uncertainty]” (Ord p)</p> 
+
+			<p class="uncertainty-quote">“[quote about level of uncertainty]” (Pamlin and Armstrong p)</p>  -->
+
+			<p>To view x-risk predictions and their probability distributions, and even contribute your own forecasts, check out this <a href="https://www.lesswrong.com/posts/6x9rJbx9bmGsxXWEj/forecasting-thread-existential-risk-1" target="_blank">Forecasting Thread</a>.</p> 
+
+			<p>The estimates for the percentages by which various preventive measures reduce existential risk forecasts come from a survey of experts from the Future of Humanity Institute, the Center for Human-Compatible AI, and other affiliations. Each expert was given under 10 minutes to come up with these values. Unquestionably, these estimates are also quite uncertain.</p>  
+
+			<p>If everything's uncertain, what's the point? Although all forecasts are inherently subject to a high degree of error, it is still important to attempt to forecast these risks and how various preventive measures may reduce them, so as A) to highlight priority areas and cases where the research community disagrees and B) to underline the urgency of starting to take action to mitigate them. The point is to act now, because the consequences of inaction are catastrophic.</p>  
+	 	</div>
+	  </div>
+
+	</div>
 
 </body>
 
 
 <script type="text/javascript">
+
+//-----------------navigate with keys-----------------
 
 $("body").keydown(function(e) {
   if(e.which == 37) { // left     
@@ -105,6 +250,38 @@ $("body").keydown(function(e) {
   }
 });
 
+//-----------------uncertainty modal-----------------
+
+// Get the modal
+var modal = document.getElementById("uncertaintyModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+//-----------------human in the center-----------------
+
+
 var svg1 = d3.select("body").select("#human"), 
 	width = +svg1.attr("width");
  	height = +svg1.attr("height");
@@ -112,19 +289,19 @@ var svg1 = d3.select("body").select("#human"),
 var longLineLength = 1000;
 var bottomLineY = 450;
 
-var humanityhuman = svg1.append("image")
-  	.attr("x", width / 2 - 225 / 2 + 24)
-  	.attr("y", 15)
-  	.attr("xlink:href", "crowd_human.png")
-  	.attr("width", 1100/6)
-  	.attr("opacity", 1);
-
 var longline = svg1.append("line")
     .attr("x1", (width - longLineLength) / 2 + longLineLength * 5/12)
 		.attr("x2", (width - longLineLength) / 2 + longLineLength * 7/12)
 		.attr("y1", bottomLineY).attr("y2", bottomLineY)
     .attr("stroke-width", 2)
     .attr("stroke", "#353b3c");
+
+var humanityhuman = svg1.append("image")
+  	.attr("x", width / 2 - 225 / 2 + 24)
+  	.attr("y", 15)
+  	.attr("xlink:href", "crowd_human.png")
+  	.attr("width", 1100/6)
+  	.attr("opacity", 1);
 
 var title = d3.select("body").select("h1")
 	.style("opacity", 0);
@@ -135,16 +312,20 @@ var intro_notes = d3.select("body").selectAll(".intro_note")
 	.style("opacity", 0);
 
 intro_notes.transition()
-	.style("opacity", 1)
+	.style("opacity", (d,i) => i == 2 ? 1 : 0.6)
 	.duration(1000).delay((d, i) => 1000 + 1500 * i);
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+d3.selectAll(".preventive_measures").selectAll(".intervention").transition()
+	.style("opacity", 0)
+	.duration(0).delay(0);
+
 let tobyord = [{"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png", "emphasis_img": "3ai.png", "category": "#ai"},
-{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#pandemic"}, 
-{"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png", "emphasis_img": "3engpandemic.png", "category": "#pandemic"},
+{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#biorisk"}, 
+{"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png", "emphasis_img": "3engpandemic.png", "category": "#biorisk"},
 {"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png", "emphasis_img": "1anthro.png", "category": ""}, 
 {"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png", "emphasis_img": "3nuclear.png", "category": "#nuclear"},
 {"risk": "climate change", "value": 0.001, "img": "1climate.png", "emphasis_img": "3climate.png", "category": "#climate"}, 
@@ -159,7 +340,7 @@ let tobyord = [{"risk": "unaligned artificial intelligence", "value": 0.1, "img"
 
 
 let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png", "emphasis_img": "3ai.png", "category": "#ai"}, 
-{"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#pandemic"},  
+{"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#biorisk"},  
 {"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png", "emphasis_img": "3nuclear.png", "category": "#nuclear"}, 
 {"risk": "climate change", "value": 0.0001, "img": "1climate.png", "emphasis_img": "3climate.png", "category": "#climate"}, 
 {"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png", "emphasis_img": "1supervolcano.png", "category": ""}, 
@@ -170,8 +351,33 @@ let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png
 {"risk": "uncertain risk", "value": 0.005, "img": "1uncertain.png", "emphasis_img": "1uncertain.png", "category": ""}]
 
 let researchers = new Map();
-researchers.set("Toby Ord", tobyord);
-researchers.set("Pamlin & Armstrong", pamlin);
+	researchers.set("Toby Ord", tobyord);
+	researchers.set("Pamlin & Armstrong", pamlin);
+
+
+reductions = [{"id": "AI11", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI10", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI21", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI22", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI23", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI24", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI25", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI26", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI30", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI40", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI50", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"},
+{"id": "AI60", "clicked": false, "reduction": 0.5, "xriskToReduce": "#ai"}]
+
+let reduction = new Map();
+	reduction.set("AI11", reductions[0]);
+	reduction.set("AI12", reductions[1]);
+	reduction.set("AI21", reductions[2]);
+	reduction.set("AI22", reductions[3]);
+	reduction.set("AI23", reductions[4]);
+	reduction.set("AI24", reductions[5]);
+	reduction.set("AI31", reductions[6]);
+	reduction.set("AI32", reductions[7]);
+	reduction.set("AI40", reductions[8]);
 
 //BUBBLE CHART
 
@@ -188,12 +394,18 @@ researchers.set("Pamlin & Armstrong", pamlin);
 // 	{"hrisk": "other drug use disorders", "himg": "1drugs.png", "xrisk": "climate change", "ximg": "1climate.png", "value": 0.04},
 // 	{}]
 
- 	function bubbleChart(researcher) {
+	let categories = ["#ai", "#nuclear", "#biorisk", "#climate"]
+
+	let isClicked = new Map();
+		isClicked.set("#ai", false);
+		isClicked.set("#nuclear", false);
+		isClicked.set("#biorisk", false);
+		isClicked.set("#climate", false);
+
+ 	function bubbleChart(data) {
  		// d3.select("body").append("p").data(data).text(function(d) {
  		// 	return "xrisk: " + d.xrisk + " ximg: " + d.ximg + " hrisk: " + d.hrisk + " himg: " + d.himg + " value: " + d.value;
  		// });
-
- 		let data = researchers.get(researcher);
 
  		let format = d3.format(",d");
 
@@ -211,6 +423,7 @@ researchers.set("Pamlin & Armstrong", pamlin);
 		const node = svg.selectAll(".node")
 	    .data(pack(root).leaves())              //returns array of descendant nodes of "root" that don't have children
 	    .enter().append("g")
+	      .attr("id", function(d) { return d.data.category + "node"})
 	      .attr("class", "node")
 	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  // move the entire chart where you want it
 
@@ -228,42 +441,55 @@ researchers.set("Pamlin & Armstrong", pamlin);
 	 //     .attr('clip-path', function(d) { return "url(#clip-" + d.id + ")"; })
 	      .attr('width', function(d) { return d.r*2; })
 	      .attr('height', function(d) { return d.r*2; })
-	      .attr('xlink:href', function(d) { return d.data.img; })
+	      .attr('xlink:href', (d, i) => isClicked.get(d.data.category) ? d.data.emphasis_img : d.data.img)
 	      .attr("transform", function(d) { return "translate("+parseInt(-d.r)+" " +parseInt(-d.r)+ ")"; })
+	      .style("cursor", function(d) {if (d.data.category != "") {return "pointer";}})
 	    .on("mouseover", function(d){    //switches to x-risk image on mouseover
 	        d3.selectAll(".intro_note").text("");
 	        d3.select(this)
-	           .attr('xlink:href', function(d) { return d.data.emphasis_img; });
-	        d3.select("#risk").text("~" + d.value + "% chance");
-	        d3.select("#hrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in the coming century, if...");
+	           .attr('xlink:href', d.data.emphasis_img);
 	        if (d.data.category != "") {
 	        	d3.select(d.data.category).style("color", "#006d77");
 	        }
-	        })
-	    .on("mouseout", function(){     //switches back
-	        d3.select(this)
-	           .attr('xlink:href', function(d) { return d.data.img; });
-	        d3.select("#risk").text("");
-	        d3.select("#hrisk").text("");
-	        d3.selectAll(".x-risk").style("color", "white");
+	    })
+	    .on("mouseout", function(d){     //switches back
+	        if (!isClicked.get(d.data.category)) {
+	        	d3.select(this)
+	          		.attr('xlink:href', function(d) { return d.data.img; });
+	        	d3.select(d.data.category).style("color", "white");
+	        	}
 	 		})
-	    .on("click", function(d){  
-	        d3.select(this)
-	           .attr('xlink:href', function(d) { return d.data.emphasis_img; });
-	        d3.select("#risk").text("~" + d.value + "% chance");
-	        d3.select("#hrisk").text("Humanity will go extinct from "  + d.data.xrisk + " in the coming century, if...");
-	        if (d.data.category != "") {
-	        	d3.select(d.data.category).style("color", "#006d77");
-	        }
-	        });
-	};
+	    .on("click", function(d) {
+	    	clickRisk(d.data.category, d.value, d.data.risk)
+	    	d3.select(this)
+	           .attr('xlink:href', d.data.emphasis_img);
+	    });
 
-	let researcherName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text
-	bubbleChart(researcherName);
+	    let textOptions = d3.selectAll(".x-risk");
+	    	textOptions.style("color", (d, i) => isClicked.get(d.id) ? d.data.emphasis_img : d.data.img)
+	    	.on("mouseover", function(d){    //switches to x-risk image on mouseover
+		        d3.select(this).style("color", "#006d77");
+		    })
+		    .on("mouseout", function(d){     //switches back
+		        if (!isClicked.get(d3.select(this))) {
+		        	d3.select(this).style("color", "white");
+		        	}
+		 		})
+		    .on("click", function(d) {
+		    	for (let i = 0; i < categories.length; i++) {
+		 			isClicked.set(categories[i], false);
+		 			d3.select("body").select(categories[i]).style("color", "white");
+				}
+
+				//isClicked for all categories = false
+				isClicked.set(d3.select(this).attr("id"), true);
+	    });;
+	};
 
 	function update() {
 		let updatedName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text;
 		console.log(updatedName);
+		let data = researchers.get(updatedName);
 
  		svg = d3.select("body").select("#bubble_chart"),
  		width = +svg.attr("width"),
@@ -271,12 +497,193 @@ researchers.set("Pamlin & Armstrong", pamlin);
 
  		svg.selectAll("*").remove();
 
- 		bubbleChart(updatedName);
+ 		bubbleChart(data);
 	}
 
+	function clickRisk(category, value, xrisk) {
+		for (let i = 0; i < categories.length; i++) {
+ 			isClicked.set(categories[i], false);
+ 			d3.select("body").select(categories[i]).style("color", "white");
+		}
+
+		//isClicked for all categories = false
+		isClicked.set(category, true); //isClicked for this category = true
+
+		//img and text for all categories white 
+		d3.select("body").select("svg").selectAll(".node").select("image").attr('xlink:href', function(d) { return d.data.img; }); 
+		
+		
+		// //img and text for this category green
+		//imgs
+		d3.select("body").select(category).style("color", "#006d77");
+
+		// let nodeID = category+"node";
+
+		// console.log("nodeID " + nodeID);
 
 
-	document.getElementById("country").addEventListener("change", update);
+		// let node = d3.select(nodeID);
+
+		// console.log(node.data());
+
+		//show xrisk
+		d3.select("#risk_pr").text("~" + value*100  + "% chance");
+   	 	d3.select("#xrisk_pr").text("Humanity will go extinct from "  + xrisk + " in the coming century, if...");
+
+		
+		let preventive_measures = category + "_prevent";//make preventive measures visible (transition in nicely)
+		
+		//hide all other preventive measures
+		d3.selectAll(".preventive_measures").selectAll(".intervention").transition()
+			.style("opacity", 0)
+			.duration(0).delay(0);
+
+		//show preventive measures 
+		d3.select(preventive_measures).selectAll(".intervention").transition()
+			.style("opacity", 0.4)
+			.duration(100).delay((d, i) => 100 * i);
+	    
+	    //event listener to preventive_measures 
+	    d3.select(category + "_prevent").selectAll(".intervention").each(function (d) {
+	    	d3.select(this).style("cursor", "pointer")
+	    	.on("mouseover", function() {
+	    		d3.select(this).style("opacity", 1.0);
+	    		console.log("ID" + d3.select(this).attr("id"));
+	    		console.log(reduction.get(d3.select(this).attr("id")));
+	    		console.log(reduction.get(d3.select(this).attr("id")).id);
+	    	})
+	    	.on("mouseout", function(d) {
+	    		if (!reduction.get(d3.select(this).attr("id")).clicked) {
+		        	d3.select(this).style("opacity", 0.4);
+		        }
+	    	})
+	    	.on("click", function() {
+	    		d3.select(this).style("opacity", 1.0);
+	    		console.log("ID " + reduction.get(d3.select(this).attr("id")).id);
+	    		console.log("length " + d3.select(this).attr("id").length);
+	    		console.log("clicked before " + d3.select(this).attr("id").clicked);
+	    		if (d3.select(this).attr("id").length == 4) {
+	    			clickMeasure(d3.select(this).attr("id"));
+	    			console.log("clicked after " + d3.select(this).attr("id").clicked);
+	    		}
+	    		else {
+	    			let ID = document.getElementById(d3.select(this).attr('id')).options[document.getElementById(d3.select(this).attr('id')).selectedIndex].value;
+	    			clickMeasure(ID);
+	    		}
+	    	})}); 	
+	}
+
+	function clickMeasure(ID) {
+		let isItClicked = reduction.get(ID).clicked;
+		reduction.get(ID).clicked = !isItClicked; //if clicked previously, will unclick, otherwise will click
+
+		console.log("isITclicked " + isItClicked);
+		//make this measure darker
+		d3.select(ID).style("opacity", 1.0);
+		//maybe later - make resources visible
+		//update data with reduced risk
+
+		let tobyord1 = [{"risk": "unaligned artificial intelligence", "value": 0.1, "img": "1ai.png", "emphasis_img": "3ai.png", "category": "#ai"},
+		{"risk": "'naturally' arising pandemic", "value": 0.0001 , "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#biorisk"}, 
+		{"risk": "engineered pandemics", "value": 0.03, "img": "1engpandemic.png", "emphasis_img": "3engpandemic.png", "category": "#biorisk"},
+		{"risk": "other anthropogenic risks", "value": 0.02, "img": "1anthro.png", "emphasis_img": "1anthro.png", "category": ""}, 
+		{"risk": "nuclear war", "value": 0.001, "img": "1nuclear.png", "emphasis_img": "3nuclear.png", "category": "#nuclear"},
+		{"risk": "climate change", "value": 0.001, "img": "1climate.png", "emphasis_img": "3climate.png", "category": "#climate"}, 
+		{"risk": "supervolcanic eruption", "value": 0.0001, "img": "1supervolcano.png", "emphasis_img": "1supervolcano.png", "category": ""},
+		{"risk": "asteroid or comet impact", "value": 0.000001, "img": "1asteroid.png", "emphasis_img": "1asteroid.png", "category": ""}, 
+		{"risk": "stellar explosion", "value": 0.000000001, "img": "1stellar.png", "emphasis_img": "1stellar.png", "category": ""},
+		{"risk": "other environmental damage (not climate change)", "value": 0.001, "img": "1enviro.png", "emphasis_img": "1enviro.png", "category": ""},
+		//{"risk": "total natural existential risk", "value": 0.0001, "img": "1x.png", "emphasis_img": "1x.png", "category": ""},
+		//{"risk": "total anthropogenic existential risk", "value": 0.17, "img": "1x.png", "emphasis_img": "1x.png", "category": ""},
+		//{"risk": "total existential risk", "value": 0.167, "img": "1x.png", "emphasis_img": "1x.png", "category": ""},
+		{"risk": "unforseen anthropogenic risks", "value": 0.03, "img": "1uncertain.png", "emphasis_img": "1uncertain.png", "category": ""}] 
+
+
+		let pamlin1 = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png", "emphasis_img": "3ai.png", "category": "#ai"}, 
+		{"risk": "global pandemic", "value": 0.000001, "img": "1naturalpandemic.png", "emphasis_img": "3naturalpandemic.png", "category": "#biorisk"},  
+		{"risk": "nuclear war", "value": 0.00005, "img": "1nuclear.png", "emphasis_img": "3nuclear.png", "category": "#nuclear"}, 
+		{"risk": "climate change", "value": 0.0001, "img": "1climate.png", "emphasis_img": "3climate.png", "category": "#climate"}, 
+		{"risk": "supervolcano", "value": 0.0000003, "img": "1supervolcano.png", "emphasis_img": "1supervolcano.png", "category": ""}, 
+		{"risk": "major asteroid impact", "value": 0.0000013, "img": "1asteroid.png", "emphasis_img": "1asteroid.png", "category": ""},
+		{"risk": "synthetic biology", "value": 0.000001, "img": "1syntheticbio.png", "emphasis_img": "1syntheticbio.png", "category": ""}, 
+		{"risk": "nanotechnology", "value": 0.0001, "img": "1nanotech.png", "emphasis_img": "1nanotech.png", "category": ""}, 
+		{"risk": "ecological catastrophe", "value": 0.005, "img": "1enviro.png", "emphasis_img": "1enviro.png", "category": ""}, 
+		{"risk": "uncertain risk", "value": 0.005, "img": "1uncertain.png", "emphasis_img": "1uncertain.png", "category": ""}]
+
+		let researchers1 = new Map();
+			researchers1.set("Toby Ord", tobyord1);
+			researchers1.set("Pamlin & Armstrong", pamlin1);
+
+
+		let updatedName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text;
+		let data1 = researchers1.get(updatedName);
+
+		console.log("data before");
+		console.log(data1);
+
+		for (let i = 0; i < reductions.length; i++) {
+ 			if (reductions[i].clicked) { //if clicked
+ 				let intervention = reductions[i];
+ 				for (let i = 0; i < data1.length; i++) {
+ 					console.log("intervention xriskToReduce " + intervention.xriskToReduce);
+ 					if (data1[i].category == intervention.xriskToReduce) { //if the right xrisk
+ 						data1[i].value = data[i].value * (1.0 - intervention.reduction); //this does reductions multipled by one another instead of added!! fix that!!!
+ 						console.log("intervention xriskToReduce " + intervention.xriskToReduce);
+ 						console.log("intervention reduction " + intervention.reduction);
+ 						console.log("new xrisk value " + data1[i].value);
+ 					}
+ 				}
+ 			}
+		}
+
+		console.log("data after");
+		console.log(data1);
+
+
+		svg = d3.select("body").select("#bubble_chart"),
+ 		width = +svg.attr("width"),
+ 		height = +svg.attr("height");
+
+ 		svg.selectAll("*").remove();
+
+ 		let category = reduction.get(ID).xriskToReduce;
+ 		let newXriskValue = 0;
+ 		let newXRisk = "didn't work";
+
+ 		for (let i = 0; i < data1.length; i++) {
+			if (data1[i].category == category) { //if the right xrisk
+				newXriskValue = data1[i].value;
+				newXRisk = data1[i].risk;
+			}
+		}
+
+		d3.select("body").select(category).style("color", "#006d77");
+
+		// let nodeID = category+"node";
+
+		// console.log("nodeID " + nodeID);
+
+
+		// let node = d3.select(nodeID);
+
+		// console.log(node.data());
+
+		//show xrisk
+		d3.select("#risk_pr").text("~" + newXriskValue*100  + "% chance");
+   	 	d3.select("#xrisk_pr").text("Humanity will go extinct from "  + newXRisk + " in the coming century, if...");
+
+ 		bubbleChart(data1);
+
+		//update chart with this data
+		//update risk % on top right
+	}
+
+	let researcherName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text
+	let data = researchers.get(researcherName);
+	bubbleChart(data);
+
+
+//	document.getElementById("country").addEventListener("change", update);
 	document.getElementById("researcher").addEventListener("change", update);
 
 

@@ -261,6 +261,174 @@ span:focus, span:hover, span:active {
   	margin-right: auto;
 }
 
+/*----------------------------------------ADOLESCENCE.HTML----------------------------------------*/
+
+.adolescence p {
+	color: #a2999e;
+	font-family: "Apple Chancery", cursive;
+	font-size: 15px;
+	position: relative;
+	text-align: center;
+}
+
+#adolescence {
+	position: absolute;
+}
+
+#quote1 {
+	top: 300px;
+	margin-bottom: 0px;
+}
+
+#quote2 {
+	top: 80px;
+}
+
+.blank {
+	opacity: 0.0;
+}
+
+h4 {
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+/*----------------------------------------UNCERTAINTY MODAL----------------------------------------*/
+
+.uncertaintyButton {
+	position: fixed;
+  	bottom: 0;
+  	background-color: #eef0f2;
+  	width: 100%;
+  	height: 6%;
+  	left: 0;
+  	opacity: 0.5;
+}
+
+.uncertaintySentence {
+	font-family: "Optima", sans-serif;
+	font-variant: small-caps;
+	font-size: 20px;
+	color: black;
+	margin-top: 0px;
+	opacity: 0.8 !important;
+	padding-left: 100px;
+	top: 0px;
+	display: inline-block;
+}
+
+#myBtn {
+	cursor: pointer;
+	padding-left: 315px;
+	display: inline-block;
+}
+
+/* The Modal (background) */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #eef0f2; /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+.secondModal {
+	display: none; /* Hidden by default */
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: #eef0f2;
+  opacity: 0.9;
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+.modal-body {
+	padding: 0px 100px;
+	padding-bottom: 20px;
+}
+
+.modal-body h3 {
+	font-family: "Optima", sans-serif;
+	font-variant: small-caps;
+	font-size: 30px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	color: #a2999e;
+}
+
+.modal-body p {
+	font-family: Georgia, serif;
+	color: #4e4e4eff;
+	font-size: 14px;
+	text-align: left;
+}
+
+.modal-body p a {
+	color: #006d77;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.uncertainty-quote {
+	margin-left: 50px;
+	font-size: 12px;
+	font-style: italic;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0.5} 
+  to {bottom: 0; opacity: 0.9}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0.5}
+  to {bottom: 0; opacity: 0.9}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0.5} 
+  to {opacity: 0.9}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0.5} 
+  to {opacity: 0.9}
+}
+
 /*----------------------------------------RISKS.HTML----------------------------------------*/
 
 #bubble_chart {
@@ -268,7 +436,6 @@ span:focus, span:hover, span:active {
 }
 
 .node {
-	cursor: pointer;
 	pointer-events: all;
 }
 
@@ -282,7 +449,6 @@ span:focus, span:hover, span:active {
 	left: 800px;
 	z-index: 10;
 	color: white;
-	opacity: 0.7;
 }
 
 #risk, #xrisk, #hrisk, #prob {
@@ -342,42 +508,204 @@ select {
 
 /*----------------------------------------PREVENTION.HTML----------------------------------------*/
 
-#prevent_ai {
-	opacity: 0;
-}
-
-
-.adolescence p {
-	color: #a2999e;
-	font-family: "Apple Chancery", cursive;
-	font-size: 15px;
-	position: relative;
-	text-align: center;
-}
-
-#adolescence {
+.x-risks {
 	position: absolute;
+	left: 180px;
+	top: 470px;
 }
 
-#quote1 {
-	top: 300px;
+.x-risks span {
+	margin: 7px;
+	font-family: Georgia;
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+}
+
+.preventive_measures {
+	position: absolute;
+	font-family: Georgia;
+	font-weight: bold;
+	margin-right: 50px;
+	list-style: none;
+	text-align: left;
+	padding-left: 0;
+	left: 760px;
+	top: 160px;
+	z-index: 10;
+}
+
+.preventive_measures li {
+	font-family: Georgia;
+	font-weight: bold;
+	font-size: 14px;
+	color: black;
+	padding-top: 20px;
+}
+
+.preventive_measures li select {
+
+	display: inline-block  !important;
+
+  	font-family: Georgia !important;
+  	font-weight: bold !important;
+  	text-align: center;
+  	text-align-last: center;
+  	width: 150px;
+  	height: 20px;
+  	background-color: transparent !important;
+  	color: black !important;
+  	border: 0px;
+  	border-bottom: 3px solid black !important;
+}
+
+.preventive_measures select:hover, select:focus{
+    outline: none;
+    background-color: transparent !important;
+}
+
+.resources {
+	padding-right: 0;
+	text-align: center;
+	margin-left: -30px;
+	margin-top: 40px;
+}
+
+.preventive_measures a {
+	font-family: Georgia;
+	font-weight: bold;
+	font-size: 16px;
+	color: #006d77;
+	opacity: 1;
+	text-decoration: none;
+	
+
+	margin: 5px;
+}
+
+#risk_pr {
+	position: absolute;
+	font-family: Georgia;
+	font-weight: bold;
+	margin-right: 150px;
+	left: 840px;
+	top: 100px;
+	font-size: 30px;
+	color: #006d77;
+}
+
+#xrisk_pr {
+	position: absolute;
+	font-family: Georgia;
+	font-weight: bold;
+	margin-right: 150px;
+	left: 800px;
+	top: 150px;
+	font-size: 13px;
+	color: white;
+}
+
+
+
+/*----------------------------------------ACKNOWLEDGEMENTS.HTML----------------------------------------*/
+
+#sources {
+	margin-left: 300px;
+	margin-right: 300px;
+	margin-bottom: 50px;
+	margin-top: 10px;
+}
+
+#sources h2{
+	font-family: "Optima", sans-serif;
+	font-variant: small-caps;
+	color: #c6c7c4;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	margin: 0px;
+}
+
+#sources .source{
+	font-family: Georgia, serif;
+	color: #4e4e4eff;
+	font-size: 12px;
+	text-align: left;
+	list-style-type: none;
+	padding: 5px;
+	margin: 0px;
+}
+
+#sources .source li{
+	margin: 2px;
+}
+
+#sources .source a {
+	color: #006d77;
+	font-weight: 600;
+	text-decoration: none;
 	margin-bottom: 0px;
 }
 
-#quote2 {
-	top: 80px;
-}
-
-.blank {
-	opacity: 0.0;
-}
-
-h4 {
-	text-align: center;
-	justify-content: center;
-	align-items: center;
+#compiledBy {
 	position: relative;
+	left: -6px;
+	font-style: italic;
+	margin-bottom: 10px;
+	margin-top: 0px;
+	font-size: 12px;
 }
+
+.acknowledgments {
+	text-align: center;
+	color: #a2999e;
+	font-family: Georgia, serif;
+	margin-top: 0px;
+}
+
+.regular a {
+	color: #846a6a;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.regular a:focus, #regular a:hover, #regular a:active { 
+	color: #846a6a; 
+}
+
+.regular {
+	margin-top: 20px;
+	margin-left: 180px;
+	margin-right: 180px;
+	font-size: 14px;
+}
+
+#thankYOU {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 100px;
+	margin-right: 100px;
+	color: #353b3c;
+}
+
+#signature {
+	height: 40px;
+	width: auto;
+	position: absolute;
+	margin-left: 950px;
+	margin-top: -45px;
+	filter: grayscale(100%);
+
+}
+
+
+
+/*--------------------------------------------------------------------------------*/
+
+
+
+
 
 /*.grow p {
 	font-family: Georgia, sans-serif;
@@ -483,82 +811,4 @@ h4 {
 .myClass img:nth-child(2) { animation-delay: 1s }
 .myClass img:nth-child(3) { animation-delay: 1.5s }
 .myClass img:nth-child(4) { animation-delay: 2s }
-
-#sources {
-	margin-left: 300px;
-	margin-right: 300px;
-	margin-bottom: 50px;
-	margin-top: 10px;
-}
-
-#sources h2{
-	font-family: "Optima", sans-serif;
-	font-variant: small-caps;
-	color: #c6c7c4;
-	font-size: 18px;
-	font-weight: bold;
-	text-align: left;
-	margin: 0px;
-}
-
-#sources .source{
-	font-family: Georgia, serif;
-	color: #4e4e4eff;
-	font-size: 12px;
-	text-align: left;
-	list-style-type: none;
-	padding: 5px;
-	margin: 0px;
-}
-
-#sources .source li{
-	margin: 2px;
-}
-
-#sources .source a {
-	color: #006d77;
-	font-weight: 600;
-	text-decoration: none;
-}
-
-#compiledBy {
-	position: relative;
-	left: -6px;
-	font-style: italic;
-	margin-bottom: 10px;
-	margin-top: 0px;
-	font-size: 12px;
-}
-
-.acknowledgments {
-	text-align: center;
-	color: #a2999e;
-	font-family: Georgia, serif;
-}
-
-#regular a {
-	color: #846a6a;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-#regular a:focus, #regular a:hover, #regular a:active { 
-	color: #846a6a; 
-}
-
-#regular {
-	margin-top: 20px;
-	margin-left: 220px;
-	margin-right: 220px;
-	font-size: 14px;
-}
-
-#thankYOU {
-	margin-top: 20px;
-	font-size: 18px;
-	font-weight: bold;
-	margin-left: 100px;
-	margin-right: 100px;
-	color: #353b3c;
-}
 
