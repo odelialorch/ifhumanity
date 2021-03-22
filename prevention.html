@@ -67,14 +67,14 @@
 
 <!-- 				<li id = "AI40" class = "intervention">1000 people for 20 years do direct research on AI alignment.</li>  Daniel Filan -->
 
-				<li id = "AI2" class = "intervention">Research on 
-					<select style = "width: 220px;">
-						<option id = "AI21" value="ID001">specification learning</option> <!-- Rohin Shah -->
-						<option id = "AI22" value="ID002">interpretability</option> <!-- Rohin Shah -->
-						<option id = "AI23" value="ID004" selected>imitation learning</option> <!-- Adam Gleave -->
-						<option id = "AI24" value="ID004">mechanism design for coordinating diverse AI systems</option> <!-- Adam Gleave -->
-						<option id = "AI25" value="ID003">other robustness topics</option> <!-- Rohin Shah -->
-						<option id = "AI26" value="ID004">yet unknown topics</option> <!-- Rohin Shah -->
+				<li id = "AI21" class = "intervention">Research on 
+					<select id = "AI2" style = "width: 220px;" onchange = "updateID('AI2')">
+						<option value="AI21" selected>specification learning</option> <!-- Rohin Shah -->
+						<option value="AI22">interpretability</option> <!-- Rohin Shah -->
+						<option value="AI23">imitation learning</option> <!-- Adam Gleave -->
+						<option value="AI24">mechanism design for coordinating diverse AI systems</option> <!-- Adam Gleave -->
+						<option value="AI25">other robustness topics</option> <!-- Rohin Shah -->
+						<option value="AI26">yet unknown topics</option> <!-- Rohin Shah -->
 					</select>
 					 is done well.
 				</li>
@@ -350,7 +350,7 @@ let pamlin = [{"risk": "artificial intelligence", "value": 0.05, "img": "1ai.png
 {"risk": "ecological catastrophe", "value": 0.005, "img": "1enviro.png", "emphasis_img": "1enviro.png", "category": ""}, 
 {"risk": "uncertain risk", "value": 0.005, "img": "1uncertain.png", "emphasis_img": "1uncertain.png", "category": ""}]
 
-let researchers = new Map();
+let researchers = d3.map();
 	researchers.set("Toby Ord", tobyord);
 	researchers.set("Pamlin & Armstrong", pamlin);
 
@@ -367,16 +367,18 @@ reductions = [{"id": "AI10", "clicked": false, "reduction": 0.02, "xriskToReduce
 {"id": "AI50", "clicked": false, "reduction": 0.10, "xriskToReduce": "#ai"},
 {"id": "AI60", "clicked": false, "reduction": 0.05, "xriskToReduce": "#ai"}]
 
-let reduction = new Map();
+let reduction = d3.map();
 	reduction.set("AI10", reductions[0]);
 	reduction.set("AI21", reductions[1]);
 	reduction.set("AI22", reductions[2]);
 	reduction.set("AI23", reductions[3]);
 	reduction.set("AI24", reductions[4]);
 	reduction.set("AI25", reductions[5]);
-	reduction.set("AI30", reductions[6]);
-	reduction.set("AI40", reductions[7]);
-	reduction.set("AI50", reductions[8]);
+	reduction.set("AI26", reductions[6]);
+	reduction.set("AI30", reductions[7]);
+	reduction.set("AI40", reductions[8]);
+	reduction.set("AI50", reductions[9]);
+	reduction.set("AI60", reductions[10]);
 
 //BUBBLE CHART
 
@@ -465,7 +467,7 @@ let reduction = new Map();
 	    });
 
 	    let textOptions = d3.selectAll(".x-risk");
-	    	textOptions.style("color", (d, i) => isClicked.get(d.id) ? d.data.emphasis_img : d.data.img)
+	    	textOptions.style("color", (d, i) => isClicked.get(d3.select(this).attr("id")) ? d.data.emphasis_img : d.data.img)
 	    	.on("mouseover", function(d){    //switches to x-risk image on mouseover
 		        d3.select(this).style("color", "#006d77");
 		    })
@@ -526,7 +528,7 @@ let reduction = new Map();
 		// console.log(node.data());
 
 		//show xrisk
-		d3.select("#risk_pr").text("~" + value*100  + "% chance");
+		d3.select("#risk_pr").text("~" + (value*100).toFixed(2)  + "% chance");
    	 	d3.select("#xrisk_pr").text("Humanity will go extinct from "  + xrisk + " in the coming century, if...");
 
 		
@@ -538,21 +540,25 @@ let reduction = new Map();
 			.duration(0).delay(0);
 
 		//show preventive measures 
-		d3.select(preventive_measures).selectAll(".intervention").transition()
-			.style("opacity", 0.4)
+		d3.select(category + "_prevent").selectAll(".intervention").transition()
+			.style("opacity", (d,i) => !(reductions[i].clicked) ? 0.4 : 1.0)
 			.duration(100).delay((d, i) => 100 * i);
 	    
 	    //event listener to preventive_measures 
 	    d3.select(category + "_prevent").selectAll(".intervention").each(function (d) {
+	    	// if (d3.select(this).tagName == "") {
+	    	// 	d3.select(this).select("select")
+	    	// 		.on("change", function() {
+
+	    	// 		})
+	    	// }
+
 	    	d3.select(this).style("cursor", "pointer")
 	    	.on("mouseover", function() {
 	    		d3.select(this).style("opacity", 1.0);
-	    		console.log("ID" + d3.select(this).attr("id"));
-	    		console.log(reduction.get(d3.select(this).attr("id")));
-	    		console.log(reduction.get(d3.select(this).attr("id")).id);
 	    	})
 	    	.on("mouseout", function(d) {
-	    		if (!reduction.get(d3.select(this).attr("id")).clicked) {
+	    		if (!(reduction.get(d3.select(this).attr("id")).clicked)) {
 		        	d3.select(this).style("opacity", 0.4);
 		        }
 	    	})
@@ -566,7 +572,7 @@ let reduction = new Map();
 	    			console.log("clicked after " + d3.select(this).attr("id").clicked);
 	    		}
 	    		else {
-	    			let ID = document.getElementById(d3.select(this).attr('id')).options[document.getElementById(d3.select(this).attr('id')).selectedIndex].value;
+	    			let ID = document.getElementById(d3.select(this).attr('id') + "-options").options[document.getElementById(d3.select(this).attr('id') + "-options").selectedIndex].value;
 	    			clickMeasure(ID);
 	    		}
 	    	})}); 	
@@ -620,20 +626,18 @@ let reduction = new Map();
 		console.log("data before");
 		console.log(data1);
 
-		for (let i = 0; i < reductions.length; i++) {
- 			if (reductions[i].clicked) { //if clicked
- 				let intervention = reductions[i];
- 				for (let i = 0; i < data1.length; i++) {
- 					console.log("intervention xriskToReduce " + intervention.xriskToReduce);
- 					if (data1[i].category == intervention.xriskToReduce) { //if the right xrisk
- 						data1[i].value = data[i].value * (1.0 - intervention.reduction); //this does reductions multipled by one another instead of added!! fix that!!!
- 						console.log("intervention xriskToReduce " + intervention.xriskToReduce);
- 						console.log("intervention reduction " + intervention.reduction);
- 						console.log("new xrisk value " + data1[i].value);
- 					}
+		let reductionAmount = 0;
+
+		for (let i = 0; i < data1.length; i++) {
+			for (let j = 0; j < reductions.length; j++) {
+ 				if (reductions[j].clicked && data1[i].category == reductions[j].xriskToReduce) { //if clicked
+ 					reductionAmount = reductionAmount + reductions[j].reduction; //add percent reduction up for all interventions
  				}
  			}
+ 			data1[i].value = data[i].value * (1.0 - reductionAmount);
+ 			reductionAmount = 0;
 		}
+
 
 		console.log("data after");
 		console.log(data1);
@@ -668,7 +672,7 @@ let reduction = new Map();
 		// console.log(node.data());
 
 		//show xrisk
-		d3.select("#risk_pr").text("~" + newXriskValue*100  + "% chance");
+		d3.select("#risk_pr").text("~" + (newXriskValue*100).toFixed(2)  + "% chance");
    	 	d3.select("#xrisk_pr").text("Humanity will go extinct from "  + newXRisk + " in the coming century, if...");
 
  		bubbleChart(data1);
@@ -677,7 +681,17 @@ let reduction = new Map();
 		//update risk % on top right
 	}
 
-	let researcherName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text
+	function updateID(ID) {
+		let selectedID = document.getElementById(ID).options[document.getElementById(ID).selectedIndex].value;
+		d3.select(ID.parentNode)
+			.attr("id", selectedID);
+		console.log("udpated ID " + d3.select(ID.parentNode)
+			.attr("id"));
+	}
+
+	d3.select("body").selectAll("select")
+
+	let researcherName = document.getElementById("researcher").options[document.getElementById("researcher").selectedIndex].text;
 	let data = researchers.get(researcherName);
 	bubbleChart(data);
 
