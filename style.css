@@ -82,6 +82,42 @@ h3.every_page  {
 	text-decoration: none;
 }
 
+.feedback a {
+	border:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -ms-appearance: none;
+
+	display: inline-block;
+	text-decoration: none;
+
+  	font-family: Georgia;
+  	font-style: italic;
+  	text-align: center;
+  	text-align-last: center;
+  	width: 110px;
+  	height: 25px;
+  	background-color: #a2999e;
+  	color: white;
+  	border: 0px;
+  	padding-top: 4px;
+
+  	margin-left: 1100px;
+	margin-top: -25px;
+	margin-bottom: 0px;
+	z-index: 20;
+	position: absolute;
+
+}
+
+.feedback a:hover, .feedback a:focus{
+    outline: none;
+    background-color: #eef0f2;
+    opacity: 0.6;
+    color: #a2999e;
+}
+
 
 /*----------------------------------------INDEX.HTML----------------------------------------*/
 
