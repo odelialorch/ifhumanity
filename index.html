@@ -30,8 +30,8 @@
 					<option value="75.2">Malaysia</option>
 					<option value="60.87">Nigeria</option>
 					<option value="72.16">Russia</option>
-					<option value="81.3">United Kingdom</option>
-					<option value="80.43" selected>United States of America</option>
+					<option value="81.3" selected>United Kingdom</option>
+					<option value="80.43">United States of America</option>
 				</select>
 			</div>
 
@@ -50,6 +50,23 @@
 			<a class="next continue" href = "intro.html" style = "position: relative; text-align: center;">continue &#8250;</a>
 		</div>
 	</div>
+
+	<!-- The Modal -->
+	<div id="temporaryModal" class="modal-temp">
+
+	  <!-- Modal content -->
+	  <div class="modal-content-temp">
+	    <!-- <span class="close">&times;</span> -->
+	    <div class="modal-body-temp">
+
+			<p class="p-temp">Hi! Thanks for taking the time to take a look :)</p> 
+
+			<p class="p-temp">The visualization is currently undergoing some cosmetic developments [renovation], so please excuse any bugs!</p>
+
+			<p class="p-temp">Click out to view the current version.</p> 
+
+	 	</div>
+	 </div>
 
 </body>
 
@@ -100,6 +117,27 @@ d3.select(".smileys").selectAll("img").on("click", function(){
     d3.select(".smileys").selectAll("img").attr("class", "null"); //unclicks all the other smileys 
     d3.select(this).attr("class", "selected");
 });
+
+//-----------------uncertainty modal-----------------
+
+// Get the modal
+var modal = document.getElementById("temporaryModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 
 //store selected country and its life expectancy in local storage 
 
