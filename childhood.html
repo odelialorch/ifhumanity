@@ -12,7 +12,7 @@
 
 <body>
 	<h3 class = "every_page">If <a href="risks.html">humanity</a> were one <a href = "risks.html">human</a>...</h3>
-	<h3 class = "feedback"><a href="https://forms.gle/XmuN29wCzuyLj5iN7">feedback</a></h3>
+	<h3 class = "feedback"><a href="https://forms.gle/XmuN29wCzuyLj5iN7" target="_blank">feedback</a></h3>
 
 	<span onclick="window.location.href='intro.html'" class="navigate left every_page">&#8249;</span>
 	<span onclick="exitTransition()" class="navigate right every_page">&#8250;</span>
@@ -109,6 +109,31 @@ let y = d3.scaleLinear()
 	.rangeRound([height - margin.bottom, margin.top]);
 
 console.log(y(80));
+
+
+function wrap(text, width) {
+  text.each(function() {
+    var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em")
+    while (word = words.pop()) {
+      line.push(word)
+      tspan.text(line.join(" "))
+      if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+        line.pop()
+        tspan.text(line.join(" "))
+        line = [word]
+        tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", `${++lineNumber * lineHeight + dy}em`).text(word)
+      }
+    }
+  })
+}
 
 
 let barChart = function() {
@@ -301,12 +326,38 @@ let barChart = function() {
 	    .selectAll("text")
 	    .data(d => d.skillset)
 	    .join("text")
-	      .html(d => d)
+	      .html(function(d, i) {
+	      	if (d.length > 10) {
+	      		return d.substring(0, 10);
+	      	}
+	      	return d;
+	      })
+	      // .attr("class", function(d, i) {
+	      // 	if (d.length > 10) {
+	      // 		return "skills";
+	      // 	}
+	      // })
+	      // .text(function(d, i) {
+	      // 	var skill = d;
+	      // 	if (skill.length > 10) {
+	      // 		skill1 = skill.substring(0, 10);
+	      // 		skill2 = skill.substring(10, skill.length);
+	      // 		return skill1 + "\n" + skill2;
+	      // 	}
+	      // })
+//	      .style("width", "50")
 	      .attr("y", (d, i) => bottomLineY - 60 - 60*i)
 //	      .attr("y", (d, i) => (bottomLineY - ((bottomLineY - ___) / (d.length()) + 1) * (i + 1))
 	      .attr("fill", "#353b3c")
-	      .style("font", "bold 2px var(--sans-serif)")
+	      // .style("font-size", function(d, i) {
+      	// 	if (d.length > 10) {
+      	// 		return "7px !important";
+      	// 	}
+      	// 	return "10px !important";
+	      // })
+	      .style("font", "bold 10px var(--sans-serif)")
       	  .style("font-variant", "small-caps")
+//      	  .call(wrap, 20)
 	      .attr("opacity", 0);
 
 
@@ -396,6 +447,12 @@ let exitTransition = function() {
 		.ease(d3.easeLinear)
 		.duration(500)
 		.delay(500);
+
+	humanheight.transition()
+		.attr("opacity", 0)
+		.ease(d3.easeLinear)
+		.duration(500)
+		.delay(1000);
 
 	human6.transition()
 		.attr("opacity", 0)

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<h3 class = "feedback"><a href="https://forms.gle/XmuN29wCzuyLj5iN7">feedback</a></h3>
+	<h3 class = "feedback"><a href="https://forms.gle/XmuN29wCzuyLj5iN7" target="_blank">feedback</a></h3>
 
 	<span onclick="window.location.href='index.html'" class="navigate left every_page">&#8249;</span>
 	<span onclick="window.location.href='childhood.html'" class="navigate right every_page">&#8250;</span>
@@ -46,7 +46,7 @@ var svg = d3.select("body").select("svg"), //is this necessary?
 
 
 var text1 = svg.append("text")
-	.html("Homo sapiens could exist for <tspan class = 'italics'>at least</tspan> <tspan class='turquoise'>1 MILLION</tspan> years.")
+	.html("Homo sapiens could exist for <tspan class = 'italics'>at least</tspan> <tspan class='turquoise'>1 MILLION*</tspan> years.")
 	.attr("x", width/2)
 	.attr("y", 180)
 	.attr("font-family", "Georgia")
@@ -57,7 +57,7 @@ var text1 = svg.append("text")
 	.attr("opacity", 0);
 
 var text2 = svg.append("text")
-	.html("<tspan class='turquoise'>this is the lifespan of an average mammalian species.</tspan>")
+	.html("<tspan class='turquoise'>*this is the lifespan of an average mammalian species.</tspan>")
 	.attr("x", width/2 + 200) 
 	.attr("y", 210)
 	.attr("font-family", "Georgia", "sans-serif")

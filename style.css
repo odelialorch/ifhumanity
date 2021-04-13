@@ -82,7 +82,7 @@ h3.every_page  {
 	text-decoration: none;
 }
 
-/*------- testing -----*/
+/*------- feedback -----*/
 
 .feedback a {
 	border:none;
@@ -178,7 +178,7 @@ h3.every_page  {
   	font-family: Georgia;
   	text-align: center;
   	text-align-last: center;
-  	width: 140px;
+  	width: 160px;
   	height: 30px;
   	background-color: #a2999e;
   	color: white;
@@ -330,6 +330,12 @@ span:focus, span:hover, span:active {
 	cursor: pointer;
 }
 
+.skills {
+  width: 2%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .column3 {
   float: left;
@@ -600,7 +606,7 @@ select {
   	font-family: Georgia;
   	text-align: center;
   	text-align-last: center;
-  	width: 140px;
+  	width: 165px;
   	height: 30px;
   	background-color: #a2999e;
   	color: white;
