@@ -561,7 +561,7 @@ let reduction = d3.map();
 	    			console.log("clicked after " + d3.select(this).attr("id").clicked);
 	    		}
 	    		else {
-	    			let ID = document.getElementById(d3.select(this).attr('id') + "-options").options[document.getElementById(d3.select(this).attr('id') + "-options").selectedIndex].value;
+	    			let ID = document.getElementById(d3.select(this).attr("id") + "-options").options[document.getElementById(d3.select(this).attr("id") + "-options").selectedIndex].value;
 	    			clickMeasure(ID);
 	    		}
 	    	})}); 	
@@ -672,9 +672,9 @@ let reduction = d3.map();
 
 	function updateID(ID) {
 		let selectedID = document.getElementById(ID).options[document.getElementById(ID).selectedIndex].value;
-		d3.select(ID.parentNode)
+		d3.select("#" + ID)
 			.attr("id", selectedID);
-		console.log("udpated ID " + d3.select(ID.parentNode)
+		console.log("udpated ID " + d3.select("#" + ID)
 			.attr("id"));
 	}
 
